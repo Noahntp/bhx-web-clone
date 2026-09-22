@@ -1,0 +1,10 @@
+const fs = require('fs');
+const h = fs.readFileSync('index.html', 'utf8');
+console.log('Total lines:', h.split('\n').length);
+console.log('sidebar-aside found:', h.includes('sidebar-aside'));
+console.log('sidebar-menu-list count:', (h.match(/sidebar-menu-list/g)||[]).length);
+console.log('main-layout count:', (h.match(/id="main-layout"/g)||[]).length);
+console.log('flash-sale-products count:', (h.match(/id="flash-sale-products"/g)||[]).length);
+console.log('old fixed sidebar:', h.includes('overflow-y-hidden bg-white hover:overflow-y-auto fixed bhx-scroll'));
+console.log('old pl-[280px] footer:', h.includes('<div class="pl-[280px]">'));
+console.log('sticky sidebar:', h.includes('position:sticky'));
