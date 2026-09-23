@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 36" fill="none">
+    <!-- Unilever iconic U -->
+    <g transform="translate(4, 2) scale(0.65)">
+      <path d="M10 5 C10 25 15 38 27 38 C39 38 44 25 44 5 C40 5 36 9 36 15 C36 24 33 30 27 30 C21 30 18 24 18 15 C18 9 14 5 10 5 Z" fill="#1F36C7"/>
+      <circle cx="14" cy="8" r="2.5" fill="#1F36C7"/>
+      <circle cx="40" cy="8" r="2.5" fill="#1F36C7"/>
+      <circle cx="27" cy="34" r="2" fill="#1F36C7"/>
+    </g>
+    <!-- Text Unilever -->
+    <text x="40" y="24" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="17" fill="#1F36C7" letter-spacing="0.5">Unilever</text>
+  </svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 36" fill="none">
+    <!-- Swoosh curve -->
+    <path d="M4 18 C15 6 30 6 38 18 C30 10 15 10 4 18 Z" fill="#005BBB"/>
+    <circle cx="10" cy="18" r="4" fill="#005BBB"/>
+    <!-- 2 lines text: head & shoulders -->
+    <text x="22" y="16" font-family="'Arial Rounded MT Bold', Arial, sans-serif" font-weight="bold" font-size="12" fill="#005BBB">head &amp;</text>
+    <text x="22" y="29" font-family="'Arial Rounded MT Bold', Arial, sans-serif" font-weight="bold" font-size="12" fill="#005BBB">shoulders</text>
+  </svg>

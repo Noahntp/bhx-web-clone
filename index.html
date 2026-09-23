@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="referrer" content="no-referrer">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
-  <title>Cửa hàng Bách hoá XANH - Mua bán thực phẩm, sản phẩm gia đình</title>
-  <meta name="description" content="Bách hóa XANH là cửa hàng với hơn 15.000 sản phẩm đa dạng. Giao 2 giờ, freeship đơn hàng trên 300k và cực kỳ nhiều ưu đãi cho các hạng thành viên Vàng, Bạc.">
-  <meta name="keywords" content="Bách hoá, thực phẩm, đồ dùng, bách hoá xanh">
-  <link rel="shortcut icon" href="https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/fav.ico" sizes="48x48" type="image/x-icon">
+  <title>Chợ Giá Rẻ - Mua sắm online giá rẻ mỗi ngày</title>
+  <meta name="description" content="Chợ Giá Rẻ - Mua bán thực phẩm, hàng tươi sống và sản phẩm gia đình giá rẻ mỗi ngày. Giao 2 giờ, freeship đơn hàng trên 300k.">
+  <meta name="keywords" content="Chợ giá rẻ, thực phẩm, đồ dùng, bách hoá online">
+  <link rel="shortcut icon" href="Logo.jpg" type="image/jpeg">
 
   <!-- Preconnect CDNs -->
   <link rel="preconnect" href="https://cdnv2.tgdd.vn">
@@ -26,9 +26,11 @@
       theme: {
         extend: {
           colors: {
-            'primary-100': '#007E42',
-            'primary-200': '#006133',
-            'primary-bg': '#F0FFF3',
+            'primary-100': '#EF5121',
+            'primary-200': '#D84214',
+            'primary-bg': '#FFF5F0',
+            'secondary': '#234090',
+            'secondary-dark': '#1B3273',
             'black-20': '#F4F5F7',
           },
           fontFamily: { sans: ['Roboto', 'sans-serif'] },
@@ -85,36 +87,84 @@
       width: 20px; height: 20px;
     }
 
-    /* ===== SIDEBAR MENU ===== */
-    .menu-desktop {
-      scrollbar-gutter: stable;
+    /* ===== SIDEBAR & FLYOUT SUBMENU ===== */
+    #sidebar-aside {
+      width: 270px;
+      overflow: visible !important;
+      z-index: 9; /* BELOW header (z-11) so header always on top */
     }
-    .menu-desktop::-webkit-scrollbar { width: 4px; }
-    .menu-desktop::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
-
-    .sidebar-item:hover { background-color: #F0FFF3; color: #007E42; }
-    .sidebar-item:hover .sidebar-arrow { color: #007E42; }
-
-    /* Sidebar flyout */
+    #sidebar-menu-list {
+      position: relative;
+      width: 270px;
+      background: #ffffff;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .sidebar-nav-item {
+      position: static; /* Allows flyout to align with #sidebar-menu-list */
+    }
+    .sidebar-nav-item:hover > .sidebar-nav-link {
+      background-color: #FFF5F0 !important;
+    }
+    .sidebar-nav-item:hover > .sidebar-nav-link .sidebar-cat-name {
+      color: #EF5121 !important;
+      font-weight: 700 !important;
+    }
+    .sidebar-nav-item:hover > .sidebar-nav-link .sidebar-arrow {
+      color: #EF5121 !important;
+      transform: translateX(3px);
+    }
+    .sidebar-nav-item:hover > .sidebar-flyout,
+    .sidebar-flyout:hover {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
     .sidebar-flyout {
       display: none;
       position: absolute;
       left: 100%;
       top: 0;
-      width: 500px;
-      background: white;
-      border: 1px solid #e5e7eb;
-      box-shadow: 4px 4px 20px rgba(0,0,0,0.12);
+      width: 600px;
+      height: 100%;
+      min-height: 520px;
+      max-height: calc(100vh - 100px);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #EF5121;
+      box-shadow: 12px 16px 36px rgba(0,0,0,0.18), 0 4px 12px rgba(0,0,0,0.06);
       border-radius: 0 12px 12px 0;
-      z-index: 50;
-      padding: 16px;
-      min-height: 280px;
+      z-index: 99999;
+      padding: 16px 20px;
+      overflow-y: auto;
+      flex-direction: column;
+      gap: 12px;
+      scrollbar-width: thin;
     }
-    .sidebar-item-wrap:hover .sidebar-flyout { display: flex; flex-direction: column; }
+    .sidebar-flyout::-webkit-scrollbar { width: 5px; }
+    .sidebar-flyout::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
     /* ===== STORY/PROMO BADGES ===== */
     .cate_name { transition: background-color 0.15s; }
-    .cate_name:hover { background-color: #F0FFF3; color: #007E42; }
+    .cate_name:hover { background-color: #FFF5F0; color: #EF5121; }
+    .scroll-nav-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 32px; height: 32px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%; border: 1px solid rgba(0,0,0,0.1);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 20;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      font-size: 20px; color: #333; line-height: 1;
+      transition: all 0.2s ease;
+    }
+    .scroll-nav-btn:hover {
+      background: #EF5121;
+      color: white;
+      border-color: #EF5121;
+      box-shadow: 0 4px 12px rgba(239,81,33,0.3);
+    }
 
     /* ===== BANNER SLIDER ===== */
     .banner-wrapper { position: relative; overflow: hidden; }
@@ -186,24 +236,53 @@
 <div class="bg-black-20 min-h-screen relative block">
 
 <!-- ═══════════════════════════════════════════════════════════
-     HEADER  (fixed, z-[11], bg-[#007E42], pt-3)
+     TOP UTILITY BAR (Deep Obsidian Black #0F172A)
+═══════════════════════════════════════════════════════════ -->
+<div id="top-utility-bar" class="bg-[#0B0F19] text-gray-300 text-[11px] font-medium py-1 px-4 w-full fixed inset-x-0 top-0 z-[12] border-b border-gray-800 hidden md:block" style="height:30px;">
+  <div class="mx-auto max-w-screen-xl flex items-center justify-between h-full">
+    <div class="flex items-center gap-4">
+      <span class="flex items-center gap-1.5 text-yellow-400 font-bold">
+        <span>⚡</span> GIAO NHANH 2H HOẶC HẸN GIỜ
+      </span>
+      <span class="text-gray-700">|</span>
+      <span class="text-gray-300 flex items-center gap-1"><span>🥬</span> 100% Thịt, Cá, Rau Củ Tươi Mới Mỗi Ngày</span>
+      <span class="text-gray-700">|</span>
+      <span class="text-emerald-400 font-medium flex items-center gap-1"><span>🛡️</span> Không hài lòng 1 đổi 2</span>
+    </div>
+    <div class="flex items-center gap-4 text-gray-300">
+      <a href="tel:19001908" class="hover:text-yellow-400 transition-colors flex items-center gap-1">
+        <span>📞</span> Hotline: <b class="text-white">1900.1908</b> (Miễn phí)
+      </a>
+      <span class="text-gray-700">|</span>
+      <span class="hover:text-white cursor-pointer transition-colors flex items-center gap-1"><span>🏢</span> 1.700+ Siêu thị</span>
+      <span class="text-gray-700">|</span>
+      <span class="hover:text-white cursor-pointer transition-colors flex items-center gap-1"><span>📱</span> Tải ứng dụng</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER  (fixed, z-[11], bg-[#EF5121], pt-3)
      Exact BHX classes: flex items-start justify-between
 ═══════════════════════════════════════════════════════════ -->
-<header class="bg-[#007E42] m-auto z-[11] w-full fixed inset-x-0 top-0 pt-3 shadow-sm">
+<header class="bg-[#EF5121] m-auto z-[11] w-full fixed inset-x-0 top-0 md:top-[30px] pt-3 shadow-md">
   <div class="mx-auto flex max-w-screen-xl items-start justify-between transition-all duration-[400ms] ease-in-out">
 
     <!-- LEFT: Logo stacked above "DANH MỤC SẢN PHẨM" -->
     <div class="flex flex-col justify-between shrink-0">
-      <!-- Logo – exact BHX: -mt-2.5 -ml-2 w-[198px] h-[54px] -->
-      <div class="-mt-2.5 -ml-2 cursor-pointer" style="width:198px;height:54px">
-        <img alt="logo" fetchpriority="high" width="198" height="54"
-             class="object-contain" style="width:198px;height:54px"
-             src="https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/logo-bhx-new.png"
-             onerror="this.src='Logo.jpg'">
+      <!-- Logo Chợ Giá Rẻ -->
+      <div class="-mt-1.5 -ml-1 cursor-pointer flex items-center" style="width:198px;height:52px">
+        <a href="#/" class="bg-white rounded-lg px-2.5 py-1 shadow-sm flex items-center justify-center w-full h-[46px] hover:shadow transition-shadow">
+          <img alt="Chợ Giá Rẻ" fetchpriority="high"
+               class="object-contain max-h-[38px] max-w-full"
+               src="logo-chogiare.png"
+               onerror="this.src='Logo.jpg'">
+        </a>
       </div>
-      <!-- DANH MỤC SẢN PHẨM button – BHX: rounded-t-md bg-[#006133] w-[270px] -->
-      <button class="relative mt-0.5 flex w-[270px] items-center rounded-t-md bg-[#006133]
-                     px-[10px] py-1 text-[16px] text-white cursor-default select-none"
+      <!-- DANH MỤC SẢN PHẨM button – Chợ Giá Rẻ Navy Blue: rounded-t-md bg-[#234090] w-[270px] -->
+      <button id="btn-header-category"
+              class="relative mt-0.5 flex w-[270px] items-center rounded-t-md bg-[#234090] hover:bg-[#1B3273]
+                     px-[10px] py-1 text-[16px] text-white cursor-pointer select-none transition-colors"
               style="height:36px">
         <div class="w-[40px] h-[15px] flex flex-col justify-between mr-2 shrink-0">
           <div class="w-full h-[2px] bg-white rounded-sm"></div>
@@ -217,38 +296,42 @@
     <!-- CENTER: Search bar – BHX: flex-1 px-5 -->
     <div class="flex-1 px-5 relative">
       <div class="h-[40px] relative flex rounded-full bg-white shadow-sm">
-        <!-- Search icon left – BHX: relative w-[40px] text-[#007e42] -->
-        <div class="relative w-[40px] shrink-0 text-[#007e42]">
-          <span class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style="width:24px;height:24px">
-            <img alt="search" loading="lazy" width="24" height="24"
-                 class="object-contain" style="width:24px;height:24px"
-                 src="https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/icons/search-location.png"
-                 onerror="this.style.cssText='display:inline-block;background-image:url(https://cdnv2.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/bhx@2x.v20250903.webp);background-position:-251px -1734px;background-size:325px auto;width:20px;height:20px'">
-          </span>
+        <!-- Search icon left – text-[#EF5121] -->
+        <div class="relative w-[40px] shrink-0 text-[#EF5121] flex items-center justify-center">
+          <svg class="w-5 h-5 text-[#EF5121]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
         </div>
         <!-- Input area -->
         <div class="w-full relative bg-white rounded-r-full">
           <div class="size-full cursor-text">
-            <div class="size-full overflow-hidden rounded-full pr-[64px]">
+            <div class="size-full overflow-hidden rounded-full pr-[110px]">
               <input id="header-search-input"
                      type="text" autocomplete="off"
-                     placeholder="Bạn tìm gì ở Bách Hoá Xanh"
+                     placeholder="Bạn tìm gì ở Chợ Giá Rẻ..."
                      class="flex w-full h-full items-center gap-[3px] text-[14px] font-thin
                             text-[#9DA7BC] outline-none px-2 bg-transparent lg:text-[16px]">
             </div>
           </div>
+          <!-- Black Search Button pill -->
+          <div class="right-[42px] top-[4px] absolute cursor-pointer">
+            <button id="header-search-btn"
+                    class="bg-[#111827] hover:bg-black text-white text-[11px] font-bold px-3 py-1.5 rounded-full transition-all flex items-center gap-1 shadow-sm">
+              Tìm
+            </button>
+          </div>
           <!-- Cart icon inside search bar – BHX: right-3px top-5px absolute -->
           <div class="right-[3px] top-[5px] absolute cursor-pointer" id="btn-open-cart">
             <div class="relative w-[30px] h-[30px] flex items-center justify-center">
-              <!-- Cart SVG icon from BHX sprite area -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#007E42" stroke-width="1.8">
+              <!-- Cart SVG icon in brand orange -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#EF5121" stroke-width="1.8">
                 <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
                 <line x1="3" y1="6" x2="21" y2="6"/>
                 <path d="M16 10a4 4 0 01-8 0"/>
               </svg>
               <span id="cart-badge"
-                    class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-black
-                           rounded-full w-[18px] h-[18px] flex items-center justify-center leading-none"
+                    class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-black
+                           rounded-full w-[18px] h-[18px] flex items-center justify-center leading-none shadow"
                     style="display:none">0</span>
             </div>
           </div>
@@ -263,20 +346,22 @@
 
     <!-- RIGHT: Location + Login stacked -->
     <div class="flex flex-col items-end shrink-0">
-      <!-- Location pill – BHX: min-w-[219px] max-w-[300px] -->
+      <!-- Location pill – Navy blue bg-[#234090] -->
       <div id="btn_choose_location"
            class="relative mt-[2px] flex w-full min-w-[219px] max-w-[300px] cursor-pointer justify-end">
         <div class="relative">
           <div style="height:36px">
             <div class="relative">
-              <!-- Pill: BHX exact: w-[272px] pl-2 h-[36px] bg-[#3c9263] rounded-[100px] -->
-              <div class="w-[272px] pl-2 h-[36px] relative bg-[#3c9263] rounded-[100px]
+              <!-- Pill: w-[272px] pl-2 h-[36px] bg-[#234090] rounded-[100px] -->
+              <div class="w-[272px] pl-3 h-[36px] relative bg-[#234090] rounded-[100px]
                           flex items-center overflow-hidden location-pill
-                          hover:bg-[#327a53] transition-colors"
+                          hover:bg-[#1B3273] transition-colors shadow-sm"
                    style="padding-right:28px">
-                <i class="icon__location inline-block"></i>
+                <svg class="w-4 h-4 text-white shrink-0 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
                 <span id="header-location-text"
-                      class="text-[14px] ml-2 font-semibold text-white truncate flex-1">
+                      class="text-[13px] font-semibold text-white truncate flex-1">
                   Chọn vị trí giao gần bạn
                 </span>
               </div>
@@ -284,16 +369,16 @@
           </div>
         </div>
       </div>
-      <!-- Login – BHX: rounded-t-md bg-[#006133] mt-2 -->
+      <!-- Login – Navy blue rounded-t-md bg-[#234090] mt-2 -->
       <div class="flex">
-        <a class="mt-2 flex w-fit cursor-pointer items-center rounded-t-md bg-[#006133]
-                  px-2 py-1 text-[14px] text-white hover:bg-[#004d28] transition-colors"
+        <a class="mt-2 flex w-fit cursor-pointer items-center rounded-t-md bg-[#234090]
+                  px-3 py-1 text-[14px] text-white hover:bg-[#1B3273] transition-colors"
            href="javascript:void(0)"
-           onclick="alert('Chức năng đăng nhập thành viên Bách Hoá XANH')">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+           onclick="alert('Chức năng đăng nhập thành viên Chợ Giá Rẻ')">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
             <path d="M21.74 19.87C20.34 17.46 18.1 15.65 15.45 14.79a7.51 7.51 0 10-6.9 0C5.9 15.65 3.66 17.46 2.26 19.87a1.12 1.12 0 001.94 1.12 9.75 9.75 0 0115.6 0 1.12 1.12 0 001.94-1.12zM6.75 9a5.25 5.25 0 1110.5 0A5.25 5.25 0 016.75 9z" fill="white"/>
           </svg>
-          <span class="ml-2">Đăng nhập</span>
+          <span class="ml-1.5">Đăng nhập</span>
         </a>
       </div>
     </div>
@@ -302,18 +387,17 @@
 </header><!-- /header -->
 
 <!-- ═══════════════════════════════════════════════════════════
-     BODY LAYOUT: pt-[90px] for fixed header, then flex row
+     BODY LAYOUT: pt-[90px] md:pt-[120px] for fixed header, then flex row
 ═══════════════════════════════════════════════════════════ -->
-<div class="mx-auto max-w-screen-xl" style="padding-top:90px">
-  <div class="flex items-start min-h-screen">
+<div class="mx-auto max-w-screen-xl pt-[90px] md:pt-[120px]">
+  <div class="flex items-stretch">
 
-    <!-- ── SIDEBAR (sticky, không dùng fixed) ── -->
+    <!-- ── SIDEBAR: full-height column, nội dung sticky bên trong ── -->
     <aside id="sidebar-aside"
-           class="bg-white z-10 border-r border-gray-100 shrink-0"
-           style="width:270px;position:sticky;top:90px;height:calc(100vh - 90px);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin">
-      <div id="sidebar-menu-list" class="relative">
-        <!-- Rendered by app.js -->
-      </div>
+           class="bg-white border-r border-gray-100 shrink-0 select-none"
+           style="width:270px;">
+      <!-- Menu sticky bên trong, sẽ dính top khi scroll -->
+      <div id="sidebar-menu-list" class="relative" style="width:270px;position:sticky;top:120px;overflow:visible;z-index:9;"></div>
     </aside>
 
     <!-- ── MAIN CONTENT + FOOTER (flex-1) ── -->
@@ -321,18 +405,20 @@
       <main id="main-layout">
 
         <!-- 1. PROMO CATEGORY BADGES -->
-        <div class="relative py-3 bg-white mb-[6px] shadow-sm">
+        <div class="relative py-3 bg-white mb-[6px] shadow-sm group/badges">
+          <button id="story-badges-prev" class="scroll-nav-btn" style="left:6px;display:none" aria-label="Cuộn sang trái">&#8249;</button>
           <div id="story-badges-track"
-               class="flex overflow-x-auto px-2 gap-0"
+               class="flex overflow-x-auto px-3 gap-0 scroll-smooth"
                style="scrollbar-width:none;-ms-overflow-style:none">
             <!-- Rendered by app.js -->
           </div>
+          <button id="story-badges-next" class="scroll-nav-btn" style="right:6px" aria-label="Cuộn sang phải">&#8250;</button>
         </div>
 
         <!-- 2. HERO BANNER CAROUSEL -->
-        <div class="relative mb-[6px] bg-white shadow-sm" id="banner-wrapper">
+        <div class="relative mb-[6px] bg-white shadow-sm overflow-hidden" id="banner-wrapper">
           <div id="banner-slide" class="w-full overflow-hidden"
-               style="min-height:180px;background:#e0e0e0">
+               style="min-height:160px;background:#f3f4f6">
             <!-- Rendered by app.js -->
           </div>
           <button id="banner-prev" class="banner-btn" style="left:12px">&#8249;</button>
@@ -341,27 +427,17 @@
                class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10"></div>
         </div>
 
-        <!-- 3. TẾT TRUNG THU -->
-        <div id="tet-trung-thu-section" class="mb-[6px] shadow-sm">
-          <!-- Rendered by app.js -->
-        </div>
-
-        <!-- 4. SIÊU TIẾT KIỆM + BRAND STORES -->
-        <div id="sieu-tiet-kiem-section" class="mb-[6px]">
-          <!-- Rendered by app.js -->
-        </div>
-
-        <!-- 5. PROMO BANNER GRID TOP (images 5-8) -->
-        <div id="promo-banner-grid-section" class="mb-[6px]">
-          <!-- Rendered by app.js -->
-        </div>
-
-        <!-- 6. HÔM NAY ĂN GÌ? -->
+        <!-- 3. HÔM NAY ĂN GÌ? -->
         <div id="hom-nay-an-gi-section" class="mb-[6px] shadow-sm">
           <!-- Rendered by app.js -->
         </div>
 
-        <!-- 7. FLASH SALE – GIÁ SỐC HÔM NAY -->
+        <!-- 4. TẾT TRUNG THU -->
+        <div id="tet-trung-thu-section" class="mb-[6px] shadow-sm">
+          <!-- Rendered by app.js -->
+        </div>
+
+        <!-- 8. FLASH SALE – GIÁ SỐC HÔM NAY -->
         <div class="mb-[6px] shadow-sm">
           <section class="bg-gradient-to-r from-red-600 via-orange-500 to-amber-500 p-3 md:p-4">
             <div class="flex flex-wrap items-center justify-between gap-2 pb-2 mb-3 border-b border-white/20">
@@ -389,91 +465,126 @@
           </section>
         </div>
 
-        <!-- 8. CATEGORY IMAGE GRID -->
-        <div id="category-image-grid-section" class="mb-[6px]">
-          <!-- Rendered by app.js -->
-        </div>
-
         <!-- 9. PRODUCT CATEGORY SECTIONS -->
         <div id="categories-container">
           <!-- Rendered by app.js -->
         </div>
 
-        <!-- 10. PROMO BANNER GRID BOTTOM (images 1-4) -->
+        <!-- 5. SIÊU TIẾT KIỆM + BRAND STORES -->
+        <div id="sieu-tiet-kiem-section" class="mb-[6px]">
+          <!-- Rendered by app.js -->
+        </div>
+
+        <!-- 6. PROMO BANNER GRID TOP (Colgate/Phá Cỗ/BHX/Dầu Gội) -->
+        <div id="promo-banner-grid-section" class="mb-[6px]">
+          <!-- Rendered by app.js -->
+        </div>
+
+        <!-- 10. CATEGORY IMAGE GRID (lifestyle tiles) – sau Nước rửa chén -->
+        <div id="category-image-grid-section" class="mb-[6px]">
+          <!-- Rendered by app.js -->
+        </div>
+
+        <!-- 11. PROMO BANNER GRID BOTTOM (images 5-8) -->
         <div id="promo-banner-grid-bottom" class="mb-[6px]">
           <!-- Rendered by app.js -->
         </div>
 
       </main>
 
-      <!-- ── FOOTER (inside flex-1, no pl needed) ── -->
-      <footer class="bg-white border-t border-gray-200 pt-8 pb-10 mt-2 text-[#515764]">
+      <!-- ── CATEGORY SUB-PAGE LAYOUT (SPA VIEW) ── -->
+      <div id="category-layout" class="hidden min-h-screen pb-12">
+        <!-- Rendered dynamically by app.js: breadcrumbs, sub-pills, filters, products grid -->
+      </div>
+
+      <!-- ── PRODUCT DETAIL SUB-PAGE (SPA VIEW) ── -->
+      <div id="product-detail-layout" class="hidden min-h-screen pb-16">
+        <!-- Rendered dynamically by app.js: renderProductDetailPage() -->
+      </div>
+
+      <!-- ── FOOTER (Obsidian Black #0B0F19) ── -->
+      <footer class="bg-[#0B0F19] text-gray-300 border-t border-gray-800 pt-8 pb-10 mt-4">
         <div class="px-6">
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 pb-6 border-b border-gray-100 text-xs">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 pb-6 border-b border-gray-800 text-xs">
             <div>
-              <h4 class="font-bold text-gray-900 text-[13px] mb-3 uppercase">Tổng Đài Hỗ Trợ (Miễn phí)</h4>
-              <ul class="space-y-2 text-[12px] leading-relaxed">
-                <li>Đặt hàng: <b class="text-[#007E42] text-[13px]">1900.1908</b> (7:00 - 21:30)</li>
-                <li>Khiếu nại: <b class="text-[#007E42] text-[13px]">1800.1067</b> (8:00 - 21:30)</li>
-                <li class="text-[#007E42] cursor-pointer hover:underline">Chính sách khách hàng doanh nghiệp B2B</li>
-                <li class="text-[#007E42] cursor-pointer hover:underline">Chính sách giao hàng &amp; bảo hành</li>
-                <li class="text-[#007E42] cursor-pointer hover:underline">Chính sách đổi trả sản phẩm lỗi</li>
+              <h4 class="font-bold text-white text-[13px] mb-3 uppercase tracking-wider flex items-center gap-1.5">
+                <span class="text-orange-500">📞</span> Tổng Đài Hỗ Trợ (Miễn phí)
+              </h4>
+              <ul class="space-y-2 text-[12px] leading-relaxed text-gray-400">
+                <li>Đặt hàng: <b class="text-yellow-400 text-[13px]">1900.1908</b> (7:00 - 21:30)</li>
+                <li>Khiếu nại: <b class="text-yellow-400 text-[13px]">1800.1067</b> (8:00 - 21:30)</li>
+                <li class="hover:text-white cursor-pointer transition-colors">Chính sách khách hàng doanh nghiệp B2B</li>
+                <li class="hover:text-white cursor-pointer transition-colors">Chính sách giao hàng &amp; bảo hành</li>
+                <li class="hover:text-white cursor-pointer transition-colors">Chính sách đổi trả sản phẩm lỗi (1 đổi 2)</li>
               </ul>
             </div>
             <div>
-              <h4 class="font-bold text-gray-900 text-[13px] mb-3 uppercase">Về Bách Hoá Xanh</h4>
-              <ul class="space-y-2 text-[12px] leading-relaxed">
-                <li class="text-[#007E42] cursor-pointer hover:underline">Giới thiệu công ty (MWG.vn)</li>
-                <li class="text-[#007E42] cursor-pointer hover:underline">Tuyển dụng mới nhất</li>
-                <li class="text-[#007E42] cursor-pointer hover:underline">Hệ thống 3.798 siêu thị trên toàn quốc</li>
-                <li class="text-[#007E42] cursor-pointer hover:underline">Nội quy &amp; Thỏa thuận sử dụng</li>
-                <li class="text-[#007E42] cursor-pointer hover:underline">Chính sách bảo mật thông tin</li>
+              <h4 class="font-bold text-white text-[13px] mb-3 uppercase tracking-wider flex items-center gap-1.5">
+                <span class="text-emerald-400">🏪</span> Về Chợ Giá Rẻ
+              </h4>
+              <ul class="space-y-2 text-[12px] leading-relaxed text-gray-400">
+                <li class="hover:text-white cursor-pointer transition-colors">Giới thiệu hệ thống Chợ Giá Rẻ</li>
+                <li class="hover:text-white cursor-pointer transition-colors">Tuyển dụng mới nhất</li>
+                <li class="hover:text-white cursor-pointer transition-colors">Hệ thống 1.700+ siêu thị toàn quốc</li>
+                <li class="hover:text-white cursor-pointer transition-colors">Nội quy &amp; Thỏa thuận sử dụng</li>
+                <li class="hover:text-white cursor-pointer transition-colors">Chính sách bảo mật thông tin</li>
               </ul>
             </div>
             <div>
-              <h4 class="font-bold text-gray-900 text-[13px] mb-3 uppercase">Kết Nối Với Chúng Tôi</h4>
+              <h4 class="font-bold text-white text-[13px] mb-3 uppercase tracking-wider flex items-center gap-1.5">
+                <span class="text-blue-400">🌐</span> Kết Nối Với Chúng Tôi
+              </h4>
               <div class="flex flex-wrap gap-2 mb-4">
-                <a href="#" class="inline-flex items-center gap-1.5 bg-[#1877F2] text-white font-semibold px-3 py-1.5 rounded text-[11px] hover:opacity-90">
+                <a href="#" class="inline-flex items-center gap-1.5 bg-[#1877F2] text-white font-semibold px-3 py-1.5 rounded text-[11px] hover:opacity-90 transition-opacity">
                   <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
                   Facebook <b>633k</b>
                 </a>
-                <a href="#" class="inline-flex items-center gap-1.5 bg-red-600 text-white font-semibold px-3 py-1.5 rounded text-[11px] hover:opacity-90">
+                <a href="#" class="inline-flex items-center gap-1.5 bg-red-600 text-white font-semibold px-3 py-1.5 rounded text-[11px] hover:opacity-90 transition-opacity">
                   <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
                   YouTube <b>77k</b>
                 </a>
-                <a href="#" class="inline-flex items-center gap-1.5 bg-gray-900 text-white font-semibold px-3 py-1.5 rounded text-[11px] hover:opacity-90">TikTok <b>272k</b></a>
+                <a href="#" class="inline-flex items-center gap-1.5 bg-gray-800 text-white font-semibold px-3 py-1.5 rounded text-[11px] hover:bg-gray-700 transition-colors">TikTok <b>272k</b></a>
               </div>
-              <h5 class="font-bold text-gray-800 text-[12px] mb-2 uppercase">Tải App Bách Hoá Xanh</h5>
+              <h5 class="font-bold text-gray-200 text-[12px] mb-2 uppercase">Tải Ứng Dụng Chợ Giá Rẻ</h5>
               <div class="flex items-center gap-2">
-                <a href="#" class="bg-gray-100 px-3 py-1.5 rounded font-bold text-gray-800 text-[11px] border border-gray-200 hover:bg-gray-200">Google Play</a>
-                <a href="#" class="bg-gray-100 px-3 py-1.5 rounded font-bold text-gray-800 text-[11px] border border-gray-200 hover:bg-gray-200">App Store</a>
+                <a href="#" class="bg-gray-800 px-3 py-1.5 rounded font-bold text-white text-[11px] border border-gray-700 hover:bg-gray-700 transition-colors">Google Play</a>
+                <a href="#" class="bg-gray-800 px-3 py-1.5 rounded font-bold text-white text-[11px] border border-gray-700 hover:bg-gray-700 transition-colors">App Store</a>
               </div>
             </div>
             <div>
-              <h4 class="font-bold text-gray-900 text-[13px] mb-3 uppercase">Chứng Nhận</h4>
-              <div class="flex items-center gap-4">
+              <h4 class="font-bold text-white text-[13px] mb-3 uppercase tracking-wider flex items-center gap-1.5">
+                <span class="text-green-400">🛡️</span> Chứng Nhận &amp; Đối Tác
+              </h4>
+              <div class="flex items-center gap-4 mb-4">
                 <img src="https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/logo-bct.png"
-                     alt="Bộ Công Thương" class="h-12 object-contain" onerror="this.style.display='none'">
+                     alt="Bộ Công Thương" class="h-10 object-contain bg-white/10 p-1 rounded" onerror="this.style.display='none'">
                 <img src="https://tinnhiemmang.vn/handle_cert?id=bachhoaxanh.com"
-                     alt="Tín Nhiệm Mạng" class="h-12 object-contain" onerror="this.style.display='none'">
+                     alt="Tín Nhiệm Mạng" class="h-10 object-contain bg-white/10 p-1 rounded" onerror="this.style.display='none'">
+              </div>
+              <div class="text-[11px] text-gray-400">
+                <span class="text-gray-300 font-semibold block mb-1">Thanh toán an toàn:</span>
+                <div class="flex items-center gap-2 text-gray-400 font-mono text-[10px]">
+                  <span class="bg-gray-800 px-1.5 py-0.5 rounded border border-gray-700">VISA</span>
+                  <span class="bg-gray-800 px-1.5 py-0.5 rounded border border-gray-700">MASTER</span>
+                  <span class="bg-gray-800 px-1.5 py-0.5 rounded border border-gray-700">MOMO</span>
+                  <span class="bg-gray-800 px-1.5 py-0.5 rounded border border-gray-700">ZALOPAY</span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="py-4 border-b border-gray-100 text-[11px]">
-            <div class="font-semibold text-gray-700 mb-2">WEBSITE CÙNG TẬP ĐOÀN THẾ GIỚI DI ĐỘNG:</div>
-            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-600">
-              <a href="#" class="hover:text-green-700 font-medium">Thegioididong.com</a><span class="text-gray-300">•</span>
-              <a href="#" class="hover:text-green-700 font-medium">Dienmayxanh.com</a><span class="text-gray-300">•</span>
-              <a href="#" class="hover:text-green-700 font-medium">TopZone.vn</a><span class="text-gray-300">•</span>
-              <a href="#" class="hover:text-green-700 font-medium">Nhathuocankhang.com</a><span class="text-gray-300">•</span>
-              <a href="#" class="hover:text-green-700 font-medium">Avakids.com</a><span class="text-gray-300">•</span>
-              <a href="#" class="hover:text-green-700 font-medium">Thodienmayxanh.com</a>
+          <div class="py-4 border-b border-gray-800 text-[11px]">
+            <div class="font-semibold text-gray-300 mb-2">HỆ THỐNG MUA SẮM CHỢ GIÁ RẺ VIỆT NAM:</div>
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-400">
+              <span class="text-yellow-400 font-semibold">Chợ Giá Rẻ Siêu Tốc</span><span class="text-gray-700">•</span>
+              <span>Thực phẩm tươi sống 100%</span><span class="text-gray-700">•</span>
+              <span>Hàng tiêu dùng tiết kiệm</span><span class="text-gray-700">•</span>
+              <span>Cam kết giao nhanh trong 2 giờ</span>
             </div>
           </div>
           <div class="pt-4 text-center text-[11px] leading-relaxed text-gray-500">
-            <p>&copy; 2018. Công Ty Cổ Phần Thương Mại Bách Hoá Xanh. GPĐKKD: 0310471746 do Sở KH &amp; ĐT TP.HCM cấp ngày 23/11/2010.</p>
-            <p class="mt-1">Trụ sở chính: 128 Trần Quang Khải, P.Tân Định, Q.1, TP.HCM &bull; Địa chỉ: Toà nhà MWG, Lô T2-1.2, Đường D1, Khu Công Nghệ Cao, P.Tân Phú, TP.Thủ Đức, TP.HCM.</p>
-            <p class="mt-1">Email: <a href="mailto:lienhe@bachhoaxanh.com" class="text-[#007E42] underline">lienhe@bachhoaxanh.com</a> &bull; SĐT: <a href="tel:02838125960" class="text-[#007E42] underline">028.38125960</a></p>
+            <p>&copy; 2026. Công Ty Cổ Phần Thương Mại Chợ Giá Rẻ Việt Nam.</p>
+            <p class="mt-1">Trụ sở chính: TP. Hồ Chí Minh &bull; Hệ thống phân phối và giao hàng siêu tốc trên toàn quốc.</p>
+            <p class="mt-1">Email: <a href="mailto:hotro@chogiare.vn" class="text-orange-400 underline">hotro@chogiare.vn</a> &bull; SĐT: <a href="tel:19001908" class="text-orange-400 underline">1900.1908</a></p>
           </div>
         </div>
       </footer>
@@ -483,62 +594,6 @@
   </div>
 </div>
 <!-- /body layout -->
-
-            </a>
-          </div>
-          <h5 class="font-bold text-gray-800 text-[12px] mb-2 uppercase">Tải App Bách Hoá Xanh</h5>
-          <div class="flex items-center gap-2">
-            <a href="#" class="bg-gray-100 px-3 py-1.5 rounded font-bold text-gray-800 text-[11px] border border-gray-200 hover:bg-gray-200">
-              Google Play
-            </a>
-            <a href="#" class="bg-gray-100 px-3 py-1.5 rounded font-bold text-gray-800 text-[11px] border border-gray-200 hover:bg-gray-200">
-              App Store
-            </a>
-          </div>
-        </div>
-        <!-- Certifications -->
-        <div>
-          <h4 class="font-bold text-gray-900 text-[13px] mb-3 uppercase">Chứng Nhận</h4>
-          <div class="flex items-center gap-4">
-            <img src="https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/logo-bct.png"
-                 alt="Bộ Công Thương" class="h-12 object-contain"
-                 onerror="this.style.display='none'">
-            <img src="https://tinnhiemmang.vn/handle_cert?id=bachhoaxanh.com"
-                 alt="Tín Nhiệm Mạng" class="h-12 object-contain"
-                 onerror="this.style.display='none'">
-          </div>
-        </div>
-      </div>
-
-      <!-- Sister companies -->
-      <div class="py-4 border-b border-gray-100 text-[11px]">
-        <div class="font-semibold text-gray-700 mb-2">WEBSITE CÙNG TẬP ĐOÀN THẾ GIỚI DI ĐỘNG:</div>
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-gray-600">
-          <a href="#" class="hover:text-green-700 font-medium">Thegioididong.com</a>
-          <span class="text-gray-300">•</span>
-          <a href="#" class="hover:text-green-700 font-medium">Dienmayxanh.com</a>
-          <span class="text-gray-300">•</span>
-          <a href="#" class="hover:text-green-700 font-medium">TopZone.vn</a>
-          <span class="text-gray-300">•</span>
-          <a href="#" class="hover:text-green-700 font-medium">Nhathuocankhang.com</a>
-          <span class="text-gray-300">•</span>
-          <a href="#" class="hover:text-green-700 font-medium">Avakids.com</a>
-          <span class="text-gray-300">•</span>
-          <a href="#" class="hover:text-green-700 font-medium">Erablue.id</a>
-          <span class="text-gray-300">•</span>
-          <a href="#" class="hover:text-green-700 font-medium">Thodienmayxanh.com</a>
-        </div>
-      </div>
-
-      <!-- Legal -->
-      <div class="pt-4 text-center text-[11px] leading-relaxed text-gray-500">
-        <p>&copy; 2018. Công Ty Cổ Phần Thương Mại Bách Hoá Xanh. GPĐKKD: 0310471746 do Sở KH &amp; ĐT TP.HCM cấp ngày 23/11/2010.</p>
-        <p class="mt-1">Trụ sở chính: 128 Trần Quang Khải, P.Tân Định, Q.1, TP.HCM &bull; Địa chỉ: Toà nhà MWG, Lô T2-1.2, Đường D1, Khu Công Nghệ Cao, P.Tân Phú, TP.Thủ Đức, TP.HCM.</p>
-        <p class="mt-1">Email: <a href="mailto:lienhe@bachhoaxanh.com" class="text-[#007E42] underline">lienhe@bachhoaxanh.com</a> &bull; SĐT: <a href="tel:02838125960" class="text-[#007E42] underline">028.38125960</a> &bull; Chịu TNNC: Trịnh Quang Dzuy.</p>
-      </div>
-    </div>
-  </footer>
-</div>
 
 </div>
 </div>
@@ -554,7 +609,7 @@
 <div id="cart-drawer"
      class="fixed top-0 right-0 h-full w-full sm:w-[420px] bg-white z-50 shadow-2xl flex flex-col translate-x-full">
   <!-- Drawer header -->
-  <div class="bg-[#007E42] text-white px-4 py-3.5 flex items-center justify-between shrink-0">
+  <div class="bg-[#EF5121] text-white px-4 py-3.5 flex items-center justify-between shrink-0">
     <div class="flex items-center gap-2">
       <svg class="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -578,7 +633,7 @@
         <path d="M16 10a4 4 0 01-8 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
       </svg>
       <p class="text-sm font-medium">Giỏ hàng của bạn đang trống</p>
-      <p class="text-xs text-gray-400 mt-1">Hãy thêm sản phẩm tươi ngon vào nhé!</p>
+      <p class="text-xs text-gray-400 mt-1">Hãy thêm sản phẩm giá tốt vào nhé!</p>
     </div>
     <div id="drawer-cart-list" class="space-y-3"></div>
   </div>
@@ -591,15 +646,15 @@
     </div>
     <div class="flex justify-between text-xs text-gray-600">
       <span>Phí giao hàng:</span>
-      <span id="drawer-shipping" class="font-bold text-emerald-600">Miễn phí</span>
+      <span id="drawer-shipping" class="font-bold text-[#234090]">Miễn phí</span>
     </div>
     <div class="flex justify-between text-sm font-bold text-gray-900 border-t pt-2">
       <span>Tổng tiền thanh toán:</span>
-      <span id="drawer-total" class="text-[18px] text-red-600 font-extrabold">0₫</span>
+      <span id="drawer-total" class="text-[18px] text-[#EF5121] font-extrabold">0₫</span>
     </div>
     <p class="text-[11px] text-gray-500 italic">* Miễn phí vận chuyển cho đơn hàng từ 300.000₫</p>
     <button id="btn-checkout"
-            class="w-full bg-[#007E42] hover:bg-[#006133] active:scale-[0.98] text-white
+            class="w-full bg-[#EF5121] hover:bg-[#D84214] active:scale-[0.98] text-white
                    font-bold py-3 rounded-lg shadow transition-all text-sm uppercase tracking-wide">
       Tiến hành đặt hàng
     </button>
@@ -615,7 +670,7 @@
     <button id="close-location-modal"
             class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 text-2xl font-bold leading-none">&times;</button>
     <div class="flex items-center gap-2 mb-4 border-b pb-3">
-      <svg class="w-5 h-5 text-[#007E42]" fill="currentColor" viewBox="0 0 20 20">
+      <svg class="w-5 h-5 text-[#EF5121]" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
       </svg>
       <h3 class="font-bold text-base text-gray-800">Chọn vị trí nhận hàng gần bạn</h3>
@@ -623,7 +678,7 @@
     <div class="space-y-3 text-xs">
       <div>
         <label class="block font-semibold text-gray-700 mb-1">Tỉnh / Thành phố:</label>
-        <select id="select-city" class="w-full border rounded-lg p-2.5 outline-none focus:border-green-600 bg-white text-sm">
+        <select id="select-city" class="w-full border rounded-lg p-2.5 outline-none focus:border-[#EF5121] bg-white text-sm">
           <option>TP. Hồ Chí Minh</option>
           <option>Hà Nội</option>
           <option>Cần Thơ</option>
@@ -634,7 +689,7 @@
       </div>
       <div>
         <label class="block font-semibold text-gray-700 mb-1">Quận / Huyện:</label>
-        <select id="select-dist" class="w-full border rounded-lg p-2.5 outline-none focus:border-green-600 bg-white text-sm">
+        <select id="select-dist" class="w-full border rounded-lg p-2.5 outline-none focus:border-[#EF5121] bg-white text-sm">
           <option>TP. Thủ Đức</option>
           <option>Quận 1</option>
           <option>Quận 7</option>
@@ -644,7 +699,7 @@
       </div>
       <div>
         <label class="block font-semibold text-gray-700 mb-1">Phường / Xã:</label>
-        <select id="select-ward" class="w-full border rounded-lg p-2.5 outline-none focus:border-green-600 bg-white text-sm">
+        <select id="select-ward" class="w-full border rounded-lg p-2.5 outline-none focus:border-[#EF5121] bg-white text-sm">
           <option>P. Tân Phú</option>
           <option>P. Bến Nghé</option>
           <option>P. Tân Phong</option>
@@ -653,10 +708,22 @@
       </div>
     </div>
     <button id="save-location-btn"
-            class="mt-5 w-full bg-[#007E42] hover:bg-[#006133] text-white font-bold py-2.5
+            class="mt-5 w-full bg-[#EF5121] hover:bg-[#D84214] text-white font-bold py-2.5
                    rounded-lg text-xs uppercase tracking-wide shadow transition-colors">
       Xác nhận địa chỉ
     </button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     RECIPE & INGREDIENTS MODAL (HÔM NAY ĂN GÌ? - MUA NGUYÊN LIỆU)
+═══════════════════════════════════════════════════════════ -->
+<div id="recipe-modal"
+     class="hidden fixed inset-0 bg-black/70 z-[65] flex items-center justify-center p-3 sm:p-4 backdrop-blur-sm">
+  <div class="bg-white rounded-2xl max-w-2xl w-full p-4 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto bhx-scroll">
+    <button id="close-recipe-modal"
+            class="absolute right-4 top-4 text-gray-400 hover:text-gray-700 text-2xl font-bold leading-none z-10 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center shadow-sm">&times;</button>
+    <div id="recipe-modal-content"></div>
   </div>
 </div>
 
@@ -675,13 +742,13 @@
              onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
       </div>
       <div class="flex-1">
-        <span class="inline-block bg-green-100 text-green-800 text-[10px] font-bold px-2 py-0.5 rounded-full mb-2">
-          Chính Hãng Bách Hoá XANH
+        <span class="inline-block bg-[#FFF5F0] text-[#EF5121] border border-orange-200 text-[10px] font-bold px-2 py-0.5 rounded-full mb-2">
+          Chính Hãng Chợ Giá Rẻ
         </span>
         <h3 id="detail-modal-title" class="font-bold text-sm md:text-base text-gray-900 leading-snug mb-2"></h3>
         <div class="text-xs text-gray-500 mb-2">Đơn vị tính: <b id="detail-modal-unit" class="text-gray-800"></b></div>
         <div class="flex items-baseline gap-2 mb-3">
-          <span id="detail-modal-price" class="text-[20px] font-black text-red-600"></span>
+          <span id="detail-modal-price" class="text-[20px] font-black text-[#EF5121]"></span>
           <span id="detail-modal-orig-price" class="text-xs text-gray-400 line-through"></span>
         </div>
         <div class="bg-gray-50 p-3 rounded-xl text-xs text-gray-600 mb-4 space-y-1.5 border border-gray-100">
@@ -690,7 +757,7 @@
           <p>✓ Đổi trả miễn phí trong ngày nếu không vừa ý</p>
         </div>
         <button id="detail-modal-add-btn"
-                class="w-full bg-[#007E42] hover:bg-[#006133] text-white font-bold py-2.5
+                class="w-full bg-[#EF5121] hover:bg-[#D84214] text-white font-bold py-2.5
                        rounded-lg text-sm uppercase tracking-wide shadow flex items-center
                        justify-center gap-2 transition-all active:scale-[0.98]">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -710,41 +777,41 @@
      class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4">
   <div class="bg-white rounded-xl max-w-md w-full p-5 shadow-2xl relative">
     <div class="flex items-center gap-2 mb-4 border-b pb-3">
-      <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+      <span class="w-3 h-3 rounded-full bg-[#EF5121] inline-block"></span>
       <h3 class="font-bold text-base text-gray-900">Xác nhận đặt hàng</h3>
     </div>
     <div class="space-y-3 text-xs text-gray-700">
       <div class="bg-gray-50 p-3 rounded-lg border border-gray-100">
         <p class="font-semibold text-gray-900 mb-1">Địa chỉ giao hàng:</p>
         <p id="checkout-location-val" class="text-gray-600"></p>
-        <p class="text-[11px] text-[#007E42] font-semibold mt-1">🚚 Dự kiến giao: Trong 2 giờ tới</p>
+        <p class="text-[11px] text-[#234090] font-semibold mt-1">🚚 Dự kiến giao: Trong 2 giờ tới</p>
       </div>
       <div>
         <label class="block font-semibold text-gray-700 mb-1">Họ tên người nhận:</label>
         <input type="text" value="Nguyễn Văn A"
-               class="w-full border rounded-lg p-2.5 outline-none focus:border-green-600 text-sm">
+               class="w-full border rounded-lg p-2.5 outline-none focus:border-[#EF5121] text-sm">
       </div>
       <div>
         <label class="block font-semibold text-gray-700 mb-1">Số điện thoại nhận hàng:</label>
         <input type="text" value="0987 654 321"
-               class="w-full border rounded-lg p-2.5 outline-none focus:border-green-600 text-sm">
+               class="w-full border rounded-lg p-2.5 outline-none focus:border-[#EF5121] text-sm">
       </div>
       <div>
         <label class="block font-semibold text-gray-700 mb-1">Hình thức thanh toán:</label>
         <div class="space-y-1.5">
-          <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer hover:bg-green-50">
-            <input type="radio" name="pay-method" checked class="accent-green-600">
+          <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer hover:bg-[#FFF5F0]">
+            <input type="radio" name="pay-method" checked class="accent-[#EF5121]">
             <span>Thanh toán tiền mặt khi nhận hàng (COD)</span>
           </label>
-          <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer hover:bg-green-50">
-            <input type="radio" name="pay-method" class="accent-green-600">
+          <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer hover:bg-[#FFF5F0]">
+            <input type="radio" name="pay-method" class="accent-[#EF5121]">
             <span>Chuyển khoản QR Code / VietQR</span>
           </label>
         </div>
       </div>
       <div class="flex justify-between items-center pt-2 font-bold text-sm border-t">
         <span>Tổng thanh toán:</span>
-        <span id="checkout-total-val" class="text-red-600 text-lg"></span>
+        <span id="checkout-total-val" class="text-[#EF5121] text-lg font-black"></span>
       </div>
     </div>
     <div class="flex gap-2 mt-5">
@@ -754,7 +821,7 @@
         Quay lại
       </button>
       <button id="btn-confirm-order"
-              class="w-2/3 bg-[#007E42] hover:bg-[#006133] text-white font-bold py-2.5
+              class="w-2/3 bg-[#EF5121] hover:bg-[#D84214] text-white font-bold py-2.5
                      rounded-lg text-xs uppercase shadow">
         Xác nhận đặt hàng
       </button>
@@ -768,18 +835,18 @@
 <div id="order-success-modal"
      class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4">
   <div class="bg-white rounded-xl max-w-sm w-full p-6 text-center shadow-2xl">
-    <div class="w-16 h-16 bg-green-100 text-[#007E42] rounded-full flex items-center justify-center mx-auto mb-3">
+    <div class="w-16 h-16 bg-orange-100 text-[#EF5121] rounded-full flex items-center justify-center mx-auto mb-3">
       <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
       </svg>
     </div>
     <h3 class="font-extrabold text-lg text-gray-900 mb-1">Đặt Hàng Thành Công! 🎉</h3>
     <p class="text-xs text-gray-500 mb-4 leading-relaxed">
-      Cảm ơn bạn đã mua sắm tại Bách Hoá XANH.<br>
+      Cảm ơn bạn đã mua sắm tại Chợ Giá Rẻ.<br>
       Đơn hàng đang được đóng gói và giao siêu tốc trong 2 giờ.
     </p>
     <button id="close-success-modal"
-            class="w-full bg-[#007E42] hover:bg-[#006133] text-white font-bold py-2.5
+            class="w-full bg-[#EF5121] hover:bg-[#D84214] text-white font-bold py-2.5
                    rounded-lg text-sm uppercase shadow">
       Tiếp tục mua sắm
     </button>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85 36" fill="none">
+    <!-- Olive Leaf -->
+    <path d="M8 24 C8 12 18 8 22 8 C22 18 16 26 8 24 Z" fill="#558B2F"/>
+    <circle cx="18" cy="22" r="3.5" fill="#33691E"/>
+    <!-- OLIV Text -->
+    <text x="54" y="24" font-family="Georgia, serif" font-weight="bold" font-size="19" fill="#33691E" letter-spacing="1" text-anchor="middle">Ô L I V</text>
+  </svg>

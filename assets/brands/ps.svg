@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 36" fill="none">
+    <!-- Blue & Red capsule badge -->
+    <rect x="2" y="3" width="71" height="30" rx="15" fill="#0D47A1"/>
+    <!-- Smiling red arc -->
+    <path d="M12 25 Q37.5 35 63 25 Q37.5 30 12 25 Z" fill="#E53935"/>
+    <!-- P/S text -->
+    <text x="37.5" y="22" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-style="italic" font-size="20" fill="#FFFFFF" text-anchor="middle">P/S</text>
+  </svg>

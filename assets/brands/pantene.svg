@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 36" fill="none">
+    <!-- Gold Pro-V capsule icon -->
+    <g transform="translate(4, 8)">
+      <rect x="0" y="0" width="16" height="20" rx="8" fill="url(#panteneGold)"/>
+      <defs>
+        <linearGradient id="panteneGold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#FFD54F"/>
+          <stop offset="100%" stop-color="#FF8F00"/>
+        </linearGradient>
+      </defs>
+    </g>
+    <!-- Text PANTENE -->
+    <text x="68" y="24" font-family="'Times New Roman', Times, serif" font-weight="bold" font-size="19" fill="#1A1A1A" letter-spacing="1.2" text-anchor="middle">PANTENE</text>
+  </svg>

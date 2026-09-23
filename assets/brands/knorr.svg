@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 36" fill="none">
+    <!-- Green flowing banner -->
+    <path d="M3 8 C25 2 70 2 92 8 C90 28 85 32 50 32 C15 32 5 28 3 8 Z" fill="#005A36"/>
+    <!-- Top yellow border line -->
+    <path d="M3 8 C25 2 70 2 92 8" stroke="#FDD835" stroke-width="2.5" fill="none"/>
+    <!-- Knorr script text -->
+    <text x="47.5" y="24" font-family="'Brush Script MT', 'Segoe Script', cursive, sans-serif" font-weight="bold" font-style="italic" font-size="22" fill="#FFFFFF" text-anchor="middle">Knorr</text>
+  </svg>

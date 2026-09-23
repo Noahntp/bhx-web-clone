@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 36" fill="none">
+    <!-- Cyan Energy Wave -->
+    <path d="M6 18 C12 10 20 26 26 18 C20 22 12 14 6 18 Z" fill="#00E5FF"/>
+    <circle cx="26" cy="12" r="3" fill="#00B0FF"/>
+    <!-- Text Revive -->
+    <text x="60" y="24" font-family="'Impact', 'Arial Black', sans-serif" font-style="italic" font-size="20" fill="#0277BD" letter-spacing="0.5" text-anchor="middle">Revive</text>
+  </svg>

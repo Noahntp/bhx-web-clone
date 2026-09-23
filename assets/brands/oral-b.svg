@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85 36" fill="none">
+    <!-- Blue Pill -->
+    <rect x="4" y="5" width="77" height="26" rx="13" fill="#00509E"/>
+    <!-- Dental Sparkle -->
+    <path d="M68 8 L70 12 L74 12 L71 14 L72 18 L68 15 L64 18 L65 14 L62 12 L66 12 Z" fill="#FFFFFF" opacity="0.9"/>
+    <!-- Text Oral-B -->
+    <text x="38" y="23" font-family="'Arial Black', sans-serif" font-weight="900" font-style="italic" font-size="16" fill="#FFFFFF" text-anchor="middle">Oral-B</text>
+  </svg>

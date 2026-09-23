@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 36" fill="none">
+    <!-- Pink ribbon blossom -->
+    <circle cx="14" cy="12" r="4" fill="#F06292"/>
+    <circle cx="19" cy="15" r="3" fill="#EC407A"/>
+    <!-- Script Downy -->
+    <text x="50" y="25" font-family="'Brush Script MT', 'Lucida Handwriting', cursive, sans-serif" font-weight="bold" font-style="italic" font-size="24" fill="#311B92" text-anchor="middle">Downy</text>
+  </svg>

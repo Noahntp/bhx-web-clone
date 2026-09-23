@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 36" fill="none">
+    <!-- Pepsi Globe Symbol -->
+    <g transform="translate(6, 4)">
+      <!-- Circle base -->
+      <circle cx="14" cy="14" r="13" fill="#FFFFFF"/>
+      <!-- Top red wave -->
+      <path d="M1 14 C1 6.8 6.8 1 14 1 C21.2 1 27 6.8 27 14 C21 10 16 18 1 14 Z" fill="#E31B23"/>
+      <!-- Bottom blue wave -->
+      <path d="M1 14 C16 18 21 10 27 14 C27 21.2 21.2 27 14 27 C6.8 27 1 21.2 1 14 Z" fill="#0065C3"/>
+    </g>
+    <!-- Text pepsi -->
+    <text x="64" y="24" font-family="'Arial Rounded MT Bold', Arial, sans-serif" font-weight="900" font-size="20" fill="#0065C3" letter-spacing="-0.5" text-anchor="middle">pepsi</text>
+  </svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85 36" fill="none">
+    <!-- Blue 3D Shield -->
+    <path d="M4 4 L81 4 L75 28 L42.5 35 L10 28 Z" fill="#0D47A1"/>
+    <path d="M7 6 L78 6 L72 26 L42.5 32 L13 26 Z" fill="#1565C0"/>
+    <path d="M10 8 L42.5 8 L42.5 30 L15 25 Z" fill="#1E88E5" opacity="0.6"/>
+    <!-- Text VIM -->
+    <text x="42.5" y="24" font-family="'Impact', 'Arial Black', sans-serif" font-style="italic" font-size="21" fill="#FFEB3B" text-anchor="middle" letter-spacing="1">VIM</text>
+  </svg>

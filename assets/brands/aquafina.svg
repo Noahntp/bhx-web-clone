@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 36" fill="none">
+    <!-- Red Sun & Blue Mountains -->
+    <path d="M18 14 C18 10 22 7 26 7 C30 7 34 10 34 14 Z" fill="#E53935"/>
+    <polygon points="8,26 18,12 28,26" fill="#0288D1"/>
+    <polygon points="22,26 30,15 38,26" fill="#01579B"/>
+    <!-- AQUAFINA Text -->
+    <text x="70" y="23" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-style="italic" font-size="15" fill="#01579B" letter-spacing="0.5" text-anchor="middle">AQUAFINA</text>
+  </svg>

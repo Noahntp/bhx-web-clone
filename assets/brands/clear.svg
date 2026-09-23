@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 36" fill="none">
+    <!-- Sleek icy background bar -->
+    <rect x="2" y="5" width="86" height="26" rx="4" fill="#0A192F"/>
+    <!-- Cyan cool streak -->
+    <path d="M6 7 L40 7 L32 29 L2 29 Z" fill="#00BCD4" opacity="0.3"/>
+    <!-- Text CLEAR -->
+    <text x="45" y="24" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="19" fill="#00E5FF" letter-spacing="2" text-anchor="middle">CLEAR</text>
+  </svg>
