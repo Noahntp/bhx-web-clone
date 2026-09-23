@@ -84,59 +84,129 @@
   function updateCartBadge() {
     const total = state.cart.reduce((s, i) => s + i.quantity, 0);
     const badge = document.getElementById('cart-badge');
+    const mobBadge = document.getElementById('mobile-cart-badge');
+    const botBadge = document.getElementById('bottom-cart-badge');
     const drawerCount = document.getElementById('drawer-cart-count');
     if (badge) { badge.textContent = total; badge.style.display = total > 0 ? 'flex' : 'none'; }
+    if (mobBadge) { mobBadge.textContent = total; mobBadge.style.display = total > 0 ? 'flex' : 'none'; }
+    if (botBadge) { botBadge.textContent = total; botBadge.style.display = total > 0 ? 'flex' : 'none'; }
     if (drawerCount) drawerCount.textContent = `(${total})`;
   }
 
   // ─── SIDEBAR (BHX: each item w/icon + name, hover submenu flyout) ─
   function renderSidebarMenu() {
-    const container = document.getElementById('sidebar-menu-list');
-    if (!container) return;
     const menus = data.menuV2 || [];
 
-    container.innerHTML = menus.map((menu, idx) => {
-      const hasChildren = menu.childrens && menu.childrens.length > 0;
-      const iconHtml = menu.icon ? `
-        <img src="${menu.icon}" alt="${menu.name}"
-             class="w-[24px] h-[24px] object-contain shrink-0"
-             onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
-      ` : `
-        <div class="w-[24px] h-[24px] rounded-full bg-[#007E42]/10 flex items-center justify-center shrink-0 text-[#007E42]">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-        </div>
-      `;
-      return `
-        <div class="relative group/m">
-          <a href="#cat-${idx}"
-             class="flex items-center justify-between px-3 py-[9px] text-[13px] text-[#333] 
-                    hover:bg-[#F0FFF3] hover:text-[#007E42] border-b border-[#f3f4f7] transition-colors cursor-pointer">
-            <div class="flex items-center gap-2 min-w-0">
-              ${iconHtml}
-              <span class="truncate font-medium leading-snug">${menu.name}</span>
+    // Desktop sidebar
+    const container = document.getElementById('sidebar-menu-list');
+    if (container) {
+      container.innerHTML = menus.map((menu, idx) => {
+        const hasChildren = menu.childrens && menu.childrens.length > 0;
+        const iconHtml = menu.icon ? `
+          <img src="${menu.icon}" alt="${menu.name}"
+               class="w-[24px] h-[24px] object-contain shrink-0"
+               onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
+        ` : `
+          <div class="w-[24px] h-[24px] rounded-full bg-[#007E42]/10 flex items-center justify-center shrink-0 text-[#007E42]">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+        `;
+        return `
+          <div class="relative group/m">
+            <a href="#cat-${idx}"
+               class="flex items-center justify-between px-3 py-[9px] text-[13px] text-[#333] 
+                      hover:bg-[#F0FFF3] hover:text-[#007E42] border-b border-[#f3f4f7] transition-colors cursor-pointer">
+              <div class="flex items-center gap-2 min-w-0">
+                ${iconHtml}
+                <span class="truncate font-medium leading-snug">${menu.name}</span>
+              </div>
+              ${hasChildren ? `
+                <svg class="w-3 h-3 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>` : ''}
+            </a>
+            ${hasChildren ? `
+              <div class="hidden group-hover/m:flex absolute left-full top-0 w-[460px] bg-white border border-gray-200 
+                          shadow-2xl rounded-r-xl z-50 p-4 min-h-[240px] flex-col gap-3">
+                <div class="text-sm font-bold text-[#007E42] border-b pb-2 flex items-center justify-between">
+                  <span>${menu.name}</span>
+                  <span class="text-xs text-gray-500 font-normal">Xem tất cả &rarr;</span>
+                </div>
+                <div class="grid grid-cols-2 gap-1.5">
+                  ${menu.childrens.map(child => `
+                    <a href="#cat-${idx}" class="flex items-center gap-2 p-1.5 rounded hover:bg-[#F0FFF3] text-xs text-gray-700 hover:text-[#007E42] transition-colors">
+                      ${child.icon ? `<img src="${child.icon}" class="w-5 h-5 object-contain shrink-0" onerror="this.style.display='none'">` : ''}
+                      <span class="truncate">${child.name}</span>
+                    </a>`).join('')}
+                </div>
+              </div>` : ''}
+          </div>`;
+      }).join('');
+    }
+
+    // Mobile category drawer list
+    const mobileContainer = document.getElementById('mobile-category-list');
+    if (mobileContainer) {
+      mobileContainer.innerHTML = menus.map((menu, idx) => {
+        const hasChildren = menu.childrens && menu.childrens.length > 0;
+        return `
+          <div class="mobile-cat-item">
+            <div class="flex items-center justify-between p-3 hover:bg-gray-50 transition-colors">
+              <a href="#cat-${idx}" class="flex items-center gap-3 flex-1 min-w-0" onclick="window.__bhx_closeMobileDrawer()">
+                ${menu.icon ? `<img src="${menu.icon}" alt="${menu.name}" class="w-6 h-6 object-contain shrink-0" onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">` : ''}
+                <span class="text-xs font-semibold text-gray-800 truncate">${menu.name}</span>
+              </a>
+              ${hasChildren ? `
+                <button onclick="window.__bhx_toggleMobileSub(${idx})" class="p-1.5 text-gray-400 hover:text-gray-700" aria-label="Mở rộng">
+                  <svg id="mob-arrow-${idx}" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>` : ''}
             </div>
             ${hasChildren ? `
-              <svg class="w-3 h-3 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>` : ''}
-          </a>
-          ${hasChildren ? `
-            <div class="hidden group-hover/m:flex absolute left-full top-0 w-[460px] bg-white border border-gray-200 
-                        shadow-2xl rounded-r-xl z-50 p-4 min-h-[240px] flex-col gap-3">
-              <div class="text-sm font-bold text-[#007E42] border-b pb-2 flex items-center justify-between">
-                <span>${menu.name}</span>
-                <span class="text-xs text-gray-500 font-normal">Xem tất cả &rarr;</span>
-              </div>
-              <div class="grid grid-cols-2 gap-1.5">
-                ${menu.childrens.map(child => `
-                  <a href="#" class="flex items-center gap-2 p-1.5 rounded hover:bg-[#F0FFF3] text-xs text-gray-700 hover:text-[#007E42] transition-colors">
-                    ${child.icon ? `<img src="${child.icon}" class="w-5 h-5 object-contain shrink-0" onerror="this.style.display='none'">` : ''}
-                    <span class="truncate">${child.name}</span>
+              <div id="mob-sub-${idx}" class="hidden bg-gray-50 px-4 py-2 border-t border-gray-100 grid grid-cols-2 gap-2">
+                ${menu.childrens.map(c => `
+                  <a href="#cat-${idx}" class="text-[11px] text-gray-600 hover:text-[#EF5121] py-1 truncate" onclick="window.__bhx_closeMobileDrawer()">
+                    • ${c.name}
                   </a>`).join('')}
-              </div>
-            </div>` : ''}
-        </div>`;
-    }).join('');
+              </div>` : ''}
+          </div>`;
+      }).join('');
+    }
+
+    // Setup mobile drawer events
+    window.__bhx_closeMobileDrawer = () => {
+      const d = document.getElementById('mobile-category-drawer');
+      const o = document.getElementById('mobile-category-overlay');
+      if (d) d.classList.add('-translate-x-full');
+      if (o) { o.classList.add('opacity-0', 'pointer-events-none'); o.classList.remove('opacity-100'); }
+    };
+    window.__bhx_openMobileDrawer = () => {
+      const d = document.getElementById('mobile-category-drawer');
+      const o = document.getElementById('mobile-category-overlay');
+      if (d) d.classList.remove('-translate-x-full');
+      if (o) { o.classList.remove('opacity-0', 'pointer-events-none'); o.classList.add('opacity-100'); }
+    };
+    window.__bhx_toggleMobileSub = (idx) => {
+      const sub = document.getElementById(`mob-sub-${idx}`);
+      const arrow = document.getElementById(`mob-arrow-${idx}`);
+      if (!sub) return;
+      sub.classList.toggle('hidden');
+      if (arrow) arrow.classList.toggle('rotate-180');
+    };
+
+    const btnMobMenu = document.getElementById('btn-mobile-menu');
+    const btnBotCategory = document.getElementById('btn-bottom-category');
+    const btnMobClose = document.getElementById('mobile-category-close');
+    const mobOverlay = document.getElementById('mobile-category-overlay');
+    const btnHeaderCat = document.getElementById('btn-header-category');
+
+    if (btnMobMenu) btnMobMenu.onclick = window.__bhx_openMobileDrawer;
+    if (btnBotCategory) btnBotCategory.onclick = window.__bhx_openMobileDrawer;
+    if (btnMobClose) btnMobClose.onclick = window.__bhx_closeMobileDrawer;
+    if (mobOverlay) mobOverlay.onclick = window.__bhx_closeMobileDrawer;
+    if (btnHeaderCat) btnHeaderCat.onclick = () => {
+      const firstCat = document.getElementById('cat-0');
+      if (firstCat) firstCat.scrollIntoView({ behavior: 'smooth' });
+    };
   }
 
   // ─── STORY BADGES (BHX: w-20 per item, 60x60 img, text below) ────
@@ -360,11 +430,11 @@
     el.innerHTML = `
       <div class="bg-white">
         <!-- Header row: red bg + tabs -->
-        <div class="bg-[#B71C1C] px-4 py-3 flex items-center justify-between">
-          <h2 class="text-[18px] font-black text-white uppercase tracking-wide">TẾT TRUNG THU</h2>
-          <div class="flex items-center gap-2">
+        <div class="bg-[#B71C1C] px-3 sm:px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h2 class="text-[16px] sm:text-[18px] font-black text-white uppercase tracking-wide">TẾT TRUNG THU</h2>
+          <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 sm:pb-0" style="scrollbar-width:none">
             ${tabs.map((tab, i) => `
-              <button class="text-[12px] font-semibold px-3 py-1 rounded-full border-2 transition-all
+              <button class="shrink-0 text-[11px] sm:text-[12px] font-semibold px-2.5 sm:px-3 py-1 rounded-full border transition-all
                             ${i === 0 ? 'bg-red-600 text-white border-white' : 'bg-transparent text-white border-white/60 hover:border-white'}"
                       onclick="window.__bhxTTT(${i}, this)">
                 ${tab}
@@ -374,7 +444,7 @@
         <!-- Products row -->
         <div class="flex overflow-x-auto gap-0 bg-[#B71C1C] pb-3 px-2" style="scrollbar-width:none">
           ${products.map(p => `
-            <div class="shrink-0 w-[170px] mx-1 bg-white rounded-lg overflow-hidden flex flex-col cursor-pointer hover:shadow-md transition-shadow">
+            <div class="shrink-0 w-[150px] sm:w-[170px] mx-1 bg-white rounded-lg overflow-hidden flex flex-col cursor-pointer hover:shadow-md transition-shadow">
               <!-- Ingredients list -->
               ${p.ingredients && p.ingredients.length ? `
                 <div class="bg-gray-50 px-2 py-1.5 text-[10px] text-gray-600 leading-tight border-b border-gray-100">
@@ -427,36 +497,33 @@
     const brandRows = d.brandRows || [];
     const banner = d.banner || {};
 
-    // Brand rows background colors cycling
-    const rowBgs = ['#FFEB3B', '#FFEB3B', '#FFEB3B', '#FFEB3B'];
-
     el.innerHTML = `
       <div class="bg-white">
         <!-- Big promotional banner -->
-        <div class="relative overflow-hidden" style="height:220px;background:linear-gradient(135deg,#e53935,#e53935 40%,#fff 40%)">
-          <div class="absolute inset-0 flex">
+        <div class="relative overflow-hidden" style="min-height:160px;background:linear-gradient(135deg,#e53935,#e53935 40%,#fff 40%)">
+          <div class="flex flex-col sm:flex-row items-stretch">
             <!-- Left red area -->
-            <div class="w-[180px] shrink-0 bg-[#e53935] flex flex-col items-center justify-center text-white p-4">
-              <div class="text-[11px] font-bold border-4 border-white rounded px-2 py-1 mb-2 tracking-widest">SIÊU</div>
-              <div class="text-[22px] font-black leading-tight text-center">TIẾT<br>KIỆM</div>
+            <div class="w-full sm:w-[180px] shrink-0 bg-[#e53935] flex sm:flex-col items-center justify-between sm:justify-center text-white p-3 sm:p-4">
+              <div class="text-[11px] font-bold border-2 sm:border-4 border-white rounded px-2 py-0.5 sm:py-1 mb-0 sm:mb-2 tracking-widest">SIÊU TIẾT KIỆM</div>
+              <div class="hidden sm:block text-[22px] font-black leading-tight text-center">TIẾT<br>KIỆM</div>
             </div>
             <!-- Center product image placeholder -->
-            <div class="flex-1 relative overflow-hidden bg-white flex items-center justify-center p-2">
+            <div class="flex-1 relative overflow-hidden bg-white flex items-center justify-center p-2 min-h-[130px] sm:min-h-[190px]">
               <img src="${banner.image}" alt="Siêu tiết kiệm"
-                   class="max-h-[190px] w-auto object-contain"
+                   class="max-h-[140px] sm:max-h-[190px] w-auto object-contain"
                    onerror="this.onerror=null;if('${banner.fallback}')this.src='${banner.fallback}'">
             </div>
             <!-- Right text area -->
-            <div class="w-[200px] shrink-0 bg-yellow-300 flex flex-col items-center justify-center p-4 text-center">
-              <div class="text-[22px] font-black text-[#e53935] leading-tight">TẶNG NGAY 25.000Đ</div>
-              <div class="text-[13px] font-semibold text-gray-800 mt-2 leading-snug">${banner.subtitle || 'Khi Mua 1 Thùng Vinamilk 220ML'}</div>
-              <div class="text-[11px] text-gray-500 mt-2">* Phiếu giảm dùng cho đơn 1 thùng sữa Vinamilk tiếp theo</div>
+            <div class="w-full sm:w-[200px] shrink-0 bg-yellow-300 flex flex-col items-center justify-center p-3 sm:p-4 text-center">
+              <div class="text-[18px] sm:text-[22px] font-black text-[#e53935] leading-tight">TẶNG NGAY 25.000Đ</div>
+              <div class="text-[12px] sm:text-[13px] font-semibold text-gray-800 mt-1 leading-snug">${banner.subtitle || 'Khi Mua 1 Thùng Vinamilk 220ML'}</div>
+              <div class="text-[10px] sm:text-[11px] text-gray-500 mt-1">* Phiếu giảm dùng cho đơn tiếp theo</div>
             </div>
           </div>
           <!-- Slider dots -->
-          <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
-            <div class="w-5 h-2 bg-[#007E42] rounded-full"></div>
-            ${[1,2,3,4,5,6,7,8,9].map(() => '<div class="w-2 h-2 bg-gray-300 rounded-full"></div>').join('')}
+          <div class="absolute bottom-1.5 left-1/2 -translate-x-1/2 flex gap-1.5">
+            <div class="w-5 h-1.5 sm:h-2 bg-[#007E42] rounded-full"></div>
+            ${[1,2,3,4,5,6,7,8,9].map(() => '<div class="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-300 rounded-full"></div>').join('')}
           </div>
         </div>
         <!-- Brand logo rows -->
@@ -466,10 +533,10 @@
               <span class="text-[11px] font-bold text-gray-700 whitespace-nowrap shrink-0 px-1">${brand}</span>`).join('<span class="text-gray-300 shrink-0">|</span>')}
           </div>`).join('')}
         <!-- Brand store cards -->
-        <div class="grid grid-cols-4 gap-[1px] bg-gray-200">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-[1px] bg-gray-200">
           ${stores.map(s => `
-            <div class="bg-yellow-400 flex flex-col items-center justify-between p-3 cursor-pointer hover:brightness-105 transition-all" style="min-height:180px">
-              <div class="w-full flex-1 flex items-center justify-center p-2" style="min-height:90px">
+            <div class="bg-yellow-400 flex flex-col items-center justify-between p-3 cursor-pointer hover:brightness-105 transition-all" style="min-height:160px">
+              <div class="w-full flex-1 flex items-center justify-center p-2" style="min-height:80px">
                 <img src="${s.image}" alt="${s.name}"
                      class="max-w-[100px] max-h-[75px] object-contain bg-white rounded-lg p-2 shadow-sm"
                      onerror="this.onerror=null;this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
@@ -505,7 +572,7 @@
       const topItems = items.slice(4, 8);
       topEl.innerHTML = `
         <div class="bg-white">
-          <div class="grid grid-cols-4 gap-[2px] bg-gray-200">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-[2px] bg-gray-200">
             ${topItems.map(renderCard).join('')}
           </div>
         </div>`;
@@ -517,7 +584,7 @@
       const botItems = items.slice(0, 4);
       botEl.innerHTML = `
         <div class="bg-white">
-          <div class="grid grid-cols-4 gap-[2px] bg-gray-200">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-[2px] bg-gray-200">
             ${botItems.map(renderCard).join('')}
           </div>
         </div>`;
@@ -550,10 +617,10 @@
 
     el.innerHTML = `
       <div class="bg-white">
-        <div class="grid grid-cols-4 gap-[2px] bg-gray-200">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-[2px] bg-gray-200">
           ${row1.map(renderTile).join('')}
         </div>
-        <div class="grid grid-cols-4 gap-[2px] bg-gray-200 mt-[2px]">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-[2px] bg-gray-200 mt-[2px]">
           ${row2.map(renderTile).join('')}
         </div>
       </div>`;
@@ -589,7 +656,7 @@
           </div>
         </div>
         <!-- Recipe cards -->
-        <div class="grid grid-cols-5 gap-[2px] bg-gray-200">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-[2px] bg-gray-200">
           ${recipes.map(r => `
             <div class="relative overflow-hidden cursor-pointer group bg-white flex flex-col justify-between" style="aspect-ratio:1/1">
               <div class="flex-1 overflow-hidden relative">
@@ -663,6 +730,8 @@
 
   function setupCartDrawer() {
     const cartBtn = document.getElementById('btn-open-cart');
+    const mobCartBtn = document.getElementById('btn-mobile-cart');
+    const botCartBtn = document.getElementById('btn-bottom-cart');
     const drawer = document.getElementById('cart-drawer');
     const overlay = document.getElementById('cart-overlay');
     const closeBtn = document.getElementById('cart-drawer-close');
@@ -671,6 +740,8 @@
     function closeCart() { drawer.classList.add('translate-x-full'); overlay.classList.add('opacity-0', 'pointer-events-none'); overlay.classList.remove('opacity-100'); }
 
     if (cartBtn) cartBtn.onclick = openCart;
+    if (mobCartBtn) mobCartBtn.onclick = openCart;
+    if (botCartBtn) botCartBtn.onclick = openCart;
     if (overlay) overlay.onclick = closeCart;
     if (closeBtn) closeBtn.onclick = closeCart;
 
@@ -695,13 +766,24 @@
   // ─── LOCATION MODAL ───────────────────────────────────────────────
   function setupLocation() {
     const btn = document.getElementById('btn_choose_location');
+    const mobBtn = document.getElementById('btn-mobile-location');
+    const botBtn = document.getElementById('btn-bottom-location');
     const modal = document.getElementById('location-modal');
     const closeBtn = document.getElementById('close-location-modal');
     const saveBtn = document.getElementById('save-location-btn');
     const locText = document.getElementById('header-location-text');
+    const mobLocText = document.getElementById('mobile-location-text');
 
-    if (locText) locText.textContent = state.location;
-    if (btn && modal) btn.onclick = () => modal.classList.remove('hidden');
+    const updateText = (val) => {
+      if (locText) locText.textContent = val;
+      if (mobLocText) mobLocText.textContent = val.split(',')[0] || val;
+    };
+    updateText(state.location);
+
+    const openModal = () => modal && modal.classList.remove('hidden');
+    if (btn) btn.onclick = openModal;
+    if (mobBtn) mobBtn.onclick = openModal;
+    if (botBtn) botBtn.onclick = openModal;
     if (closeBtn && modal) closeBtn.onclick = () => modal.classList.add('hidden');
     if (saveBtn && modal) saveBtn.onclick = () => {
       const city = document.getElementById('select-city')?.value || 'Hồ Chí Minh';
@@ -709,7 +791,7 @@
       const ward = document.getElementById('select-ward')?.value || 'Phường Bến Nghé';
       state.location = `${city}, ${dist}, ${ward}`;
       localStorage.setItem('bhx_location', state.location);
-      if (locText) locText.textContent = state.location;
+      updateText(state.location);
       modal.classList.add('hidden');
       showToast('Đã đổi vị trí giao hàng', state.location);
     };
@@ -717,43 +799,53 @@
 
   // ─── SEARCH ───────────────────────────────────────────────────────
   function setupSearch() {
-    const input = document.getElementById('header-search-input');
-    const suggestBox = document.getElementById('search-suggest-box');
-    if (!input || !suggestBox) return;
+    const pairs = [
+      { input: document.getElementById('header-search-input'), btn: document.getElementById('header-search-btn'), box: document.getElementById('search-suggest-box') },
+      { input: document.getElementById('mobile-search-input'), btn: document.getElementById('mobile-search-btn'), box: document.getElementById('mobile-search-suggest-box') }
+    ];
 
-    input.addEventListener('input', e => {
-      const q = e.target.value.trim().toLowerCase();
-      state.searchQuery = q;
-      if (!q) { suggestBox.classList.add('hidden'); renderCategoryProducts(); return; }
+    pairs.forEach(({ input, btn, box }) => {
+      if (!input || !box) return;
 
-      const all = Object.values(data.categories || {}).flat();
-      const matches = all.filter(p => p.name.toLowerCase().includes(q)).slice(0, 8);
-      if (matches.length > 0) {
-        suggestBox.innerHTML = `
-          <div class="p-2 border-b text-[11px] font-bold text-gray-500 uppercase bg-gray-50 tracking-wide">Sản phẩm gợi ý</div>
-          ${matches.map(p => `
-            <div class="flex items-center gap-3 p-2.5 hover:bg-[#F0FFF3] cursor-pointer border-b border-gray-50 transition-colors"
-                 onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">
-              <img src="${p.avatar}" class="w-10 h-10 object-contain rounded bg-gray-50 border shrink-0"
-                   onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
-              <div class="flex-1 min-w-0">
-                <div class="text-[12px] font-semibold text-gray-800 truncate">${p.name}</div>
-                <div class="text-[12px] font-bold text-[#007E42]">${fmt(p.price)}</div>
-              </div>
-            </div>`).join('')}`;
-        suggestBox.classList.remove('hidden');
-      } else {
-        suggestBox.innerHTML = `<div class="p-4 text-center text-xs text-gray-500">Không tìm thấy "<b>${q}</b>"</div>`;
-        suggestBox.classList.remove('hidden');
-      }
-      renderCategoryProducts();
+      input.addEventListener('input', e => {
+        const q = e.target.value.trim().toLowerCase();
+        state.searchQuery = q;
+        pairs.forEach(p => { if (p.input && p.input !== input) p.input.value = e.target.value; });
+
+        if (!q) { box.classList.add('hidden'); renderCategoryProducts(); return; }
+
+        const all = Object.values(data.categories || {}).flat();
+        const matches = all.filter(p => p.name.toLowerCase().includes(q)).slice(0, 8);
+        if (matches.length > 0) {
+          box.innerHTML = `
+            <div class="p-2 border-b text-[11px] font-bold text-gray-500 uppercase bg-gray-50 tracking-wide">Sản phẩm gợi ý</div>
+            ${matches.map(p => `
+              <div class="flex items-center gap-3 p-2.5 hover:bg-[#F0FFF3] cursor-pointer border-b border-gray-50 transition-colors"
+                   onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">
+                <img src="${p.avatar}" class="w-10 h-10 object-contain rounded bg-gray-50 border shrink-0"
+                     onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
+                <div class="flex-1 min-w-0">
+                  <div class="text-[12px] font-semibold text-gray-800 truncate">${p.name}</div>
+                  <div class="text-[12px] font-bold text-[#007E42]">${fmt(p.price)}</div>
+                </div>
+              </div>`).join('')}`;
+          box.classList.remove('hidden');
+        } else {
+          box.innerHTML = `<div class="p-4 text-center text-xs text-gray-500">Không tìm thấy "<b>${q}</b>"</div>`;
+          box.classList.remove('hidden');
+        }
+        renderCategoryProducts();
+      });
+
+      if (btn) btn.onclick = () => { box.classList.add('hidden'); renderCategoryProducts(); };
+      input.addEventListener('keydown', e => { if (e.key === 'Enter') { box.classList.add('hidden'); renderCategoryProducts(); } });
     });
 
     document.addEventListener('click', e => {
-      if (!input.contains(e.target) && !suggestBox.contains(e.target)) suggestBox.classList.add('hidden');
+      pairs.forEach(({ input, box }) => {
+        if (input && box && !input.contains(e.target) && !box.contains(e.target)) box.classList.add('hidden');
+      });
     });
-
-    input.addEventListener('keydown', e => { if (e.key === 'Enter') { suggestBox.classList.add('hidden'); renderCategoryProducts(); } });
   }
 
   // ─── MODALS MISC ─────────────────────────────────────────────────
