@@ -964,9 +964,23 @@
         </div>
         <!-- Brand logo rows -->
         ${brandRows.map((row, ri) => `
-          <div class="px-3 py-2 border-b border-gray-100 flex items-center gap-4 overflow-x-auto" style="background:#FFFDE7;scrollbar-width:none">
-            ${row.map(brand => `
-              <span class="text-[11px] font-bold text-gray-700 whitespace-nowrap shrink-0 px-1">${brand}</span>`).join('<span class="text-gray-300 shrink-0">|</span>')}
+          <div class="px-3 py-2 border-b border-yellow-200/50 flex items-center gap-3 sm:gap-4 overflow-x-auto bhx-scroll" style="background:#FFFDE7;scrollbar-width:none">
+            ${row.map(brand => {
+              const bName = typeof brand === 'string' ? brand : (brand && brand.name ? brand.name : '');
+              const bLogo = typeof brand === 'object' && brand && brand.logo ? brand.logo : '';
+              if (bLogo) {
+                return `
+                  <div class="h-6 sm:h-7 px-1.5 flex items-center justify-center shrink-0 hover:scale-105 transition-transform cursor-pointer"
+                       onclick="window.__bhx_searchBrand('${bName.replace(/'/g, "\\'")}')" title="${bName}">
+                    <img src="${bLogo}" alt="${bName}" class="h-5 sm:h-6 w-auto max-w-[75px] sm:max-w-[85px] object-contain"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                    <span class="text-[11px] font-bold text-gray-700 whitespace-nowrap" style="display:none">${bName}</span>
+                  </div>`;
+              }
+              return `
+                <span class="text-[11px] font-bold text-gray-700 whitespace-nowrap shrink-0 px-1 cursor-pointer hover:text-[#EF5121]"
+                      onclick="window.__bhx_searchBrand('${bName.replace(/'/g, "\\'")}')">${bName}</span>`;
+            }).join('<span class="text-gray-300 shrink-0 select-none">|</span>')}
           </div>`).join('')}
         <!-- Brand store cards -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-[1px] bg-gray-200">
@@ -986,6 +1000,16 @@
         </div>
       </div>`;
   }
+
+  window.__bhx_searchBrand = (name) => {
+    if (!name) return;
+    const input = document.getElementById('header-search-input');
+    if (input) {
+      input.value = name;
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
 
   // ─── PROMO BANNER GRID TOP (images 5-8, nằm trước HÔM NAY ĂN GÌ) ──────────
   function renderPromoBannerGrid() {
