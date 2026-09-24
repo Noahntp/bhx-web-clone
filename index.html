@@ -100,7 +100,8 @@
     #sidebar-aside {
       width: 270px;
       overflow: visible !important;
-      z-index: 9; /* BELOW header (z-11) so header always on top */
+      position: relative;
+      z-index: 35; /* Above product cards (z-2), below header (z-50) */
     }
     #sidebar-menu-list {
       position: relative;
@@ -290,7 +291,7 @@
 <!-- ═══════════════════════════════════════════════════════════
      TOP UTILITY BAR (Deep Obsidian Black #0F172A)
 ═══════════════════════════════════════════════════════════ -->
-<div id="top-utility-bar" class="bg-[#0B0F19] text-gray-300 text-[11px] font-medium py-1 px-4 w-full fixed inset-x-0 top-0 z-[12] border-b border-gray-800 hidden md:block" style="height:30px;">
+<div id="top-utility-bar" class="bg-[#0B0F19] text-gray-300 text-[11px] font-medium py-1 px-4 w-full fixed inset-x-0 top-0 z-[51] border-b border-gray-800 hidden md:block" style="height:30px;">
   <div class="mx-auto max-w-screen-xl flex items-center justify-between h-full">
     <div class="flex items-center gap-4">
       <span class="flex items-center gap-1.5 text-yellow-400 font-bold">
@@ -314,9 +315,9 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════
-     HEADER  (fixed, z-[11], bg-[#EF5121])
+     HEADER  (fixed, z-[50], bg-[#EF5121])
 ═══════════════════════════════════════════════════════════ -->
-<header class="bg-[#EF5121] m-auto z-[11] w-full fixed inset-x-0 top-0 md:top-[30px] pt-2 md:pt-3 pb-2 lg:pb-0 shadow-md">
+<header class="bg-[#EF5121] m-auto z-[50] w-full fixed inset-x-0 top-0 md:top-[30px] pt-2 md:pt-3 pb-2 lg:pb-0 shadow-md">
   <!-- DESKTOP HEADER (lg and up) -->
   <div class="hidden lg:flex mx-auto max-w-screen-xl items-start justify-between transition-all duration-[400ms] ease-in-out px-3">
 
@@ -376,7 +377,7 @@
       <!-- Autocomplete suggest box -->
       <div id="search-suggest-box"
            class="hidden absolute left-3 right-3 top-[48px] bg-white rounded-2xl shadow-2xl
-                  border border-gray-200 overflow-hidden z-50 max-h-[460px] overflow-y-auto">
+                  border border-gray-200 overflow-hidden z-[60] max-h-[460px] overflow-y-auto">
       </div>
     </div>
 
@@ -503,7 +504,7 @@
         </button>
       </div>
       <div id="mobile-search-suggest-box"
-           class="hidden absolute left-0 right-0 top-[40px] bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-50 max-h-[75vh] overflow-y-auto">
+           class="hidden absolute left-0 right-0 top-[40px] bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-[60] max-h-[75vh] overflow-y-auto">
       </div>
     </div>
   </div>
@@ -520,7 +521,7 @@
            class="hidden lg:block bg-white border-r border-gray-100 shrink-0 select-none"
            style="width:270px;">
       <!-- Menu sticky bên trong, sẽ dính top khi scroll -->
-      <div id="sidebar-menu-list" class="relative" style="width:270px;position:sticky;top:120px;overflow:visible;z-index:9;"></div>
+      <div id="sidebar-menu-list" class="relative" style="width:270px;position:sticky;top:120px;overflow:visible;z-index:35;"></div>
     </aside>
 
     <!-- ── MAIN CONTENT + FOOTER (flex-1) ── -->

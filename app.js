@@ -144,7 +144,7 @@
             </a>
             ${hasChildren ? `
               <div class="hidden group-hover/m:flex absolute left-full top-0 w-[min(540px,calc(100vw-300px))] bg-white border border-gray-200 
-                          shadow-2xl rounded-r-2xl z-50 p-4 min-h-[300px] max-h-[520px] overflow-y-auto flex-col gap-3 border-l-4 border-[#EF5121]">
+                          shadow-2xl rounded-r-2xl z-[100] p-4 min-h-[300px] max-h-[520px] overflow-y-auto flex-col gap-3 border-l-4 border-[#EF5121]">
                 <div class="text-[14px] font-bold text-[#EF5121] border-b border-orange-100 pb-2.5 flex items-center justify-between">
                   <div class="flex items-center gap-2">
                     <img src="${menu.icon}" alt="" class="w-5 h-5 object-contain" onerror="this.style.display='none'">
@@ -329,10 +329,10 @@
       const pct = Math.min(100, Math.round((p.sold / p.total) * 100));
       return `
         <div class="product-card group bg-white rounded-xl p-2 xs:p-2.5 sm:p-3 border border-gray-100 hover:border-orange-300 flex flex-col justify-between relative shadow-xs">
-          <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[10px] xs:text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
+          <div class="absolute top-2 left-2 z-[2] bg-red-600 text-white font-black text-[10px] xs:text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
             -${p.discountPercent}%
           </div>
-          <div class="absolute top-2 right-2 z-10 bg-[#007E42] text-white font-semibold text-[9px] px-1.5 py-[2px] rounded shadow-2xs">
+          <div class="absolute top-2 right-2 z-[2] bg-[#007E42] text-white font-semibold text-[9px] px-1.5 py-[2px] rounded shadow-2xs">
             Giao 2h
           </div>
           <div class="relative w-full aspect-square overflow-hidden rounded-lg mb-2 cursor-pointer bg-gray-50 flex items-center justify-center"
@@ -402,12 +402,12 @@
             ${shown.map(p => {
               const inCart = state.cart.find(c => c.name === p.name);
               return `
-                <div class="product-card group bg-white p-2 xs:p-2.5 sm:p-3 flex flex-col justify-between relative hover:z-10">
+                <div class="product-card group bg-white p-2 xs:p-2.5 sm:p-3 flex flex-col justify-between relative hover:z-[3]">
                   ${p.discountPercent > 0 ? `
-                    <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[10px] xs:text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
+                    <div class="absolute top-2 left-2 z-[2] bg-red-600 text-white font-black text-[10px] xs:text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
                       -${p.discountPercent}%
                     </div>` : ''}
-                  <div class="absolute top-2 right-2 z-10 bg-emerald-600 text-white text-[9px] font-semibold px-1 py-[1px] rounded">
+                  <div class="absolute top-2 right-2 z-[2] bg-emerald-600 text-white text-[9px] font-semibold px-1 py-[1px] rounded">
                     Giao 2h
                   </div>
                   <div class="relative w-full aspect-square overflow-hidden rounded-lg mb-2 cursor-pointer bg-gray-50 flex items-center justify-center"
@@ -477,8 +477,8 @@
                 </div>` : ''}
               <!-- Product image -->
               <div class="relative bg-white flex items-center justify-center" style="height:120px">
-                ${p.badge ? `<div class="absolute top-2 left-2 z-10 bg-red-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded">${p.badge}</div>` : ''}
-                ${p.discountPercent > 0 ? `<div class="absolute top-2 right-2 z-10 bg-red-600 text-white text-[10px] font-black px-1.5 py-[2px] rounded tag-discount-blink shadow">-${p.discountPercent}%</div>` : ''}
+                ${p.badge ? `<div class="absolute top-2 left-2 z-[2] bg-red-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded">${p.badge}</div>` : ''}
+                ${p.discountPercent > 0 ? `<div class="absolute top-2 right-2 z-[2] bg-red-600 text-white text-[10px] font-black px-1.5 py-[2px] rounded tag-discount-blink shadow">-${p.discountPercent}%</div>` : ''}
                 <img src="${p.avatar}" alt="${p.name}"
                      class="w-full h-full object-contain p-1"
                      onerror="this.onerror=null;this.style='background:#f3f4f7;padding:8px';this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
