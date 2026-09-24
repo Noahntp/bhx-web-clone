@@ -7,3 +7,4 @@ deploy_ftp.py
 !logo-*.png
 !assets/**/*.png
 !card1_sample.png
+!favicon-round.png

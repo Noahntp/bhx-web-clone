@@ -51,6 +51,15 @@
       document.getElementById('detail-modal-unit').textContent = p.unit || 'gói';
       const op = document.getElementById('detail-modal-orig-price');
       if (op) { op.textContent = p.originalPrice > p.price ? fmt(p.originalPrice) : ''; op.style.display = p.originalPrice > p.price ? 'inline' : 'none'; }
+      const discountTag = document.getElementById('detail-modal-discount-tag');
+      if (discountTag) {
+        if (p.discountPercent > 0) {
+          discountTag.textContent = `-${p.discountPercent}%`;
+          discountTag.style.display = 'inline-block';
+        } else {
+          discountTag.style.display = 'none';
+        }
+      }
       const addBtn = document.getElementById('detail-modal-add-btn');
       if (addBtn) addBtn.onclick = () => { addToCart(p); modal.classList.add('hidden'); };
       modal.classList.remove('hidden');
@@ -80,17 +89,25 @@
     }, 2500);
   }
 
-  // ─── CART BADGE ───────────────────────────────────────────────────
+  // ─── CART BADGE & TOTALS ──────────────────────────────────────────
   function updateCartBadge() {
     const total = state.cart.reduce((s, i) => s + i.quantity, 0);
+    const subtotal = state.cart.reduce((s, i) => s + (i.price * i.quantity), 0);
     const badge = document.getElementById('cart-badge');
     const mobBadge = document.getElementById('mobile-cart-badge');
     const botBadge = document.getElementById('bottom-cart-badge');
+    const floatBadge = document.getElementById('floating-cart-badge');
     const drawerCount = document.getElementById('drawer-cart-count');
+    const headerTotal = document.getElementById('cart-header-total');
+    const floatTotal = document.getElementById('floating-cart-total');
+
     if (badge) { badge.textContent = total; badge.style.display = total > 0 ? 'flex' : 'none'; }
     if (mobBadge) { mobBadge.textContent = total; mobBadge.style.display = total > 0 ? 'flex' : 'none'; }
     if (botBadge) { botBadge.textContent = total; botBadge.style.display = total > 0 ? 'flex' : 'none'; }
+    if (floatBadge) { floatBadge.textContent = total; floatBadge.style.display = total > 0 ? 'flex' : 'none'; }
     if (drawerCount) drawerCount.textContent = `(${total})`;
+    if (headerTotal) headerTotal.textContent = fmt(subtotal);
+    if (floatTotal) floatTotal.textContent = fmt(subtotal);
   }
 
   // ─── SIDEBAR (BHX: each item w/icon + name, hover submenu flyout) ─
@@ -107,7 +124,7 @@
                class="w-[24px] h-[24px] object-contain shrink-0"
                onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
         ` : `
-          <div class="w-[24px] h-[24px] rounded-full bg-[#007E42]/10 flex items-center justify-center shrink-0 text-[#007E42]">
+          <div class="w-[24px] h-[24px] rounded-full bg-[#EF5121]/10 flex items-center justify-center shrink-0 text-[#EF5121]">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
           </div>
         `;
@@ -115,7 +132,7 @@
           <div class="relative group/m">
             <a href="#cat-${idx}"
                class="flex items-center justify-between px-3 py-[9px] text-[13px] text-[#333] 
-                      hover:bg-[#F0FFF3] hover:text-[#007E42] border-b border-[#f3f4f7] transition-colors cursor-pointer">
+                      hover:bg-[#FFF5F0] hover:text-[#EF5121] border-b border-[#f3f4f7] transition-colors cursor-pointer">
               <div class="flex items-center gap-2 min-w-0">
                 ${iconHtml}
                 <span class="truncate font-medium leading-snug">${menu.name}</span>
@@ -126,17 +143,22 @@
                 </svg>` : ''}
             </a>
             ${hasChildren ? `
-              <div class="hidden group-hover/m:flex absolute left-full top-0 w-[460px] bg-white border border-gray-200 
-                          shadow-2xl rounded-r-xl z-50 p-4 min-h-[240px] flex-col gap-3">
-                <div class="text-sm font-bold text-[#007E42] border-b pb-2 flex items-center justify-between">
-                  <span>${menu.name}</span>
-                  <span class="text-xs text-gray-500 font-normal">Xem tất cả &rarr;</span>
+              <div class="hidden group-hover/m:flex absolute left-full top-0 w-[540px] bg-white border border-gray-200 
+                          shadow-2xl rounded-r-2xl z-50 p-4 min-h-[300px] max-h-[520px] overflow-y-auto flex-col gap-3 border-l-4 border-[#EF5121]">
+                <div class="text-[14px] font-bold text-[#EF5121] border-b border-orange-100 pb-2.5 flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <img src="${menu.icon}" alt="" class="w-5 h-5 object-contain" onerror="this.style.display='none'">
+                    <span>${menu.name}</span>
+                  </div>
+                  <a href="#cat-${idx}" class="text-xs text-gray-500 font-normal hover:text-[#EF5121]">Xem tất cả &rarr;</a>
                 </div>
-                <div class="grid grid-cols-2 gap-1.5">
+                <div class="grid grid-cols-2 gap-2">
                   ${menu.childrens.map(child => `
-                    <a href="#cat-${idx}" class="flex items-center gap-2 p-1.5 rounded hover:bg-[#F0FFF3] text-xs text-gray-700 hover:text-[#007E42] transition-colors">
-                      ${child.icon ? `<img src="${child.icon}" class="w-5 h-5 object-contain shrink-0" onerror="this.style.display='none'">` : ''}
-                      <span class="truncate">${child.name}</span>
+                    <a href="#cat-${idx}" class="flex items-center gap-2.5 p-2 rounded-xl bg-gray-50/80 hover:bg-[#FFF5F0] border border-gray-100 hover:border-orange-200 text-gray-800 hover:text-[#EF5121] transition-all group/item shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                      <div class="w-10 h-10 rounded-lg bg-white p-1 border border-gray-200 shrink-0 flex items-center justify-center overflow-hidden group-hover/item:scale-105 transition-transform">
+                        <img src="${child.icon || menu.icon}" class="w-full h-full object-contain" alt="${child.name}" onerror="this.src='${menu.icon}'">
+                      </div>
+                      <span class="text-[12px] font-medium leading-snug line-clamp-2">${child.name}</span>
                     </a>`).join('')}
                 </div>
               </div>` : ''}
@@ -162,10 +184,13 @@
                 </button>` : ''}
             </div>
             ${hasChildren ? `
-              <div id="mob-sub-${idx}" class="hidden bg-gray-50 px-4 py-2 border-t border-gray-100 grid grid-cols-2 gap-2">
+              <div id="mob-sub-${idx}" class="hidden bg-gray-50 p-2.5 border-t border-gray-100 grid grid-cols-2 gap-2">
                 ${menu.childrens.map(c => `
-                  <a href="#cat-${idx}" class="text-[11px] text-gray-600 hover:text-[#EF5121] py-1 truncate" onclick="window.__bhx_closeMobileDrawer()">
-                    • ${c.name}
+                  <a href="#cat-${idx}" class="flex items-center gap-2 p-1.5 rounded-lg bg-white border border-gray-100 hover:border-orange-300 text-gray-800 hover:text-[#EF5121] transition-all shadow-xs" onclick="window.__bhx_closeMobileDrawer()">
+                    <div class="w-7 h-7 rounded bg-gray-50 p-0.5 border border-gray-200 shrink-0 flex items-center justify-center overflow-hidden">
+                      <img src="${c.icon || menu.icon}" alt="${c.name}" class="w-full h-full object-contain" onerror="this.src='${menu.icon}'">
+                    </div>
+                    <span class="text-[11px] font-medium leading-tight truncate">${c.name}</span>
                   </a>`).join('')}
               </div>` : ''}
           </div>`;
@@ -303,11 +328,11 @@
       const inCart = state.cart.find(c => c.name === p.name);
       const pct = Math.min(100, Math.round((p.sold / p.total) * 100));
       return `
-        <div class="product-card group bg-white rounded-xl p-2 border border-gray-100 hover:border-green-400 flex flex-col justify-between relative">
-          <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[10px] px-1.5 py-[2px] rounded">
+        <div class="product-card group bg-white rounded-xl p-2.5 border border-gray-100 hover:border-orange-300 flex flex-col justify-between relative shadow-xs">
+          <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
             -${p.discountPercent}%
           </div>
-          <div class="absolute top-2 right-2 z-10 bg-[#007E42] text-white font-semibold text-[9px] px-1 py-[2px] rounded">
+          <div class="absolute top-2 right-2 z-10 bg-[#007E42] text-white font-semibold text-[9px] px-1.5 py-[2px] rounded shadow-2xs">
             Giao 2h
           </div>
           <div class="relative w-full aspect-square overflow-hidden rounded-lg mb-2 cursor-pointer bg-gray-50 flex items-center justify-center"
@@ -317,12 +342,12 @@
                  onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
           </div>
           <div class="flex-1">
-            <h3 class="text-[12px] font-medium text-gray-800 line-clamp-2 leading-snug mb-1 cursor-pointer hover:text-[#007E42]"
+            <h3 class="text-[12px] font-medium text-gray-800 line-clamp-2 leading-snug mb-1 cursor-pointer hover:text-[#EF5121]"
                 onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">${p.name}</h3>
             <div class="text-[11px] text-gray-400 mb-1">ĐVT: ${p.unit}</div>
-            <div class="flex items-baseline gap-1 mb-1.5">
-              <span class="text-[13px] font-bold text-red-600">${fmt(p.price)}</span>
-              ${p.originalPrice > p.price ? `<span class="text-[10px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
+            <div class="flex items-baseline gap-1.5 mb-1.5">
+              <span class="text-[16px] sm:text-[18px] font-black text-[#EF5121] tracking-tight">${fmt(p.price)}</span>
+              ${p.originalPrice > p.price ? `<span class="text-[11px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
             </div>
             <div class="progress-bar-sold mb-2">
               <div class="progress-bar-sold-fill" style="width:${pct}%"></div>
@@ -336,7 +361,7 @@
               <button onclick="window.__bhx_updateQty('${p.name}',1)" class="w-6 h-6 rounded-full bg-[#007E42] text-white font-bold hover:bg-green-700 flex items-center justify-center shadow-sm text-sm">+</button>
             </div>` : `
             <button onclick="window.__bhx_addCart('${encodeURIComponent(JSON.stringify(p))}')"
-                    class="w-full bg-[#007E42] hover:bg-[#006133] text-white font-bold text-xs py-1.5 rounded-full flex items-center justify-center gap-1 shadow-sm transition-all">
+                    class="w-full bg-[#007E42] hover:bg-[#006133] text-white font-bold text-xs py-1.5 rounded-full flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
               Chọn mua
             </button>`}
@@ -365,11 +390,11 @@
         <section id="cat-${idx}" class="mb-2 bg-white">
           <div class="flex items-center justify-between px-4 pt-4 pb-2 border-b border-gray-100">
             <div class="flex items-center gap-2">
-              <span class="w-1 h-5 bg-[#007E42] rounded-full inline-block"></span>
+              <span class="w-1.5 h-5 bg-[#EF5121] rounded-full inline-block"></span>
               <h2 class="text-[15px] font-bold text-gray-900 uppercase tracking-tight">${title}</h2>
-              <span class="text-[11px] bg-green-50 text-green-700 font-semibold px-1.5 py-0.5 rounded-full">${items.length} sp</span>
+              <span class="text-[11px] bg-orange-50 text-[#EF5121] font-semibold px-2 py-0.5 rounded-full border border-orange-100">${items.length} sp</span>
             </div>
-            <a href="javascript:void(0)" class="text-[12px] text-[#007E42] font-semibold hover:underline flex items-center gap-0.5">
+            <a href="javascript:void(0)" class="text-[12px] text-[#EF5121] font-semibold hover:underline flex items-center gap-0.5">
               Xem tất cả <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
           </div>
@@ -377,9 +402,9 @@
             ${shown.map(p => {
               const inCart = state.cart.find(c => c.name === p.name);
               return `
-                <div class="product-card group bg-white p-3 flex flex-col justify-between relative">
+                <div class="product-card group bg-white p-3 flex flex-col justify-between relative hover:z-10">
                   ${p.discountPercent > 0 ? `
-                    <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[10px] px-1 py-[1px] rounded">
+                    <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
                       -${p.discountPercent}%
                     </div>` : ''}
                   <div class="absolute top-2 right-2 z-10 bg-emerald-600 text-white text-[9px] font-semibold px-1 py-[1px] rounded">
@@ -392,12 +417,12 @@
                          onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
                   </div>
                   <div class="flex-1">
-                    <h3 class="text-[12px] font-medium text-gray-800 line-clamp-2 leading-snug mb-1 cursor-pointer hover:text-[#007E42]"
+                    <h3 class="text-[12px] font-medium text-gray-800 line-clamp-2 leading-snug mb-1 cursor-pointer hover:text-[#EF5121]"
                         onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">${p.name}</h3>
                     <div class="text-[11px] text-gray-400 mb-1">ĐVT: ${p.unit || 'gói'}</div>
-                    <div class="flex items-baseline gap-1 mb-2">
-                      <span class="text-[13px] font-bold text-[#007E42]">${fmt(p.price)}</span>
-                      ${p.originalPrice > p.price ? `<span class="text-[10px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
+                    <div class="flex items-baseline gap-1.5 mb-2">
+                      <span class="text-[16px] sm:text-[18px] font-black text-[#EF5121] tracking-tight">${fmt(p.price)}</span>
+                      ${p.originalPrice > p.price ? `<span class="text-[11px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
                     </div>
                   </div>
                   ${inCart ? `
@@ -407,7 +432,7 @@
                       <button onclick="window.__bhx_updateQty('${p.name}',1)" class="w-6 h-6 rounded-full bg-[#007E42] text-white font-bold hover:bg-green-700 flex items-center justify-center text-sm">+</button>
                     </div>` : `
                     <button onclick="window.__bhx_addCart('${encodeURIComponent(JSON.stringify(p))}')"
-                            class="w-full bg-[#007E42] hover:bg-[#006133] text-white font-bold text-[11px] py-1.5 rounded-full flex items-center justify-center gap-1 shadow-sm transition-all">
+                            class="w-full bg-[#007E42] hover:bg-[#006133] text-white font-bold text-[11px] py-1.5 rounded-full flex items-center justify-center gap-1 shadow-sm transition-all active:scale-95">
                       <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                       Chọn mua
                     </button>`}
@@ -453,7 +478,7 @@
               <!-- Product image -->
               <div class="relative bg-white flex items-center justify-center" style="height:120px">
                 ${p.badge ? `<div class="absolute top-2 left-2 z-10 bg-red-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded">${p.badge}</div>` : ''}
-                ${p.discountPercent > 0 ? `<div class="absolute top-2 right-2 z-10 bg-red-600 text-white text-[10px] font-black px-1 py-[2px] rounded">-${p.discountPercent}%</div>` : ''}
+                ${p.discountPercent > 0 ? `<div class="absolute top-2 right-2 z-10 bg-red-600 text-white text-[10px] font-black px-1.5 py-[2px] rounded tag-discount-blink shadow">-${p.discountPercent}%</div>` : ''}
                 <img src="${p.avatar}" alt="${p.name}"
                      class="w-full h-full object-contain p-1"
                      onerror="this.onerror=null;this.style='background:#f3f4f7;padding:8px';this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
@@ -465,7 +490,7 @@
                 <div class="text-[11px] text-gray-700 line-clamp-2 leading-snug mb-1">${p.name}</div>
                 <div class="text-[11px] text-gray-400 mb-1">${p.unit}</div>
                 <div class="flex items-baseline gap-1 mb-1">
-                  <span class="text-[14px] font-black text-gray-900">${fmt(p.price)}</span>
+                  <span class="text-[16px] font-black text-[#EF5121]">${fmt(p.price)}</span>
                   ${p.originalPrice > p.price ? `<span class="text-[10px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
                 </div>
                 ${p.promo ? `<div class="text-[11px] font-bold text-[#F8A61A] mb-2">${p.promo}</div>` : ''}
@@ -732,6 +757,7 @@
     const cartBtn = document.getElementById('btn-open-cart');
     const mobCartBtn = document.getElementById('btn-mobile-cart');
     const botCartBtn = document.getElementById('btn-bottom-cart');
+    const floatCartBtn = document.getElementById('floating-cart-widget');
     const drawer = document.getElementById('cart-drawer');
     const overlay = document.getElementById('cart-overlay');
     const closeBtn = document.getElementById('cart-drawer-close');
@@ -742,6 +768,7 @@
     if (cartBtn) cartBtn.onclick = openCart;
     if (mobCartBtn) mobCartBtn.onclick = openCart;
     if (botCartBtn) botCartBtn.onclick = openCart;
+    if (floatCartBtn) floatCartBtn.onclick = openCart;
     if (overlay) overlay.onclick = closeCart;
     if (closeBtn) closeBtn.onclick = closeCart;
 
@@ -797,43 +824,166 @@
     };
   }
 
-  // ─── SEARCH ───────────────────────────────────────────────────────
+  // ─── SEARCH (BHX: gợi ý xu hướng & sản phẩm thiết yếu khi bấm/focus) ────────
+  const POPULAR_SEARCH_KEYWORDS = [
+    'Mì Hảo Hảo', 'Trứng gà', 'Dầu ăn Simply', 'Gạo ST25', 'Sữa tươi', 'Bia Tiger', 'Nước mắm Nam Ngư', 'Ba rọi heo'
+  ];
+
+  function getEssentialSuggestions() {
+    const all = Object.values(data.categories || {}).flat();
+    const staples = [
+      all.find(p => p.name.includes('Hảo Hảo')),
+      all.find(p => p.name.includes('Ba rọi') || p.name.includes('heo')),
+      all.find(p => p.name.includes('Nutimilk') || p.name.includes('TH true MILK') || p.name.includes('Vinamilk')),
+      all.find(p => p.name.includes('Nam Ngư') || p.name.includes('nước mắm')),
+      all.find(p => p.name.includes('Meizan') || p.name.includes('Simply')),
+      all.find(p => p.name.includes('ST25') || p.name.includes('Gạo'))
+    ].filter(Boolean);
+
+    return staples.length >= 4 ? staples : (data.flashSale || []).slice(0, 6);
+  }
+
+  function renderSearchDefaultPanel(box) {
+    const essentials = getEssentialSuggestions();
+    box.innerHTML = `
+      <div class="p-3 bg-gradient-to-r from-orange-50/80 to-amber-50/60 border-b border-orange-100">
+        <div class="flex items-center gap-1.5 text-[11px] font-black text-gray-800 uppercase tracking-wide mb-2.5">
+          <span class="text-orange-500">🔥</span> Xu hướng tìm kiếm
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          ${POPULAR_SEARCH_KEYWORDS.map(kw => `
+            <button type="button" class="text-[12px] bg-white hover:bg-[#FFF5F0] hover:text-[#EF5121] hover:border-orange-300 text-gray-700 px-2.5 py-1 rounded-full border border-gray-200 transition-all font-medium flex items-center gap-1 cursor-pointer shadow-2xs active:scale-95"
+                    onclick="window.__bhx_searchKeyword('${kw}')">
+              <svg class="w-3 h-3 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <span>${kw}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+      <div class="p-3 bg-white">
+        <div class="flex items-center justify-between px-1 mb-2.5">
+          <div class="flex items-center gap-1.5 text-[12px] font-black text-[#EF5121] uppercase tracking-wide">
+            <span>⚡</span> Sản phẩm thiết yếu gợi ý
+          </div>
+          <span class="text-[10px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-bold">Giao siêu tốc 2h</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[300px] overflow-y-auto pr-1">
+          ${essentials.map(p => `
+            <div class="flex items-center gap-2.5 p-2 rounded-xl bg-gray-50/80 hover:bg-[#FFF5F0] border border-gray-100 hover:border-orange-200 transition-all group/item cursor-pointer relative shadow-2xs"
+                 onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">
+              <div class="w-12 h-12 rounded-lg bg-white p-1 border border-gray-200 shrink-0 flex items-center justify-center overflow-hidden">
+                <img src="${p.avatar}" class="w-full h-full object-contain group-hover/item:scale-105 transition-transform" alt="${p.name}" onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
+              </div>
+              <div class="flex-1 min-w-0 pr-7">
+                <div class="text-[12px] font-medium text-gray-800 line-clamp-1 leading-tight group-hover/item:text-[#EF5121]">${p.name}</div>
+                <div class="flex items-baseline gap-1 mt-1">
+                  <span class="text-[14px] font-black text-[#EF5121]">${fmt(p.price)}</span>
+                  ${p.originalPrice > p.price ? `<span class="text-[10px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
+                </div>
+              </div>
+              <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#EF5121] hover:bg-[#D84214] text-white flex items-center justify-center shadow font-bold text-xs active:scale-90 transition-transform"
+                      title="Thêm vào giỏ"
+                      onclick="event.stopPropagation(); window.__bhx_addCart('${encodeURIComponent(JSON.stringify(p))}')">
+                +
+              </button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    box.classList.remove('hidden');
+  }
+
+  function renderSearchResults(box, matches, q) {
+    if (matches.length > 0) {
+      box.innerHTML = `
+        <div class="p-2.5 border-b text-[11px] font-bold text-gray-500 uppercase bg-gray-50 tracking-wide flex items-center justify-between">
+          <span>Kết quả cho: "<b class="text-gray-800">${q}</b>"</span>
+          <span class="text-[#EF5121] font-bold">${matches.length} sản phẩm</span>
+        </div>
+        <div class="divide-y divide-gray-100 max-h-[350px] overflow-y-auto">
+          ${matches.map(p => `
+            <div class="flex items-center gap-3 p-2.5 hover:bg-[#FFF5F0] cursor-pointer transition-colors relative"
+                 onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">
+              <img src="${p.avatar}" class="w-12 h-12 object-contain rounded-lg bg-white p-1 border border-gray-100 shrink-0"
+                   onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
+              <div class="flex-1 min-w-0 pr-8">
+                <div class="text-[12px] font-semibold text-gray-800 truncate hover:text-[#EF5121]">${p.name}</div>
+                <div class="text-[10px] text-gray-400 mt-0.5">ĐVT: ${p.unit || 'gói'}</div>
+                <div class="flex items-baseline gap-1.5 mt-0.5">
+                  <span class="text-[15px] font-black text-[#EF5121]">${fmt(p.price)}</span>
+                  ${p.originalPrice > p.price ? `<span class="text-[11px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
+                  ${p.discountPercent > 0 ? `<span class="text-[10px] font-black text-red-600 bg-red-50 px-1 rounded tag-discount-blink">-${p.discountPercent}%</span>` : ''}
+                </div>
+              </div>
+              <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#EF5121] hover:bg-[#D84214] text-white flex items-center justify-center shadow font-bold text-xs shrink-0 active:scale-90 transition-transform"
+                      title="Thêm vào giỏ"
+                      onclick="event.stopPropagation(); window.__bhx_addCart('${encodeURIComponent(JSON.stringify(p))}')">
+                +
+              </button>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      box.classList.remove('hidden');
+    } else {
+      box.innerHTML = `
+        <div class="p-6 text-center text-xs text-gray-500">
+          <div class="text-3xl mb-2">🔍</div>
+          <div>Không tìm thấy sản phẩm nào với từ khóa "<b>${q}</b>"</div>
+          <div class="mt-3 text-[11px] text-gray-400">Gợi ý từ khóa: <a href="javascript:void(0)" onclick="window.__bhx_searchKeyword('Hảo Hảo')" class="text-[#EF5121] underline font-bold">Hảo Hảo</a>, <a href="javascript:void(0)" onclick="window.__bhx_searchKeyword('Gạo')" class="text-[#EF5121] underline font-bold">Gạo</a>, <a href="javascript:void(0)" onclick="window.__bhx_searchKeyword('Dầu ăn')" class="text-[#EF5121] underline font-bold">Dầu ăn</a></div>
+        </div>
+      `;
+      box.classList.remove('hidden');
+    }
+  }
+
   function setupSearch() {
     const pairs = [
       { input: document.getElementById('header-search-input'), btn: document.getElementById('header-search-btn'), box: document.getElementById('search-suggest-box') },
       { input: document.getElementById('mobile-search-input'), btn: document.getElementById('mobile-search-btn'), box: document.getElementById('mobile-search-suggest-box') }
     ];
 
+    window.__bhx_searchKeyword = (kw) => {
+      state.searchQuery = kw.toLowerCase();
+      pairs.forEach(p => {
+        if (p.input) p.input.value = kw;
+        if (p.box) p.box.classList.add('hidden');
+      });
+      renderCategoryProducts();
+      const firstCat = document.getElementById('cat-0');
+      if (firstCat) firstCat.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     pairs.forEach(({ input, btn, box }) => {
       if (!input || !box) return;
+
+      input.addEventListener('focus', () => {
+        if (!input.value.trim()) {
+          renderSearchDefaultPanel(box);
+        }
+      });
+
+      input.addEventListener('click', () => {
+        if (!input.value.trim()) {
+          renderSearchDefaultPanel(box);
+        }
+      });
 
       input.addEventListener('input', e => {
         const q = e.target.value.trim().toLowerCase();
         state.searchQuery = q;
         pairs.forEach(p => { if (p.input && p.input !== input) p.input.value = e.target.value; });
 
-        if (!q) { box.classList.add('hidden'); renderCategoryProducts(); return; }
+        if (!q) {
+          renderSearchDefaultPanel(box);
+          renderCategoryProducts();
+          return;
+        }
 
         const all = Object.values(data.categories || {}).flat();
-        const matches = all.filter(p => p.name.toLowerCase().includes(q)).slice(0, 8);
-        if (matches.length > 0) {
-          box.innerHTML = `
-            <div class="p-2 border-b text-[11px] font-bold text-gray-500 uppercase bg-gray-50 tracking-wide">Sản phẩm gợi ý</div>
-            ${matches.map(p => `
-              <div class="flex items-center gap-3 p-2.5 hover:bg-[#F0FFF3] cursor-pointer border-b border-gray-50 transition-colors"
-                   onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">
-                <img src="${p.avatar}" class="w-10 h-10 object-contain rounded bg-gray-50 border shrink-0"
-                     onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
-                <div class="flex-1 min-w-0">
-                  <div class="text-[12px] font-semibold text-gray-800 truncate">${p.name}</div>
-                  <div class="text-[12px] font-bold text-[#007E42]">${fmt(p.price)}</div>
-                </div>
-              </div>`).join('')}`;
-          box.classList.remove('hidden');
-        } else {
-          box.innerHTML = `<div class="p-4 text-center text-xs text-gray-500">Không tìm thấy "<b>${q}</b>"</div>`;
-          box.classList.remove('hidden');
-        }
+        const matches = all.filter(p => p.name.toLowerCase().includes(q)).slice(0, 10);
+        renderSearchResults(box, matches, q);
         renderCategoryProducts();
       });
 

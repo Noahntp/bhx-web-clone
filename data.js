@@ -1,4 +1,3 @@
-// Dữ liệu Chợ Giá Rẻ chuẩn hóa theo DANH MỤC SẢN PHẨM.xlsx
 window.BHX_DATA = {
   "menuHeader": [
     {
@@ -112,25 +111,29 @@ window.BHX_DATA = {
           "id": "1_1",
           "name": "Thực phẩm đông lạnh chế biến",
           "url": "#/danh-muc/thuc-pham-dong-mat?sub=Th%E1%BB%B1c%20ph%E1%BA%A9m%20%C4%91%C3%B4ng%20l%E1%BA%A1nh%20ch%E1%BA%BF%20bi%E1%BA%BFn",
-          "slug": "thuc-pham-dong-mat-1"
+          "slug": "thuc-pham-dong-mat-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/8781/233766/xuong-que-heo-nhap-khau-1kg_202601081014438944.jpg"
         },
         {
           "id": "1_2",
           "name": "Thực phẩm mát - Đồ mát",
           "url": "#/danh-muc/thuc-pham-dong-mat?sub=Th%E1%BB%B1c%20ph%E1%BA%A9m%20m%C3%A1t%20-%20%C4%90%E1%BB%93%20m%C3%A1t",
-          "slug": "thuc-pham-dong-mat-2"
+          "slug": "thuc-pham-dong-mat-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/8781/233783/chan-gio-heo-1kg_202607301031597500.jpg"
         },
         {
           "id": "1_3",
           "name": "Rau - Củ - Trái Cây - Hoa tươi",
           "url": "#/danh-muc/thuc-pham-dong-mat?sub=Rau%20-%20C%E1%BB%A7%20-%20Tr%C3%A1i%20C%C3%A2y%20-%20Hoa%20t%C6%B0%C6%A1i",
-          "slug": "thuc-pham-dong-mat-3"
+          "slug": "thuc-pham-dong-mat-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/8788/5367299/nho-do-nhap-khau_202607231308359257.jpg"
         },
         {
           "id": "1_4",
           "name": "Thịt - Cá - Trứng - Hải sản",
           "url": "#/danh-muc/thuc-pham-dong-mat?sub=Th%E1%BB%8Bt%20-%20C%C3%A1%20-%20Tr%E1%BB%A9ng%20-%20H%E1%BA%A3i%20s%E1%BA%A3n",
-          "slug": "thuc-pham-dong-mat-4"
+          "slug": "thuc-pham-dong-mat-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/8781/275804/ba-roi-heo-nhap-khau_202607130947458793.jpg"
         }
       ],
       "slug": "thuc-pham-dong-mat",
@@ -153,61 +156,71 @@ window.BHX_DATA = {
           "id": "2_1",
           "name": "Bia",
           "url": "#/danh-muc/do-uong?sub=Bia",
-          "slug": "do-uong-1"
+          "slug": "do-uong-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2282/5368611/combo-24-lon-tiger-bac-330ml-va-cha-lua-bi-g-kitchen-450g_202609160105482022.jpg"
         },
         {
           "id": "2_2",
           "name": "Rượu",
           "url": "#/danh-muc/do-uong?sub=R%C6%B0%E1%BB%A3u",
-          "slug": "do-uong-2"
+          "slug": "do-uong-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2282/5368610/combo-24-lon-tiger-bac-250ml-cha-lua-bi-g-kitchen-450g_202609221331508187.jpg"
         },
         {
           "id": "2_3",
           "name": "Nước suối",
           "url": "#/danh-muc/do-uong?sub=N%C6%B0%E1%BB%9Bc%20su%E1%BB%91i",
-          "slug": "do-uong-3"
+          "slug": "do-uong-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2282/5368609/combo-24-lon-tiger-330ml-va-cha-lua-bi-g-kitchen-450g_202609160102405834.jpg"
         },
         {
           "id": "2_4",
           "name": "Nước ngọt có gas",
           "url": "#/danh-muc/do-uong?sub=N%C6%B0%E1%BB%9Bc%20ng%E1%BB%8Dt%20c%C3%B3%20gas",
-          "slug": "do-uong-4"
+          "slug": "do-uong-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2282/5368608/combo-24-lon-tiger-250ml-va-cha-lua-bi-g-kitchen-450g_202609160102122989.jpg"
         },
         {
           "id": "2_5",
           "name": "Nước tăng lực - Nước bù khoáng",
           "url": "#/danh-muc/do-uong?sub=N%C6%B0%E1%BB%9Bc%20t%C4%83ng%20l%E1%BB%B1c%20-%20N%C6%B0%E1%BB%9Bc%20b%C3%B9%20kho%C3%A1ng",
-          "slug": "do-uong-5"
+          "slug": "do-uong-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2282/5368607/combo-24-lon-heineken-silver-330ml-va-cha-lua-g-kitchen-450g_202609160101345778.jpg"
         },
         {
           "id": "2_6",
           "name": "Nước ép trái cây",
           "url": "#/danh-muc/do-uong?sub=N%C6%B0%E1%BB%9Bc%20%C3%A9p%20tr%C3%A1i%20c%C3%A2y",
-          "slug": "do-uong-6"
+          "slug": "do-uong-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2282/5368221/combo-24-lon-bia-sai-gon-lager-330ml-va-24-lon-sai-gon-special-sleek-330ml_202608131037020848.jpg"
         },
         {
           "id": "2_7",
           "name": "Sữa trái cây chai",
           "url": "#/danh-muc/do-uong?sub=S%E1%BB%AFa%20tr%C3%A1i%20c%C3%A2y%20chai",
-          "slug": "do-uong-7"
+          "slug": "do-uong-7",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2282/5367143/bia-333-pilsner-extra-smooth-lon-250ml_202608211507345576.jpg"
         },
         {
           "id": "2_8",
           "name": "Nước trà",
           "url": "#/danh-muc/do-uong?sub=N%C6%B0%E1%BB%9Bc%20tr%C3%A0",
-          "slug": "do-uong-8"
+          "slug": "do-uong-8",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2282/5367012/thung-24-lon-bia-michelob-ultra-250ml_202608211442484905.jpg"
         },
         {
           "id": "2_9",
           "name": "Nước yến",
           "url": "#/danh-muc/do-uong?sub=N%C6%B0%E1%BB%9Bc%20y%E1%BA%BFn",
-          "slug": "do-uong-9"
+          "slug": "do-uong-9",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/production/2026/6/image/Products/2443/5367305/6-chai-nuoc-ngot-mirinda-huong-xa-xi-15-lit_202606220028061867.jpg"
         },
         {
           "id": "2_10",
           "name": "Nước sâm - Bổ gan",
           "url": "#/danh-muc/do-uong?sub=N%C6%B0%E1%BB%9Bc%20s%C3%A2m%20-%20B%E1%BB%95%20gan",
-          "slug": "do-uong-10"
+          "slug": "do-uong-10",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/production/2026/6/image/Products/2443/5367304/6-chai-nuoc-ngot-mirinda-huong-cam-15-lit_202606220026203685.jpg"
         }
       ],
       "slug": "do-uong",
@@ -231,25 +244,29 @@ window.BHX_DATA = {
           "id": "3_1",
           "name": "Trà khô - Trà túi lọc - Trà hòa tan",
           "url": "#/danh-muc/tra-ca-phe-ngu-coc?sub=Tr%C3%A0%20kh%C3%B4%20-%20Tr%C3%A0%20t%C3%BAi%20l%E1%BB%8Dc%20-%20Tr%C3%A0%20h%C3%B2a%20tan",
-          "slug": "tra-ca-phe-ngu-coc-1"
+          "slug": "tra-ca-phe-ngu-coc-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tinh-tao-ca-ngay_202609221005250217.png"
         },
         {
           "id": "3_2",
           "name": "Cà phê hòa tan",
           "url": "#/danh-muc/tra-ca-phe-ngu-coc?sub=C%C3%A0%20ph%C3%AA%20h%C3%B2a%20tan",
-          "slug": "tra-ca-phe-ngu-coc-2"
+          "slug": "tra-ca-phe-ngu-coc-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tinh-tao-ca-ngay_202609221005250217.png"
         },
         {
           "id": "3_3",
           "name": "Cà phê pha phin",
           "url": "#/danh-muc/tra-ca-phe-ngu-coc?sub=C%C3%A0%20ph%C3%AA%20pha%20phin",
-          "slug": "tra-ca-phe-ngu-coc-3"
+          "slug": "tra-ca-phe-ngu-coc-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2385/tra-kho-tui-loc_202508291624127019.png"
         },
         {
           "id": "3_4",
           "name": "Ngũ cốc - Yến mạch",
           "url": "#/danh-muc/tra-ca-phe-ngu-coc?sub=Ng%C5%A9%20c%E1%BB%91c%20-%20Y%E1%BA%BFn%20m%E1%BA%A1ch",
-          "slug": "tra-ca-phe-ngu-coc-4"
+          "slug": "tra-ca-phe-ngu-coc-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2385/tra-kho-tui-loc_202508291624127019.png"
         }
       ],
       "slug": "tra-ca-phe-ngu-coc",
@@ -272,49 +289,57 @@ window.BHX_DATA = {
           "id": "4_1",
           "name": "Sữa bột - Sữa pha sẵn",
           "url": "#/danh-muc/sua-che-pham?sub=S%E1%BB%AFa%20b%E1%BB%99t%20-%20S%E1%BB%AFa%20pha%20s%E1%BA%B5n",
-          "slug": "sua-che-pham-1"
+          "slug": "sua-che-pham-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2386/5367624/thung-48-bich-sua-dinh-duong-it-duong-nutimilk-220ml_202608211026245977.jpg"
         },
         {
           "id": "4_2",
           "name": "Sữa tươi",
           "url": "#/danh-muc/sua-che-pham?sub=S%E1%BB%AFa%20t%C6%B0%C6%A1i",
-          "slug": "sua-che-pham-2"
+          "slug": "sua-che-pham-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2386/5367623/sua-dinh-duong-it-duong-nutimilk-bich-220ml_202608211025490291.jpg"
         },
         {
           "id": "4_3",
           "name": "Sữa hạt - Sữa đậu",
           "url": "#/danh-muc/sua-che-pham?sub=S%E1%BB%AFa%20h%E1%BA%A1t%20-%20S%E1%BB%AFa%20%C4%91%E1%BA%ADu",
-          "slug": "sua-che-pham-3"
+          "slug": "sua-che-pham-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2386/5367622/thung-24-bich-sua-dinh-duong-khong-duong-dutch-lady-180ml_202608211028059017.jpg"
         },
         {
           "id": "4_4",
           "name": "Sữa trái cây hộp",
           "url": "#/danh-muc/sua-che-pham?sub=S%E1%BB%AFa%20tr%C3%A1i%20c%C3%A2y%20h%E1%BB%99p",
-          "slug": "sua-che-pham-4"
+          "slug": "sua-che-pham-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/2386/5367552/5-loc-sua-tuoi-tiet-trung-it-duong-th-true-milk-110ml_202607241610009328.jpg"
         },
         {
           "id": "4_5",
           "name": "Sữa chua uống",
           "url": "#/danh-muc/sua-che-pham?sub=S%E1%BB%AFa%20chua%20u%E1%BB%91ng",
-          "slug": "sua-che-pham-5"
+          "slug": "sua-che-pham-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/2386/5367551/5-loc-sua-tuoi-tiet-trung-it-duong-th-true-milk-180ml_202607241609500688.jpg"
         },
         {
           "id": "4_6",
           "name": "Sữa chua ăn",
           "url": "#/danh-muc/sua-che-pham?sub=S%E1%BB%AFa%20chua%20%C4%83n",
-          "slug": "sua-che-pham-6"
+          "slug": "sua-che-pham-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/2386/5367549/10-bich-sua-dinh-duong-socola-vinamilk-220ml_202607241609357138.jpg"
         },
         {
           "id": "4_7",
           "name": "Sữa đặc",
           "url": "#/danh-muc/sua-che-pham?sub=S%E1%BB%AFa%20%C4%91%E1%BA%B7c",
-          "slug": "sua-che-pham-7"
+          "slug": "sua-che-pham-7",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/2386/5367412/combo-10-bich-sua-tuoi-tiet-trung-co-duong-vinamilk-100-sua-tuoi-220ml_202607241609173248.jpg"
         },
         {
           "id": "4_8",
           "name": "Phô mai",
           "url": "#/danh-muc/sua-che-pham?sub=Ph%C3%B4%20mai",
-          "slug": "sua-che-pham-8"
+          "slug": "sua-che-pham-8",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/2386/5367411/combo-10-bich-sua-tuoi-tiet-trung-khong-duong-vinamilk-100-sua-tuoi-220ml_202607241609116938.jpg"
         }
       ],
       "slug": "sua-che-pham",
@@ -337,85 +362,99 @@ window.BHX_DATA = {
           "id": "5_1",
           "name": "Kem",
           "url": "#/danh-muc/banh-keo-an-vat?sub=Kem",
-          "slug": "banh-keo-an-vat-1"
+          "slug": "banh-keo-an-vat-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/3358/5368685/banh-bong-lan-mem-huong-dua-aji-goi-150g_202609211159483289.png"
         },
         {
           "id": "5_2",
           "name": "Thạch - Rau câu",
           "url": "#/danh-muc/banh-keo-an-vat?sub=Th%E1%BA%A1ch%20-%20Rau%20c%C3%A2u",
-          "slug": "banh-keo-an-vat-2"
+          "slug": "banh-keo-an-vat-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/3358/5368684/banh-bong-lan-mem-long-do-trung-nuong-aji-goi-150g_202609211151402140.png"
         },
         {
           "id": "5_3",
           "name": "Kẹo - Socola",
           "url": "#/danh-muc/banh-keo-an-vat?sub=K%E1%BA%B9o%20-%20Socola",
-          "slug": "banh-keo-an-vat-3"
+          "slug": "banh-keo-an-vat-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/8318/5368562/combo-24-lon-bia-heineken-00-do-con-250ml-2-hu-muc-rim-me-dam-sen-150g_202609031607456560.jpg"
         },
         {
           "id": "5_4",
           "name": "Hạt khô - Trái cây sấy",
           "url": "#/danh-muc/banh-keo-an-vat?sub=H%E1%BA%A1t%20kh%C3%B4%20-%20Tr%C3%A1i%20c%C3%A2y%20s%E1%BA%A5y",
-          "slug": "banh-keo-an-vat-4"
+          "slug": "banh-keo-an-vat-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/8318/5368560/combo-24-lon-bia-heineken-silver-330ml-2-hu-muc-rim-me-dam-sen-150g_202609031606171741.jpg"
         },
         {
           "id": "5_5",
           "name": "Lương khô - Thanh dinh dưỡng",
           "url": "#/danh-muc/banh-keo-an-vat?sub=L%C6%B0%C6%A1ng%20kh%C3%B4%20-%20Thanh%20dinh%20d%C6%B0%E1%BB%A1ng",
-          "slug": "banh-keo-an-vat-5"
+          "slug": "banh-keo-an-vat-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/8318/5368559/combo-24-lon-bia-heineken-silver-250ml-va-2-hu-muc-rim-me-dam-sen-150g_202609031605443498.jpg"
         },
         {
           "id": "5_6",
           "name": "Cơm cháy - Bánh tráng",
           "url": "#/danh-muc/banh-keo-an-vat?sub=C%C6%A1m%20ch%C3%A1y%20-%20B%C3%A1nh%20tr%C3%A1ng",
-          "slug": "banh-keo-an-vat-6"
+          "slug": "banh-keo-an-vat-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/8318/5368558/combo-24-lon-bia-heineken-00-do-con-250ml-va-muc-rim-me-dam-sen-hu-150g_202609031604204661.jpg"
         },
         {
           "id": "5_7",
           "name": "Chân gà - Khoai nưa - Thanh cua",
           "url": "#/danh-muc/banh-keo-an-vat?sub=Ch%C3%A2n%20g%C3%A0%20-%20Khoai%20n%C6%B0a%20-%20Thanh%20cua",
-          "slug": "banh-keo-an-vat-7"
+          "slug": "banh-keo-an-vat-7",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/8318/5368556/combo-24-lon-heineken-silver-330ml-va-2-hu-muc-xe-tam-gia-vi-dam-sen-100g_202609031602587166.jpg"
         },
         {
           "id": "5_8",
           "name": "Rong biển cháy tỏi - Rong biển ăn liền",
           "url": "#/danh-muc/banh-keo-an-vat?sub=Rong%20bi%E1%BB%83n%20ch%C3%A1y%20t%E1%BB%8Fi%20-%20Rong%20bi%E1%BB%83n%20%C4%83n%20li%E1%BB%81n",
-          "slug": "banh-keo-an-vat-8"
+          "slug": "banh-keo-an-vat-8",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/8318/5368555/combo-24-lon-heineken-silver-250ml-va-2-hu-muc-xe-tam-gia-vi-dam-sen-100g_202609031559288995.jpg"
         },
         {
           "id": "5_9",
           "name": "Khô chế biến sẵn",
           "url": "#/danh-muc/banh-keo-an-vat?sub=Kh%C3%B4%20ch%E1%BA%BF%20bi%E1%BA%BFn%20s%E1%BA%B5n",
-          "slug": "banh-keo-an-vat-9"
+          "slug": "banh-keo-an-vat-9",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/8788/366365/tao-gala-mini-tui-800g_202607161559592238.jpg"
         },
         {
           "id": "5_10",
           "name": "Bánh tươi",
           "url": "#/danh-muc/banh-keo-an-vat?sub=B%C3%A1nh%20t%C6%B0%C6%A1i",
-          "slug": "banh-keo-an-vat-10"
+          "slug": "banh-keo-an-vat-10",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/8788/5368223/luu-ngot-tu-xuyen_202608130111186053.jpg"
         },
         {
           "id": "5_11",
           "name": "Bánh Chocopie",
           "url": "#/danh-muc/banh-keo-an-vat?sub=B%C3%A1nh%20Chocopie",
-          "slug": "banh-keo-an-vat-11"
+          "slug": "banh-keo-an-vat-11",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/3358/5368685/banh-bong-lan-mem-huong-dua-aji-goi-150g_202609211159483289.png"
         },
         {
           "id": "5_12",
           "name": "Bánh Gạo - Bánh xốp",
           "url": "#/danh-muc/banh-keo-an-vat?sub=B%C3%A1nh%20G%E1%BA%A1o%20-%20B%C3%A1nh%20x%E1%BB%91p",
-          "slug": "banh-keo-an-vat-12"
+          "slug": "banh-keo-an-vat-12",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/3358/5368685/banh-bong-lan-mem-huong-dua-aji-goi-150g_202609211159483289.png"
         },
         {
           "id": "5_13",
           "name": "Bánh quy - Bánh quế",
           "url": "#/danh-muc/banh-keo-an-vat?sub=B%C3%A1nh%20quy%20-%20B%C3%A1nh%20qu%E1%BA%BF",
-          "slug": "banh-keo-an-vat-13"
+          "slug": "banh-keo-an-vat-13",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/3358/5368685/banh-bong-lan-mem-huong-dua-aji-goi-150g_202609211159483289.png"
         },
         {
           "id": "5_14",
           "name": "Bánh Snack - Bánh que",
           "url": "#/danh-muc/banh-keo-an-vat?sub=B%C3%A1nh%20Snack%20-%20B%C3%A1nh%20que",
-          "slug": "banh-keo-an-vat-14"
+          "slug": "banh-keo-an-vat-14",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/1/image/production/2026/1/image/Products/8781/233766/xuong-que-heo-nhap-khau-1kg_202601081014438944.jpg"
         }
       ],
       "slug": "banh-keo-an-vat",
@@ -438,73 +477,85 @@ window.BHX_DATA = {
           "id": "6_1",
           "name": "Dầu ăn",
           "url": "#/danh-muc/dau-an-gia-vi?sub=D%E1%BA%A7u%20%C4%83n",
-          "slug": "dau-an-gia-vi-1"
+          "slug": "dau-an-gia-vi-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/2286/5367565/dau-dau-nanh-orchid-chai-1-lit_202607021102211082.jpg"
         },
         {
           "id": "6_2",
           "name": "Nước mắm",
           "url": "#/danh-muc/dau-an-gia-vi?sub=N%C6%B0%E1%BB%9Bc%20m%E1%BA%AFm",
-          "slug": "dau-an-gia-vi-2"
+          "slug": "dau-an-gia-vi-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/production/2026/6/image/Products/2286/5367090/bo-3-gia-vi-thiet-yeu-janbee_202606131042415424.jpg"
         },
         {
           "id": "6_3",
           "name": "Nước tương",
           "url": "#/danh-muc/dau-an-gia-vi?sub=N%C6%B0%E1%BB%9Bc%20t%C6%B0%C6%A1ng",
-          "slug": "dau-an-gia-vi-3"
+          "slug": "dau-an-gia-vi-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/production/2026/6/image/Products/2286/5366654/thung-12-chai-dau-dau-nanh-100-nguyen-chat-tuong-an-1-lit_202606010102128639.jpg"
         },
         {
           "id": "6_4",
           "name": "Tương ớt - Tương đen - Tương cà",
           "url": "#/danh-muc/dau-an-gia-vi?sub=T%C6%B0%C6%A1ng%20%E1%BB%9Bt%20-%20T%C6%B0%C6%A1ng%20%C4%91en%20-%20T%C6%B0%C6%A1ng%20c%C3%A0",
-          "slug": "dau-an-gia-vi-4"
+          "slug": "dau-an-gia-vi-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/production/2026/6/image/Products/2286/5366653/thung-6-can-dau-dau-nanh-meizan-2-lit_202606010101574677.jpg"
         },
         {
           "id": "6_5",
           "name": "Nước chấm - Nước sốt - Mắm",
           "url": "#/danh-muc/dau-an-gia-vi?sub=N%C6%B0%E1%BB%9Bc%20ch%E1%BA%A5m%20-%20N%C6%B0%E1%BB%9Bc%20s%E1%BB%91t%20-%20M%E1%BA%AFm",
-          "slug": "dau-an-gia-vi-5"
+          "slug": "dau-an-gia-vi-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/production/2026/6/image/Products/2286/5366651/thung-12-chai-dau-an-cao-cap-meizan-gold-1-lit_202606010101218538.jpg"
         },
         {
           "id": "6_6",
           "name": "Dầu hào - Dầu điều - Giấm",
           "url": "#/danh-muc/dau-an-gia-vi?sub=D%E1%BA%A7u%20h%C3%A0o%20-%20D%E1%BA%A7u%20%C4%91i%E1%BB%81u%20-%20Gi%E1%BA%A5m",
-          "slug": "dau-an-gia-vi-6"
+          "slug": "dau-an-gia-vi-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/production/2026/6/image/Products/2286/5366620/thung-12-chai-dau-dau-nanh-tinh-luyen-janbee-1-lit_202606010057200321.jpg"
         },
         {
           "id": "6_7",
           "name": "Bơ - Mayonnaise",
           "url": "#/danh-muc/dau-an-gia-vi?sub=B%C6%A1%20-%20Mayonnaise",
-          "slug": "dau-an-gia-vi-7"
+          "slug": "dau-an-gia-vi-7",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/production/2026/6/image/Products/2286/5366617/thung-6-can-dau-dau-nanh-nguyen-chat-simply-2-lit_202606010049242001.jpg"
         },
         {
           "id": "6_8",
           "name": "Đường - Muối",
           "url": "#/danh-muc/dau-an-gia-vi?sub=%C4%90%C6%B0%E1%BB%9Dng%20-%20Mu%E1%BB%91i",
-          "slug": "dau-an-gia-vi-8"
+          "slug": "dau-an-gia-vi-8",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/production/2026/6/image/Products/2286/5366616/thung-12-chai-dau-dau-nanh-nguyen-chat-simply-1-lit_202606010045022292.jpg"
         },
         {
           "id": "6_9",
           "name": "Hạt nêm - Bột ngọt - Bột canh",
           "url": "#/danh-muc/dau-an-gia-vi?sub=H%E1%BA%A1t%20n%C3%AAm%20-%20B%E1%BB%99t%20ng%E1%BB%8Dt%20-%20B%E1%BB%99t%20canh",
-          "slug": "dau-an-gia-vi-9"
+          "slug": "dau-an-gia-vi-9",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2289/5368272/nuoc-mam-nam-ngu-phu-quoc-dam-dac-32-do-dam-chai-500ml_202608261450547356.jpg"
         },
         {
           "id": "6_10",
           "name": "Tiêu - Sa tế - Ớt bột",
           "url": "#/danh-muc/dau-an-gia-vi?sub=Ti%C3%AAu%20-%20Sa%20t%E1%BA%BF%20-%20%E1%BB%9At%20b%E1%BB%99t",
-          "slug": "dau-an-gia-vi-10"
+          "slug": "dau-an-gia-vi-10",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2289/5367969/18-chai-nuoc-cham-nam-ngu-sieu-tiet-kiem-800ml_202608271351336688.jpg"
         },
         {
           "id": "6_11",
           "name": "Ngũ vị hương - Cà ri - Bột nghệ - Quế - Hồi",
           "url": "#/danh-muc/dau-an-gia-vi?sub=Ng%C5%A9%20v%E1%BB%8B%20h%C6%B0%C6%A1ng%20-%20C%C3%A0%20ri%20-%20B%E1%BB%99t%20ngh%E1%BB%87%20-%20Qu%E1%BA%BF%20-%20H%E1%BB%93i",
-          "slug": "dau-an-gia-vi-11"
+          "slug": "dau-an-gia-vi-11",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7148/1990379_202410101528079106.png"
         },
         {
           "id": "6_12",
           "name": "Gia vị nêm sẵn",
           "url": "#/danh-muc/dau-an-gia-vi?sub=Gia%20v%E1%BB%8B%20n%C3%AAm%20s%E1%BA%B5n",
-          "slug": "dau-an-gia-vi-12"
+          "slug": "dau-an-gia-vi-12",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2289/5368272/nuoc-mam-nam-ngu-phu-quoc-dam-dac-32-do-dam-chai-500ml_202608261450547356.jpg"
         }
       ],
       "slug": "dau-an-gia-vi",
@@ -528,67 +579,78 @@ window.BHX_DATA = {
           "id": "7_1",
           "name": "Gạo",
           "url": "#/danh-muc/gao-bot-do-kho?sub=G%E1%BA%A1o",
-          "slug": "gao-bot-do-kho-1"
+          "slug": "gao-bot-do-kho-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/bep-luon-du-day_202609221121508379.png"
         },
         {
           "id": "7_2",
           "name": "Bột các loại",
           "url": "#/danh-muc/gao-bot-do-kho?sub=B%E1%BB%99t%20c%C3%A1c%20lo%E1%BA%A1i",
-          "slug": "gao-bot-do-kho-2"
+          "slug": "gao-bot-do-kho-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2513/gao_202511010303353277.png"
         },
         {
           "id": "7_3",
           "name": "Bánh phồng - Bánh đa - Bánh tráng",
           "url": "#/danh-muc/gao-bot-do-kho?sub=B%C3%A1nh%20ph%E1%BB%93ng%20-%20B%C3%A1nh%20%C4%91a%20-%20B%C3%A1nh%20tr%C3%A1ng",
-          "slug": "gao-bot-do-kho-3"
+          "slug": "gao-bot-do-kho-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/8275/bot-nghe-hoi-que_202508291632170533.png"
         },
         {
           "id": "7_4",
           "name": "Đậu - Nấm - Rong biển khô",
           "url": "#/danh-muc/gao-bot-do-kho?sub=%C4%90%E1%BA%ADu%20-%20N%E1%BA%A5m%20-%20Rong%20bi%E1%BB%83n%20kh%C3%B4",
-          "slug": "gao-bot-do-kho-4"
+          "slug": "gao-bot-do-kho-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3237/ca-hop_202508291625395702.png"
         },
         {
           "id": "7_5",
           "name": "Táo đỏ - Hạt chia - Set chè",
           "url": "#/danh-muc/gao-bot-do-kho?sub=T%C3%A1o%20%C4%91%E1%BB%8F%20-%20H%E1%BA%A1t%20chia%20-%20Set%20ch%C3%A8",
-          "slug": "gao-bot-do-kho-5"
+          "slug": "gao-bot-do-kho-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7618/xuc-xich-tuoi_202511010322252198.png"
         },
         {
           "id": "7_6",
           "name": "Chao - Cá mắm - Dưa mắm",
           "url": "#/danh-muc/gao-bot-do-kho?sub=Chao%20-%20C%C3%A1%20m%E1%BA%AFm%20-%20D%C6%B0a%20m%E1%BA%AFm",
-          "slug": "gao-bot-do-kho-6"
+          "slug": "gao-bot-do-kho-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3234/banh-phong_202508291629129291.png"
         },
         {
           "id": "7_7",
           "name": "Cá hộp - Heo - Bò - Pate hộp",
           "url": "#/danh-muc/gao-bot-do-kho?sub=C%C3%A1%20h%E1%BB%99p%20-%20Heo%20-%20B%C3%B2%20-%20Pate%20h%E1%BB%99p",
-          "slug": "gao-bot-do-kho-7"
+          "slug": "gao-bot-do-kho-7",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3235/dau-cac-loai_202508291627309631.png"
         },
         {
           "id": "7_8",
           "name": "Xúc xích - Lạp xưởng",
           "url": "#/danh-muc/gao-bot-do-kho?sub=X%C3%BAc%20x%C3%ADch%20-%20L%E1%BA%A1p%20x%C6%B0%E1%BB%9Fng",
-          "slug": "gao-bot-do-kho-8"
+          "slug": "gao-bot-do-kho-8",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7082/do-chay_202509221030362301.png"
         },
         {
           "id": "7_9",
           "name": "Nước cốt dừa - Bơ đậu phộng",
           "url": "#/danh-muc/gao-bot-do-kho?sub=N%C6%B0%E1%BB%9Bc%20c%E1%BB%91t%20d%E1%BB%ABa%20-%20B%C6%A1%20%C4%91%E1%BA%ADu%20ph%E1%BB%99ng",
-          "slug": "gao-bot-do-kho-9"
+          "slug": "gao-bot-do-kho-9",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7148/1990379_202410101528079106.png"
         },
         {
           "id": "7_10",
           "name": "Chanh muối - Đá me - Tắc xí muội",
           "url": "#/danh-muc/gao-bot-do-kho?sub=Chanh%20mu%E1%BB%91i%20-%20%C4%90%C3%A1%20me%20-%20T%E1%BA%AFc%20x%C3%AD%20mu%E1%BB%99i",
-          "slug": "gao-bot-do-kho-10"
+          "slug": "gao-bot-do-kho-10",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2385/tra-kho-tui-loc_202508291624127019.png"
         },
         {
           "id": "7_11",
           "name": "Đào lon - Vải lon - Nhãn lon",
           "url": "#/danh-muc/gao-bot-do-kho?sub=%C4%90%C3%A0o%20lon%20-%20V%E1%BA%A3i%20lon%20-%20Nh%C3%A3n%20lon",
-          "slug": "gao-bot-do-kho-11"
+          "slug": "gao-bot-do-kho-11",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3235/da-mo-heo_202410101533036480.png"
         }
       ],
       "slug": "gao-bot-do-kho",
@@ -611,37 +673,43 @@ window.BHX_DATA = {
           "id": "8_1",
           "name": "Mì ăn liền",
           "url": "#/danh-muc/mi-mien-chao-pho?sub=M%C3%AC%20%C4%83n%20li%E1%BB%81n",
-          "slug": "mi-mien-chao-pho-1"
+          "slug": "mi-mien-chao-pho-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2565/5368546/combo-30-goi-mi-hao-hao-tom-chua-cay-75g-va-dau-dau-nanh-simply-1-lit_202609031420290499.jpg"
         },
         {
           "id": "8_2",
           "name": "Hủ tiếu - Miến",
           "url": "#/danh-muc/mi-mien-chao-pho?sub=H%E1%BB%A7%20ti%E1%BA%BFu%20-%20Mi%E1%BA%BFn",
-          "slug": "mi-mien-chao-pho-2"
+          "slug": "mi-mien-chao-pho-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2565/5368102/mi-tron-ohya-xot-tuong-den-goi-88g_202608070134289278.jpg"
         },
         {
           "id": "8_3",
           "name": "Phở - Bún",
           "url": "#/danh-muc/mi-mien-chao-pho?sub=Ph%E1%BB%9F%20-%20B%C3%BAn",
-          "slug": "mi-mien-chao-pho-3"
+          "slug": "mi-mien-chao-pho-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2565/5368100/mi-tron-ohya-ga-xot-kem-ca-chua-goi-88g_202608070131210640.jpg"
         },
         {
           "id": "8_4",
           "name": "Cháo gói - Cháo tươi",
           "url": "#/danh-muc/mi-mien-chao-pho?sub=Ch%C3%A1o%20g%C3%B3i%20-%20Ch%C3%A1o%20t%C6%B0%C6%A1i",
-          "slug": "mi-mien-chao-pho-4"
+          "slug": "mi-mien-chao-pho-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2565/5368098/mi-ohya-tom-chua-cay-goi-88g_202608070128344631.jpg"
         },
         {
           "id": "8_5",
           "name": "Mì Ý - Mì trứng - Nui",
           "url": "#/danh-muc/mi-mien-chao-pho?sub=M%C3%AC%20%C3%9D%20-%20M%C3%AC%20tr%E1%BB%A9ng%20-%20Nui",
-          "slug": "mi-mien-chao-pho-5"
+          "slug": "mi-mien-chao-pho-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2565/5368096/mi-ohya-bo-ham-rau-thom-goi-76g_202608070125124260.jpg"
         },
         {
           "id": "8_6",
           "name": "Bánh gạo Hàn Quốc",
           "url": "#/danh-muc/mi-mien-chao-pho?sub=B%C3%A1nh%20g%E1%BA%A1o%20H%C3%A0n%20Qu%E1%BB%91c",
-          "slug": "mi-mien-chao-pho-6"
+          "slug": "mi-mien-chao-pho-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/2565/5367487/loc-10-mi-hao-hao-vi-tom-chua-cay-goi-75g_202607231425576726.jpg"
         }
       ],
       "slug": "mi-mien-chao-pho",
@@ -664,133 +732,155 @@ window.BHX_DATA = {
           "id": "9_1",
           "name": "Dầu gội",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=D%E1%BA%A7u%20g%E1%BB%99i",
-          "slug": "cham-soc-ca-nhan-1"
+          "slug": "cham-soc-ca-nhan-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_2",
           "name": "Sữa tắm",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=S%E1%BB%AFa%20t%E1%BA%AFm",
-          "slug": "cham-soc-ca-nhan-2"
+          "slug": "cham-soc-ca-nhan-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_3",
           "name": "Dầu xả - Kem ủ",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=D%E1%BA%A7u%20x%E1%BA%A3%20-%20Kem%20%E1%BB%A7",
-          "slug": "cham-soc-ca-nhan-3"
+          "slug": "cham-soc-ca-nhan-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_4",
           "name": "Kem đánh răng",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=Kem%20%C4%91%C3%A1nh%20r%C4%83ng",
-          "slug": "cham-soc-ca-nhan-4"
+          "slug": "cham-soc-ca-nhan-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/cham-soc-rang-mieng_202609221126542826.png"
         },
         {
           "id": "9_5",
           "name": "Bàn chải đánh răng",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=B%C3%A0n%20ch%E1%BA%A3i%20%C4%91%C3%A1nh%20r%C4%83ng",
-          "slug": "cham-soc-ca-nhan-5"
+          "slug": "cham-soc-ca-nhan-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/cham-soc-rang-mieng_202609221126542826.png"
         },
         {
           "id": "9_6",
           "name": "Nước súc miệng",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=N%C6%B0%E1%BB%9Bc%20s%C3%BAc%20mi%E1%BB%87ng",
-          "slug": "cham-soc-ca-nhan-6"
+          "slug": "cham-soc-ca-nhan-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/da-sach-da-xinh_202609221050095577.png"
         },
         {
           "id": "9_7",
           "name": "Nước rửa tay",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=N%C6%B0%E1%BB%9Bc%20r%E1%BB%ADa%20tay",
-          "slug": "cham-soc-ca-nhan-7"
+          "slug": "cham-soc-ca-nhan-7",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/9081/giay-ve-sinh_202508291645253833.png"
         },
         {
           "id": "9_8",
           "name": "Xà bông cục",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=X%C3%A0%20b%C3%B4ng%20c%E1%BB%A5c",
-          "slug": "cham-soc-ca-nhan-8"
+          "slug": "cham-soc-ca-nhan-8",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3003/khan-uot_202508291646581060.png"
         },
         {
           "id": "9_9",
           "name": "Lăn xịt khử mùi",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=L%C4%83n%20x%E1%BB%8Bt%20kh%E1%BB%AD%20m%C3%B9i",
-          "slug": "cham-soc-ca-nhan-9"
+          "slug": "cham-soc-ca-nhan-9",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_10",
           "name": "Dung dịch vệ sinh",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=Dung%20d%E1%BB%8Bch%20v%E1%BB%87%20sinh",
-          "slug": "cham-soc-ca-nhan-10"
+          "slug": "cham-soc-ca-nhan-10",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_11",
           "name": "Dao - Bọt cạo râu",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=Dao%20-%20B%E1%BB%8Dt%20c%E1%BA%A1o%20r%C3%A2u",
-          "slug": "cham-soc-ca-nhan-11"
+          "slug": "cham-soc-ca-nhan-11",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_12",
           "name": "Sữa rửa mặt - Nước tẩy trang",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=S%E1%BB%AFa%20r%E1%BB%ADa%20m%E1%BA%B7t%20-%20N%C6%B0%E1%BB%9Bc%20t%E1%BA%A9y%20trang",
-          "slug": "cham-soc-ca-nhan-12"
+          "slug": "cham-soc-ca-nhan-12",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_13",
           "name": "Son - Nước hoa - Mặt nạ",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=Son%20-%20N%C6%B0%E1%BB%9Bc%20hoa%20-%20M%E1%BA%B7t%20n%E1%BA%A1",
-          "slug": "cham-soc-ca-nhan-13"
+          "slug": "cham-soc-ca-nhan-13",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_14",
           "name": "Kem dưỡng - Serum - Kem chống nắng",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=Kem%20d%C6%B0%E1%BB%A1ng%20-%20Serum%20-%20Kem%20ch%E1%BB%91ng%20n%E1%BA%AFng",
-          "slug": "cham-soc-ca-nhan-14"
+          "slug": "cham-soc-ca-nhan-14",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_15",
           "name": "Bông tẩy trang",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=B%C3%B4ng%20t%E1%BA%A9y%20trang",
-          "slug": "cham-soc-ca-nhan-15"
+          "slug": "cham-soc-ca-nhan-15",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/tam-goi-thom-tho_202609221102442037.png"
         },
         {
           "id": "9_16",
           "name": "Giấy vệ sinh",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=Gi%E1%BA%A5y%20v%E1%BB%87%20sinh",
-          "slug": "cham-soc-ca-nhan-16"
+          "slug": "cham-soc-ca-nhan-16",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/9081/giay-ve-sinh_202410101519448833.png"
         },
         {
           "id": "9_17",
           "name": "Khăn giấy",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=Kh%C4%83n%20gi%E1%BA%A5y",
-          "slug": "cham-soc-ca-nhan-17"
+          "slug": "cham-soc-ca-nhan-17",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/9081/giay-ve-sinh_202410101519448833.png"
         },
         {
           "id": "9_18",
           "name": "Khăn ướt",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=Kh%C4%83n%20%C6%B0%E1%BB%9Bt",
-          "slug": "cham-soc-ca-nhan-18"
+          "slug": "cham-soc-ca-nhan-18",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/9081/giay-ve-sinh_202410101519448833.png"
         },
         {
           "id": "9_19",
           "name": "Băng vệ sinh - Tã bỉm",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=B%C4%83ng%20v%E1%BB%87%20sinh%20-%20T%C3%A3%20b%E1%BB%89m",
-          "slug": "cham-soc-ca-nhan-19"
+          "slug": "cham-soc-ca-nhan-19",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2515/2515_202410110851071914.png"
         },
         {
           "id": "9_20",
           "name": "Khẩu trang - Băng keo cá nhân",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=Kh%E1%BA%A9u%20trang%20-%20B%C4%83ng%20keo%20c%C3%A1%20nh%C3%A2n",
-          "slug": "cham-soc-ca-nhan-20"
+          "slug": "cham-soc-ca-nhan-20",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2515/2515_202410110851071914.png"
         },
         {
           "id": "9_21",
           "name": "Tăm tre - Tăm bông - Tăm chỉ nha khoa",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=T%C4%83m%20tre%20-%20T%C4%83m%20b%C3%B4ng%20-%20T%C4%83m%20ch%E1%BB%89%20nha%20khoa",
-          "slug": "cham-soc-ca-nhan-21"
+          "slug": "cham-soc-ca-nhan-21",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2515/2515_202410110851071914.png"
         },
         {
           "id": "9_22",
           "name": "Dầu cù là - Dầu sâm lăn",
           "url": "#/danh-muc/cham-soc-ca-nhan?sub=D%E1%BA%A7u%20c%C3%B9%20l%C3%A0%20-%20D%E1%BA%A7u%20s%C3%A2m%20l%C4%83n",
-          "slug": "cham-soc-ca-nhan-22"
+          "slug": "cham-soc-ca-nhan-22",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2515/2515_202410110851071914.png"
         }
       ],
       "slug": "cham-soc-ca-nhan",
@@ -814,61 +904,71 @@ window.BHX_DATA = {
           "id": "10_1",
           "name": "Nước giặt",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=N%C6%B0%E1%BB%9Bc%20gi%E1%BA%B7t",
-          "slug": "ve-sinh-nha-cua-1"
+          "slug": "ve-sinh-nha-cua-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2464/5368613/nuoc-giat-ariel-cua-tren-huong-downy-nang-som-tui-405kg_202609161016208803.jpg"
         },
         {
           "id": "10_2",
           "name": "Nước xả",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=N%C6%B0%E1%BB%9Bc%20x%E1%BA%A3",
-          "slug": "ve-sinh-nha-cua-2"
+          "slug": "ve-sinh-nha-cua-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2464/5368612/nuoc-giat-ariel-cua-truoc-huong-downy-nang-som-tui-37kg_202609161016494874.jpg"
         },
         {
           "id": "10_3",
           "name": "Bột giặt",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=B%E1%BB%99t%20gi%E1%BA%B7t",
-          "slug": "ve-sinh-nha-cua-3"
+          "slug": "ve-sinh-nha-cua-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2464/5368256/2-tui-nuoc-giat-xa-maxkleen-nuoc-hoa-cao-cap-3kg_202608141024257846.jpg"
         },
         {
           "id": "10_4",
           "name": "Nước tẩy quần áo",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=N%C6%B0%E1%BB%9Bc%20t%E1%BA%A9y%20qu%E1%BA%A7n%20%C3%A1o",
-          "slug": "ve-sinh-nha-cua-4"
+          "slug": "ve-sinh-nha-cua-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2464/5368255/2-tui-nuoc-giat-maxkleen-giu-mau-tuoi-moi-3kg_202608141018182837.jpg"
         },
         {
           "id": "10_5",
           "name": "Nước rửa chén",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=N%C6%B0%E1%BB%9Bc%20r%E1%BB%ADa%20ch%C3%A9n",
-          "slug": "ve-sinh-nha-cua-5"
+          "slug": "ve-sinh-nha-cua-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2464/5368012/2-tui-nuoc-giat-izi-home-huong-som-mai-25kg_202608031317078361.jpg"
         },
         {
           "id": "10_6",
           "name": "Nước lau sàn",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=N%C6%B0%E1%BB%9Bc%20lau%20s%C3%A0n",
-          "slug": "ve-sinh-nha-cua-6"
+          "slug": "ve-sinh-nha-cua-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2464/5367940/4-tui-nuoc-giat-omo-matic-comfort-cua-truoc-ngan-mui-am-moc-huong-nuoc-hoa-38kg_202608211510370653.jpg"
         },
         {
           "id": "10_7",
           "name": "Tẩy rửa nhà tắm",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=T%E1%BA%A9y%20r%E1%BB%ADa%20nh%C3%A0%20t%E1%BA%AFm",
-          "slug": "ve-sinh-nha-cua-7"
+          "slug": "ve-sinh-nha-cua-7",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2464/5367939/4-tui-nuoc-giat-omo-matic-cua-truoc-chuyen-gia-giu-mau-huong-tuoi-mat-38kg_202609091013265997.jpg"
         },
         {
           "id": "10_8",
           "name": "Lau kính - Lau bếp",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=Lau%20k%C3%ADnh%20-%20Lau%20b%E1%BA%BFp",
-          "slug": "ve-sinh-nha-cua-8"
+          "slug": "ve-sinh-nha-cua-8",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2464/5367938/4-tui-nuoc-giat-omo-matic-comfort-cua-tren-tinh-dau-nuoc-hoa-tinh-te-38kg_202608201117508035.jpg"
         },
         {
           "id": "10_9",
           "name": "Xịt phòng - Sáp thơm",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=X%E1%BB%8Bt%20ph%C3%B2ng%20-%20S%C3%A1p%20th%C6%A1m",
-          "slug": "ve-sinh-nha-cua-9"
+          "slug": "ve-sinh-nha-cua-9",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2387/5368052/combo-nuoc-rua-chen-sunlight-3-1kg-va-lau-san-sunlight-2-7kg_202608051050022660.jpg"
         },
         {
           "id": "10_10",
           "name": "Bình xịt côn trùng - Nhang muỗi",
           "url": "#/danh-muc/ve-sinh-nha-cua?sub=B%C3%ACnh%20x%E1%BB%8Bt%20c%C3%B4n%20tr%C3%B9ng%20-%20Nhang%20mu%E1%BB%97i",
-          "slug": "ve-sinh-nha-cua-10"
+          "slug": "ve-sinh-nha-cua-10",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2387/5368051/combo-nuoc-rua-chen-va-lau-san-sunlight-tay-ve-sinh-vim_202608061316003531.jpg"
         }
       ],
       "slug": "ve-sinh-nha-cua",
@@ -892,127 +992,148 @@ window.BHX_DATA = {
           "id": "11_1",
           "name": "Khăn mặt - Khăn tắm",
           "url": "#/danh-muc/do-gia-dung?sub=Kh%C4%83n%20m%E1%BA%B7t%20-%20Kh%C4%83n%20t%E1%BA%AFm",
-          "slug": "do-gia-dung-1"
+          "slug": "do-gia-dung-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/4326/120x120-26_202410101455374248.png"
         },
         {
           "id": "11_2",
           "name": "Bông tắm - Móc áo",
           "url": "#/danh-muc/do-gia-dung?sub=B%C3%B4ng%20t%E1%BA%AFm%20-%20M%C3%B3c%20%C3%A1o",
-          "slug": "do-gia-dung-2"
+          "slug": "do-gia-dung-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/6553/120x120-25_202410101455140364.png"
         },
         {
           "id": "11_3",
           "name": "Khăn lau bếp",
           "url": "#/danh-muc/do-gia-dung?sub=Kh%C4%83n%20lau%20b%E1%BA%BFp",
-          "slug": "do-gia-dung-3"
+          "slug": "do-gia-dung-3",
+          "icon": "https://cdn.tgdd.vn/Products/Images/2403/bhx/chao-cac-loai-202212051546575007.png"
         },
         {
           "id": "11_4",
           "name": "Thảm",
           "url": "#/danh-muc/do-gia-dung?sub=Th%E1%BA%A3m",
-          "slug": "do-gia-dung-4"
+          "slug": "do-gia-dung-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/4929/120x120-28_202410101456263849.png"
         },
         {
           "id": "11_5",
           "name": "Thớt - Thau - Rổ - Xô",
           "url": "#/danh-muc/do-gia-dung?sub=Th%E1%BB%9Bt%20-%20Thau%20-%20R%E1%BB%95%20-%20X%C3%B4",
-          "slug": "do-gia-dung-5"
+          "slug": "do-gia-dung-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/do-dung-gia-dinh_202609221436129648.png"
         },
         {
           "id": "11_6",
           "name": "Ly - Chén - Tô - Dĩa",
           "url": "#/danh-muc/do-gia-dung?sub=Ly%20-%20Ch%C3%A9n%20-%20T%C3%B4%20-%20D%C4%A9a",
-          "slug": "do-gia-dung-6"
+          "slug": "do-gia-dung-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3728/120x120-32_202410101458222965.png"
         },
         {
           "id": "11_7",
           "name": "Đũa - Muỗng - Nĩa - Vá",
           "url": "#/danh-muc/do-gia-dung?sub=%C4%90%C5%A9a%20-%20Mu%E1%BB%97ng%20-%20N%C4%A9a%20-%20V%C3%A1",
-          "slug": "do-gia-dung-7"
+          "slug": "do-gia-dung-7",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3732/120x120-33_202410101459524645.png"
         },
         {
           "id": "11_8",
           "name": "Dao - Kéo - Kẹp gắp - Ray lọc",
           "url": "#/danh-muc/do-gia-dung?sub=Dao%20-%20K%C3%A9o%20-%20K%E1%BA%B9p%20g%E1%BA%AFp%20-%20Ray%20l%E1%BB%8Dc",
-          "slug": "do-gia-dung-8"
+          "slug": "do-gia-dung-8",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7694/120x120-34_202410101500265584.png"
         },
         {
           "id": "11_9",
           "name": "Nồi - Chảo",
           "url": "#/danh-muc/do-gia-dung?sub=N%E1%BB%93i%20-%20Ch%E1%BA%A3o",
-          "slug": "do-gia-dung-9"
+          "slug": "do-gia-dung-9",
+          "icon": "https://cdn.tgdd.vn/Products/Images/2403/bhx/chao-cac-loai-202206251025537542.png"
         },
         {
           "id": "11_10",
           "name": "Miếng rửa chén - Miếng chà nồi - Bàn chà",
           "url": "#/danh-muc/do-gia-dung?sub=Mi%E1%BA%BFng%20r%E1%BB%ADa%20ch%C3%A9n%20-%20Mi%E1%BA%BFng%20ch%C3%A0%20n%E1%BB%93i%20-%20B%C3%A0n%20ch%C3%A0",
-          "slug": "do-gia-dung-10"
+          "slug": "do-gia-dung-10",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3185/120x120-24_202410101454508088.png"
         },
         {
           "id": "11_11",
           "name": "Chổi quét nhà - Cây lau nhà",
           "url": "#/danh-muc/do-gia-dung?sub=Ch%E1%BB%95i%20qu%C3%A9t%20nh%C3%A0%20-%20C%C3%A2y%20lau%20nh%C3%A0",
-          "slug": "do-gia-dung-11"
+          "slug": "do-gia-dung-11",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7160/ve-sinh-nha-cua-202205261522333668-1_202410101522241129.png"
         },
         {
           "id": "11_12",
           "name": "Chổi chà sàn - Cọ chà toilet",
           "url": "#/danh-muc/do-gia-dung?sub=Ch%E1%BB%95i%20ch%C3%A0%20s%C3%A0n%20-%20C%E1%BB%8D%20ch%C3%A0%20toilet",
-          "slug": "do-gia-dung-12"
+          "slug": "do-gia-dung-12",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7160/ve-sinh-nha-cua-202205261522333668-1_202410101522241129.png"
         },
         {
           "id": "11_13",
           "name": "Bình giữ nhiệt - Ly giữ nhiệt",
           "url": "#/danh-muc/do-gia-dung?sub=B%C3%ACnh%20gi%E1%BB%AF%20nhi%E1%BB%87t%20-%20Ly%20gi%E1%BB%AF%20nhi%E1%BB%87t",
-          "slug": "do-gia-dung-13"
+          "slug": "do-gia-dung-13",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3728/120x120-22_202410101503348558.png"
         },
         {
           "id": "11_14",
           "name": "Thùng đá - Bình nước",
           "url": "#/danh-muc/do-gia-dung?sub=Th%C3%B9ng%20%C4%91%C3%A1%20-%20B%C3%ACnh%20n%C6%B0%E1%BB%9Bc",
-          "slug": "do-gia-dung-14"
+          "slug": "do-gia-dung-14",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3728/120x120-22_202410101503348558.png"
         },
         {
           "id": "11_15",
           "name": "Bao tay cao su",
           "url": "#/danh-muc/do-gia-dung?sub=Bao%20tay%20cao%20su",
-          "slug": "do-gia-dung-15"
+          "slug": "do-gia-dung-15",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3185/120x120-24_202410101454508088.png"
         },
         {
           "id": "11_16",
           "name": "Màng bọc thực phẩm - Bao tay nilong",
           "url": "#/danh-muc/do-gia-dung?sub=M%C3%A0ng%20b%E1%BB%8Dc%20th%E1%BB%B1c%20ph%E1%BA%A9m%20-%20Bao%20tay%20nilong",
-          "slug": "do-gia-dung-16"
+          "slug": "do-gia-dung-16",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3185/120x120-24_202410101454508088.png"
         },
         {
           "id": "11_17",
           "name": "Túi đựng thực phẩm - Hộp đựng thực phẩm",
           "url": "#/danh-muc/do-gia-dung?sub=T%C3%BAi%20%C4%91%E1%BB%B1ng%20th%E1%BB%B1c%20ph%E1%BA%A9m%20-%20H%E1%BB%99p%20%C4%91%E1%BB%B1ng%20th%E1%BB%B1c%20ph%E1%BA%A9m",
-          "slug": "do-gia-dung-17"
+          "slug": "do-gia-dung-17",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3185/120x120-24_202410101454508088.png"
         },
         {
           "id": "11_18",
           "name": "Giấy thấm dầu - Giấy bạc",
           "url": "#/danh-muc/do-gia-dung?sub=Gi%E1%BA%A5y%20th%E1%BA%A5m%20d%E1%BA%A7u%20-%20Gi%E1%BA%A5y%20b%E1%BA%A1c",
-          "slug": "do-gia-dung-18"
+          "slug": "do-gia-dung-18",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3185/120x120-24_202410101454508088.png"
         },
         {
           "id": "11_19",
           "name": "Bao rác - Đồ hốt rác",
           "url": "#/danh-muc/do-gia-dung?sub=Bao%20r%C3%A1c%20-%20%C4%90%E1%BB%93%20h%E1%BB%91t%20r%C3%A1c",
-          "slug": "do-gia-dung-19"
+          "slug": "do-gia-dung-19",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7160/ve-sinh-nha-cua-202205261522333668-1_202410101522241129.png"
         },
         {
           "id": "11_20",
           "name": "Áo mưa",
           "url": "#/danh-muc/do-gia-dung?sub=%C3%81o%20m%C6%B0a",
-          "slug": "do-gia-dung-20"
+          "slug": "do-gia-dung-20",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3727/120x120-36_202410101501249523.png"
         },
         {
           "id": "11_21",
           "name": "Đồ dùng một lần",
           "url": "#/danh-muc/do-gia-dung?sub=%C4%90%E1%BB%93%20d%C3%B9ng%20m%E1%BB%99t%20l%E1%BA%A7n",
-          "slug": "do-gia-dung-21"
+          "slug": "do-gia-dung-21",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3185/120x120-24_202410101454508088.png"
         }
       ],
       "slug": "do-gia-dung",
@@ -1035,25 +1156,29 @@ window.BHX_DATA = {
           "id": "12_1",
           "name": "Băng keo",
           "url": "#/danh-muc/van-phong-pham?sub=B%C4%83ng%20keo",
-          "slug": "van-phong-pham-1"
+          "slug": "van-phong-pham-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/10338/120x120-30_202410101457137501.png"
         },
         {
           "id": "12_2",
           "name": "Bao thư",
           "url": "#/danh-muc/van-phong-pham?sub=Bao%20th%C6%B0",
-          "slug": "van-phong-pham-2"
+          "slug": "van-phong-pham-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/10340/120x120-31_202410101457551893.png"
         },
         {
           "id": "12_3",
           "name": "Bút lông - Bút bi - Bút chì",
           "url": "#/danh-muc/van-phong-pham?sub=B%C3%BAt%20l%C3%B4ng%20-%20B%C3%BAt%20bi%20-%20B%C3%BAt%20ch%C3%AC",
-          "slug": "van-phong-pham-3"
+          "slug": "van-phong-pham-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/10338/120x120-30_202410101457137501.png"
         },
         {
           "id": "12_4",
           "name": "Đồ chơi trẻ em",
           "url": "#/danh-muc/van-phong-pham?sub=%C4%90%E1%BB%93%20ch%C6%A1i%20tr%E1%BA%BB%20em",
-          "slug": "van-phong-pham-4"
+          "slug": "van-phong-pham-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/8286/frame-3476202_202503271536411609.png"
         }
       ],
       "slug": "van-phong-pham",
@@ -1076,61 +1201,71 @@ window.BHX_DATA = {
           "id": "13_1",
           "name": "Pin",
           "url": "#/danh-muc/do-dien-may?sub=Pin",
-          "slug": "do-dien-may-1"
+          "slug": "do-dien-may-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/56/120x120-35_202410101500470855.png"
         },
         {
           "id": "13_2",
           "name": "Ổ cắm điện",
           "url": "#/danh-muc/do-dien-may?sub=%E1%BB%94%20c%E1%BA%AFm%20%C4%91i%E1%BB%87n",
-          "slug": "do-dien-may-2"
+          "slug": "do-dien-may-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/56/120x120-35_202410101500470855.png"
         },
         {
           "id": "13_3",
           "name": "Bình siêu tốc",
           "url": "#/danh-muc/do-dien-may?sub=B%C3%ACnh%20si%C3%AAu%20t%E1%BB%91c",
-          "slug": "do-dien-may-3"
+          "slug": "do-dien-may-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/5021048/logo/bep-lun-du-day_202607151309298347.png"
         },
         {
           "id": "13_4",
           "name": "Bàn ủi",
           "url": "#/danh-muc/do-dien-may?sub=B%C3%A0n%20%E1%BB%A7i",
-          "slug": "do-dien-may-4"
+          "slug": "do-dien-may-4",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/56/120x120-35_202410101500470855.png"
         },
         {
           "id": "13_5",
           "name": "Quạt",
           "url": "#/danh-muc/do-dien-may?sub=Qu%E1%BA%A1t",
-          "slug": "do-dien-may-5"
+          "slug": "do-dien-may-5",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/menuheader/do-dung-gia-dinh_202609221436129648.png"
         },
         {
           "id": "13_6",
           "name": "Nồi cơm điện",
           "url": "#/danh-muc/do-dien-may?sub=N%E1%BB%93i%20c%C6%A1m%20%C4%91i%E1%BB%87n",
-          "slug": "do-dien-may-6"
+          "slug": "do-dien-may-6",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/56/120x120-35_202410101500470855.png"
         },
         {
           "id": "13_7",
           "name": "Máy sấy tóc",
           "url": "#/danh-muc/do-dien-may?sub=M%C3%A1y%20s%E1%BA%A5y%20t%C3%B3c",
-          "slug": "do-dien-may-7"
+          "slug": "do-dien-may-7",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/56/120x120-35_202410101500470855.png"
         },
         {
           "id": "13_8",
           "name": "Nồi lẩu điện",
           "url": "#/danh-muc/do-dien-may?sub=N%E1%BB%93i%20l%E1%BA%A9u%20%C4%91i%E1%BB%87n",
-          "slug": "do-dien-may-8"
+          "slug": "do-dien-may-8",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/56/120x120-35_202410101500470855.png"
         },
         {
           "id": "13_9",
           "name": "Máy xay sinh tố",
           "url": "#/danh-muc/do-dien-may?sub=M%C3%A1y%20xay%20sinh%20t%E1%BB%91",
-          "slug": "do-dien-may-9"
+          "slug": "do-dien-may-9",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/56/120x120-35_202410101500470855.png"
         },
         {
           "id": "13_10",
           "name": "Bếp điện - Bếp nướng điện",
           "url": "#/danh-muc/do-dien-may?sub=B%E1%BA%BFp%20%C4%91i%E1%BB%87n%20-%20B%E1%BA%BFp%20n%C6%B0%E1%BB%9Bng%20%C4%91i%E1%BB%87n",
-          "slug": "do-dien-may-10"
+          "slug": "do-dien-may-10",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/56/120x120-35_202410101500470855.png"
         }
       ],
       "slug": "do-dien-may",
@@ -1153,19 +1288,22 @@ window.BHX_DATA = {
           "id": "14_1",
           "name": "Quần áo",
           "url": "#/danh-muc/thoi-trang?sub=Qu%E1%BA%A7n%20%C3%A1o",
-          "slug": "thoi-trang-1"
+          "slug": "thoi-trang-1",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3727/120x120-36_202410101501249523.png"
         },
         {
           "id": "14_2",
           "name": "Túi xách",
           "url": "#/danh-muc/thoi-trang?sub=T%C3%BAi%20x%C3%A1ch",
-          "slug": "thoi-trang-2"
+          "slug": "thoi-trang-2",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3727/120x120-36_202410101501249523.png"
         },
         {
           "id": "14_3",
           "name": "Giày dép",
           "url": "#/danh-muc/thoi-trang?sub=Gi%C3%A0y%20d%C3%A9p",
-          "slug": "thoi-trang-3"
+          "slug": "thoi-trang-3",
+          "icon": "https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/4352/120x120-27_202410101456073955.png"
         }
       ],
       "slug": "thoi-trang",
