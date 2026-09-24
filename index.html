@@ -529,14 +529,33 @@
       <main id="main-layout">
 
         <!-- 1. PROMO CATEGORY BADGES -->
-        <div class="relative py-3 bg-white mb-[6px] shadow-sm group/badges">
-          <button id="story-badges-prev" class="scroll-nav-btn" style="left:6px;display:none" aria-label="Cuộn sang trái">&#8249;</button>
+        <div class="relative py-2.5 bg-white mb-[6px] shadow-sm group/badges select-none overflow-hidden">
+          <!-- Left fade & Prev button -->
+          <div id="story-badges-prev-wrap" class="hidden absolute left-0 top-0 bottom-0 w-14 bg-gradient-to-r from-white via-white/95 to-transparent z-20 items-center justify-start pl-1">
+            <button id="story-badges-prev"
+                    type="button"
+                    class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white hover:bg-[#EF5121] text-gray-700 hover:text-white shadow-md border border-gray-200 flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95"
+                    aria-label="Cuộn sang trái">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+          </div>
+
+          <!-- Track -->
           <div id="story-badges-track"
-               class="flex overflow-x-auto px-3 gap-0 scroll-smooth"
-               style="scrollbar-width:none;-ms-overflow-style:none">
+               class="flex overflow-x-auto px-3 gap-1 scroll-smooth cursor-grab active:cursor-grabbing"
+               style="scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;">
             <!-- Rendered by app.js -->
           </div>
-          <button id="story-badges-next" class="scroll-nav-btn" style="right:6px" aria-label="Cuộn sang phải">&#8250;</button>
+
+          <!-- Right fade & Next button -->
+          <div id="story-badges-next-wrap" class="flex absolute right-0 top-0 bottom-0 w-14 bg-gradient-to-l from-white via-white/95 to-transparent z-20 items-center justify-end pr-1">
+            <button id="story-badges-next"
+                    type="button"
+                    class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white hover:bg-[#EF5121] text-gray-700 hover:text-white shadow-md border border-gray-200 flex items-center justify-center transition-all cursor-pointer hover:scale-105 active:scale-95"
+                    aria-label="Cuộn sang phải">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
         </div>
 
         <!-- 2. HERO BANNER CAROUSEL -->

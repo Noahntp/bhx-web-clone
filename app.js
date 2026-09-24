@@ -234,27 +234,156 @@
     };
   }
 
-  // ─── STORY BADGES (BHX: w-20 per item, 60x60 img, text below) ────
+  // ─── STORY BADGES (Lướt mượt mà, kéo chuột, lăn chuột, nút cuộn trái/phải) ────
+  window.__bhx_scrollCategoryByName = (name) => {
+    if (!name) return;
+    if (name.includes('TRUNG THU')) {
+      const tet = document.getElementById('tet-trung-thu-section');
+      if (tet) { tet.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    }
+    const keys = Object.keys(data.categories || {});
+    const clean = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+    const cleanTarget = clean(name);
+    const words = cleanTarget.split(/\s+/).filter(w => w.length > 2);
+
+    let foundIdx = -1;
+    for (let i = 0; i < keys.length; i++) {
+      const k = clean(keys[i]);
+      if (k.includes(cleanTarget) || cleanTarget.includes(k) || words.some(w => k.includes(w))) {
+        foundIdx = i;
+        break;
+      }
+    }
+
+    if (foundIdx >= 0) {
+      const el = document.getElementById(`cat-${foundIdx}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+    }
+    const cat0 = document.getElementById('cat-0');
+    if (cat0) cat0.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   function renderStoryBadges() {
     const track = document.getElementById('story-badges-track');
     if (!track) return;
     const badges = data.menuHeader || [];
 
     track.innerHTML = badges.map(b => `
-      <a href="/${b.url || '#'}"
-         class="cate_name w-20 mr-3 flex cursor-pointer flex-col items-center justify-start px-[4px] 
-                hover:bg-[#F0FFF3] hover:text-[#007E42] rounded transition-colors shrink-0">
-        <div class="relative mb-[2px] mx-auto" style="width:60px;height:60px">
+      <a href="javascript:void(0)"
+         onclick="window.__bhx_onBadgeClick(event, '${b.name.replace(/'/g, "\\'")}')"
+         class="cate_name w-20 mr-2 flex cursor-pointer flex-col items-center justify-start px-1 py-1 
+                hover:bg-[#FFF5F0] hover:text-[#EF5121] rounded-xl transition-all shrink-0 group select-none">
+        <div class="relative mb-1 mx-auto flex items-center justify-center p-1 rounded-xl bg-gray-50 group-hover:bg-white group-hover:shadow-sm border border-transparent group-hover:border-orange-100 transition-all" style="width:62px;height:62px">
           <img alt="${b.name}"
-               width="60" height="60"
-               class="object-contain w-[60px] h-[60px]"
+               width="56" height="56"
+               class="object-contain w-14 h-14 group-hover:scale-105 transition-transform"
                src="${b.icon}"
                onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
         </div>
-        <div class="mb-[8px] flex h-[32px] items-start">
-          <div class="leading-[16px] text-[13px] line-clamp-2 text-center">${b.name}</div>
+        <div class="flex h-[32px] items-start">
+          <div class="leading-[15px] text-[12px] font-medium text-gray-700 group-hover:text-[#EF5121] line-clamp-2 text-center transition-colors">${b.name}</div>
         </div>
       </a>`).join('');
+
+    const prevWrap = document.getElementById('story-badges-prev-wrap');
+    const nextWrap = document.getElementById('story-badges-next-wrap');
+    const prevBtn = document.getElementById('story-badges-prev');
+    const nextBtn = document.getElementById('story-badges-next');
+
+    function updateNavButtons() {
+      if (!track) return;
+      const sl = track.scrollLeft;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (prevWrap) {
+        if (sl > 10) {
+          prevWrap.classList.remove('hidden');
+          prevWrap.classList.add('flex');
+        } else {
+          prevWrap.classList.add('hidden');
+          prevWrap.classList.remove('flex');
+        }
+      }
+      if (nextWrap) {
+        if (maxScroll > 10 && sl < maxScroll - 10) {
+          nextWrap.classList.remove('hidden');
+          nextWrap.classList.add('flex');
+        } else {
+          nextWrap.classList.add('hidden');
+          nextWrap.classList.remove('flex');
+        }
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.onclick = (e) => {
+        e.preventDefault();
+        track.scrollBy({ left: -320, behavior: 'smooth' });
+      };
+    }
+
+    if (nextBtn) {
+      nextBtn.onclick = (e) => {
+        e.preventDefault();
+        track.scrollBy({ left: 320, behavior: 'smooth' });
+      };
+    }
+
+    track.addEventListener('scroll', updateNavButtons, { passive: true });
+    window.addEventListener('resize', updateNavButtons);
+
+    // Mouse drag to scroll
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let hasDragged = false;
+
+    track.addEventListener('mousedown', (e) => {
+      isDown = true;
+      hasDragged = false;
+      startX = e.pageX - track.offsetLeft;
+      scrollStart = track.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDown) {
+        isDown = false;
+        setTimeout(() => { hasDragged = false; }, 60);
+      }
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      if (Math.abs(walk) > 5) hasDragged = true;
+      track.scrollLeft = scrollStart - walk;
+    });
+
+    // Horizontal scroll on mouse wheel
+    track.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        const canLeft = track.scrollLeft > 0 && e.deltaY < 0;
+        const canRight = track.scrollLeft < track.scrollWidth - track.clientWidth && e.deltaY > 0;
+        if (canLeft || canRight) {
+          e.preventDefault();
+          track.scrollLeft += e.deltaY * 0.9;
+        }
+      }
+    }, { passive: false });
+
+    window.__bhx_onBadgeClick = (e, name) => {
+      if (hasDragged) {
+        e.preventDefault();
+        return;
+      }
+      window.__bhx_scrollCategoryByName(name);
+    };
+
+    setTimeout(updateNavButtons, 200);
   }
 
   // ─── BANNER CAROUSEL ──────────────────────────────────────────────
