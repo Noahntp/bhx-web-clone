@@ -143,7 +143,7 @@
                 </svg>` : ''}
             </a>
             ${hasChildren ? `
-              <div class="hidden group-hover/m:flex absolute left-full top-0 w-[540px] bg-white border border-gray-200 
+              <div class="hidden group-hover/m:flex absolute left-full top-0 w-[min(540px,calc(100vw-300px))] bg-white border border-gray-200 
                           shadow-2xl rounded-r-2xl z-50 p-4 min-h-[300px] max-h-[520px] overflow-y-auto flex-col gap-3 border-l-4 border-[#EF5121]">
                 <div class="text-[14px] font-bold text-[#EF5121] border-b border-orange-100 pb-2.5 flex items-center justify-between">
                   <div class="flex items-center gap-2">
@@ -328,8 +328,8 @@
       const inCart = state.cart.find(c => c.name === p.name);
       const pct = Math.min(100, Math.round((p.sold / p.total) * 100));
       return `
-        <div class="product-card group bg-white rounded-xl p-2.5 border border-gray-100 hover:border-orange-300 flex flex-col justify-between relative shadow-xs">
-          <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
+        <div class="product-card group bg-white rounded-xl p-2 xs:p-2.5 sm:p-3 border border-gray-100 hover:border-orange-300 flex flex-col justify-between relative shadow-xs">
+          <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[10px] xs:text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
             -${p.discountPercent}%
           </div>
           <div class="absolute top-2 right-2 z-10 bg-[#007E42] text-white font-semibold text-[9px] px-1.5 py-[2px] rounded shadow-2xs">
@@ -346,7 +346,7 @@
                 onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">${p.name}</h3>
             <div class="text-[11px] text-gray-400 mb-1">ĐVT: ${p.unit}</div>
             <div class="flex items-baseline gap-1.5 mb-1.5">
-              <span class="text-[16px] sm:text-[18px] font-black text-[#EF5121] tracking-tight">${fmt(p.price)}</span>
+              <span class="text-[15px] xs:text-[16px] sm:text-[18px] font-black text-[#EF5121] tracking-tight">${fmt(p.price)}</span>
               ${p.originalPrice > p.price ? `<span class="text-[11px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
             </div>
             <div class="progress-bar-sold mb-2">
@@ -402,9 +402,9 @@
             ${shown.map(p => {
               const inCart = state.cart.find(c => c.name === p.name);
               return `
-                <div class="product-card group bg-white p-3 flex flex-col justify-between relative hover:z-10">
+                <div class="product-card group bg-white p-2 xs:p-2.5 sm:p-3 flex flex-col justify-between relative hover:z-10">
                   ${p.discountPercent > 0 ? `
-                    <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
+                    <div class="absolute top-2 left-2 z-10 bg-red-600 text-white font-black text-[10px] xs:text-[11px] px-1.5 py-[2px] rounded tag-discount-blink shadow-sm">
                       -${p.discountPercent}%
                     </div>` : ''}
                   <div class="absolute top-2 right-2 z-10 bg-emerald-600 text-white text-[9px] font-semibold px-1 py-[1px] rounded">
@@ -421,7 +421,7 @@
                         onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">${p.name}</h3>
                     <div class="text-[11px] text-gray-400 mb-1">ĐVT: ${p.unit || 'gói'}</div>
                     <div class="flex items-baseline gap-1.5 mb-2">
-                      <span class="text-[16px] sm:text-[18px] font-black text-[#EF5121] tracking-tight">${fmt(p.price)}</span>
+                      <span class="text-[15px] xs:text-[16px] sm:text-[18px] font-black text-[#EF5121] tracking-tight">${fmt(p.price)}</span>
                       ${p.originalPrice > p.price ? `<span class="text-[11px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
                     </div>
                   </div>
@@ -682,16 +682,17 @@
         </div>
         <!-- Recipe cards -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-[2px] bg-gray-200">
-          ${recipes.map(r => `
-            <div class="relative overflow-hidden cursor-pointer group bg-white flex flex-col justify-between" style="aspect-ratio:1/1">
+          ${recipes.map((r, ri) => `
+            <div class="relative overflow-hidden cursor-pointer group bg-white flex flex-col justify-between" style="aspect-ratio:1/1"
+                 onclick="window.__bhx_showRecipe(${ri})">
               <div class="flex-1 overflow-hidden relative">
                 <img src="${r.image}" alt="${r.name}"
                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                      onerror="this.onerror=null;this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
               </div>
-              <div class="bg-white/95 py-1.5 px-2 border-t border-gray-100">
-                <div class="text-[11px] font-medium text-gray-800 truncate" title="${r.name}">${r.name}</div>
-                <div class="text-[10px] font-bold text-[#007E42] uppercase tracking-wide">MUA NGUYÊN LIỆU</div>
+              <div class="bg-white/95 py-1.5 px-2 border-t border-gray-100 flex items-center justify-between">
+                <div class="text-[11px] font-medium text-gray-800 truncate flex-1 pr-1" title="${r.name}">${r.name}</div>
+                <div class="text-[9px] sm:text-[10px] font-bold text-[#007E42] uppercase tracking-tight shrink-0 bg-green-50 px-1.5 py-0.5 rounded border border-green-200">MUA LIỀN</div>
               </div>
             </div>`).join('')}
         </div>
@@ -709,6 +710,103 @@
       });
     };
   }
+
+  // ─── RECIPE & INGREDIENTS MODAL ──────────────────────────────────────
+  window.__bhx_showRecipe = (idx) => {
+    const d = data.homNayAnGi;
+    if (!d || !d.recipes || !d.recipes[idx]) return;
+    const r = d.recipes[idx];
+    const modal = document.getElementById('recipe-modal');
+    const content = document.getElementById('recipe-modal-content');
+    if (!modal || !content) return;
+
+    const ingTotal = (r.ingredients || []).reduce((s, item) => s + (item.price || 0), 0);
+
+    content.innerHTML = `
+      <div class="space-y-4">
+        <!-- Top header -->
+        <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start pb-4 border-b border-gray-100">
+          <div class="w-full sm:w-44 h-40 rounded-xl overflow-hidden bg-gray-100 shrink-0 mx-auto">
+            <img src="${r.image}" alt="${r.name}" class="w-full h-full object-cover" onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
+          </div>
+          <div class="flex-1 min-w-0">
+            <span class="inline-block bg-emerald-50 text-[#007E42] border border-emerald-200 text-[11px] font-bold px-2 py-0.5 rounded-full mb-1">
+              Món ngon mỗi ngày
+            </span>
+            <h3 class="text-base sm:text-lg font-black text-gray-900 leading-tight mb-1.5">${r.name}</h3>
+            <p class="text-xs text-gray-600 leading-relaxed mb-3">${r.desc || ''}</p>
+            <div class="flex flex-wrap items-center gap-2 text-xs text-gray-700">
+              <span class="flex items-center gap-1 font-medium bg-gray-100 px-2 py-1 rounded-lg">⏱️ ${r.time || '30 phút'}</span>
+              <span class="flex items-center gap-1 font-medium bg-gray-100 px-2 py-1 rounded-lg">👥 ${r.servings || '2 - 3 người'}</span>
+              <span class="flex items-center gap-1 font-medium bg-gray-100 px-2 py-1 rounded-lg">⭐ Độ khó: <b>${r.difficulty || 'Dễ'}</b></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recipe Steps -->
+        ${r.steps && r.steps.length ? `
+          <div>
+            <h4 class="font-bold text-xs sm:text-sm text-gray-900 uppercase tracking-wide mb-2 flex items-center gap-1.5">
+              <span>🍳</span> Các bước thực hiện
+            </h4>
+            <div class="space-y-2">
+              ${r.steps.map((st, i) => `
+                <div class="flex items-start gap-2.5 text-xs text-gray-700 bg-gray-50 p-2.5 rounded-xl border border-gray-100">
+                  <span class="w-5 h-5 rounded-full bg-[#007E42] text-white font-bold flex items-center justify-center shrink-0 text-[11px]">${i + 1}</span>
+                  <span class="leading-relaxed flex-1">${st}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Ingredients List -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="font-bold text-xs sm:text-sm text-gray-900 uppercase tracking-wide flex items-center gap-1.5">
+              <span>🛒</span> Nguyên liệu cần mua (${(r.ingredients || []).length})
+            </h4>
+            <span class="text-xs text-gray-500">Tạm tính: <b class="text-[#EF5121] font-bold">${fmt(ingTotal)}</b></span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[220px] overflow-y-auto bhx-scroll pr-1">
+            ${(r.ingredients || []).map(item => `
+              <div class="flex items-center justify-between gap-2 p-2 rounded-xl bg-gray-50 border border-gray-100">
+                <img src="${item.avatar}" alt="${item.name}" class="w-10 h-10 object-contain rounded bg-white p-0.5 shrink-0 border" onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
+                <div class="flex-1 min-w-0">
+                  <div class="text-xs font-semibold text-gray-800 line-clamp-1">${item.name}</div>
+                  <div class="text-[11px] font-bold text-[#EF5121]">${fmt(item.price)}</div>
+                </div>
+                <button type="button" class="px-2.5 py-1 bg-[#007E42] hover:bg-[#006133] text-white text-[11px] font-bold rounded-lg shadow-2xs active:scale-95 transition-transform"
+                        onclick="window.__bhx_addCart('${encodeURIComponent(JSON.stringify(item))}')">
+                  + Mua
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Add All Ingredients Button -->
+        <button type="button"
+                class="w-full bg-[#EF5121] hover:bg-[#D84214] text-white font-bold py-3 rounded-xl text-xs sm:text-sm uppercase tracking-wide shadow flex items-center justify-center gap-2 active:scale-98 transition-all"
+                onclick="window.__bhx_addAllIngredients(${idx})">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          Thêm tất cả nguyên liệu vào giỏ (${fmt(ingTotal)})
+        </button>
+      </div>
+    `;
+
+    modal.classList.remove('hidden');
+  };
+
+  window.__bhx_addAllIngredients = (idx) => {
+    const d = data.homNayAnGi;
+    if (!d || !d.recipes || !d.recipes[idx]) return;
+    const r = d.recipes[idx];
+    (r.ingredients || []).forEach(item => addToCart(item));
+    const modal = document.getElementById('recipe-modal');
+    if (modal) modal.classList.add('hidden');
+    showToast('Đã thêm đủ nguyên liệu vào giỏ!', r.name);
+  };
 
   // ─── CART DRAWER ──────────────────────────────────────────────────
   function renderCartDrawer() {
@@ -1005,6 +1103,12 @@
     const pClose = document.getElementById('close-product-modal');
     if (pClose && pModal) pClose.onclick = () => pModal.classList.add('hidden');
     if (pModal) pModal.onclick = e => { if (e.target === pModal) pModal.classList.add('hidden'); };
+
+    // Recipe modal close
+    const rModal = document.getElementById('recipe-modal');
+    const rClose = document.getElementById('close-recipe-modal');
+    if (rClose && rModal) rClose.onclick = () => rModal.classList.add('hidden');
+    if (rModal) rModal.onclick = e => { if (e.target === rModal) rModal.classList.add('hidden'); };
 
     // Checkout modal
     const cModal = document.getElementById('checkout-modal');

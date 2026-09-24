@@ -25,6 +25,14 @@
   <script>
     tailwind.config = {
       theme: {
+        screens: {
+          'xs': '400px',
+          'sm': '640px',
+          'md': '768px',
+          'lg': '1024px',
+          'xl': '1280px',
+          '2xl': '1536px',
+        },
         extend: {
           colors: {
             'primary-100': '#EF5121',
@@ -127,7 +135,7 @@
       position: absolute;
       left: 100%;
       top: 0;
-      width: 600px;
+      width: min(600px, calc(100vw - 300px));
       height: 100%;
       min-height: 520px;
       max-height: calc(100vh - 100px);
@@ -400,19 +408,19 @@
     <div class="flex flex-col items-end shrink-0">
       <!-- Location pill – Navy blue bg-[#234090] -->
       <div id="btn_choose_location"
-           class="relative mt-[2px] flex w-full min-w-[219px] max-w-[300px] cursor-pointer justify-end">
-        <div class="relative">
+           class="relative mt-[2px] flex w-full min-w-[190px] xl:min-w-[219px] max-w-[220px] xl:max-w-[300px] cursor-pointer justify-end">
+        <div class="relative w-full">
           <div style="height:36px">
             <div class="relative">
-              <div class="w-[272px] pl-3 h-[36px] relative bg-[#234090] rounded-[100px]
+              <div class="w-[195px] xl:w-[272px] pl-2.5 xl:pl-3 h-[36px] relative bg-[#234090] rounded-[100px]
                           flex items-center overflow-hidden location-pill
                           hover:bg-[#1B3273] transition-colors shadow-sm"
-                   style="padding-right:28px">
+                   style="padding-right:24px">
                 <svg class="w-4 h-4 text-white shrink-0 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
                   <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
                 </svg>
                 <span id="header-location-text"
-                      class="text-[13px] font-semibold text-white truncate flex-1">
+                      class="text-[12px] xl:text-[13px] font-semibold text-white truncate flex-1">
                   Chọn vị trí giao gần bạn
                 </span>
               </div>
@@ -437,10 +445,10 @@
   </div>
 
   <!-- MOBILE / TABLET HEADER (< lg) -->
-  <div class="block lg:hidden px-3">
+  <div class="block lg:hidden px-2 sm:px-3">
     <!-- Top row: Menu button + Logo + Location button + Cart button -->
-    <div class="flex items-center justify-between gap-2 pb-1.5">
-      <div class="flex items-center gap-2 shrink-0">
+    <div class="flex items-center justify-between gap-1.5 sm:gap-2 pb-1.5">
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
         <button id="btn-mobile-menu"
                 class="w-8 h-8 rounded-lg bg-[#234090] text-white flex items-center justify-center shadow-sm active:scale-95 transition-transform"
                 aria-label="Mở danh mục">
@@ -448,23 +456,23 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
         </button>
-        <a href="#/" class="bg-white rounded-lg px-2 py-0.5 flex items-center justify-center h-[34px] shadow-sm">
-          <img alt="Chợ Giá Rẻ" class="object-contain h-[26px] max-w-[125px]" src="logo-chogiare.png" onerror="this.src='Logo.jpg'">
+        <a href="#/" class="bg-white rounded-lg px-1.5 sm:px-2 py-0.5 flex items-center justify-center h-[34px] shadow-sm">
+          <img alt="Chợ Giá Rẻ" class="object-contain h-[24px] sm:h-[26px] max-w-[100px] xs:max-w-[125px]" src="logo-chogiare.png" onerror="this.src='Logo.jpg'">
         </a>
       </div>
 
-      <div class="flex items-center gap-1.5 shrink-0">
+      <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
         <!-- Mobile location button -->
         <button id="btn-mobile-location"
-                class="flex items-center gap-1 bg-[#234090] hover:bg-[#1B3273] text-white px-2 py-1 rounded-full text-xs font-medium max-w-[130px] sm:max-w-[180px] shadow-sm transition-colors">
+                class="flex items-center gap-1 bg-[#234090] hover:bg-[#1B3273] text-white px-1.5 xs:px-2 py-1 rounded-full text-xs font-medium max-w-[100px] xs:max-w-[130px] sm:max-w-[180px] shadow-sm transition-colors">
           <svg class="w-3.5 h-3.5 shrink-0 text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
           </svg>
-          <span id="mobile-location-text" class="truncate text-[11px]">Chọn vị trí</span>
+          <span id="mobile-location-text" class="truncate text-[10px] xs:text-[11px]">Chọn vị trí</span>
         </button>
         <!-- Mobile cart button - TO HƠN, NHẤP NHÁY -->
         <button id="btn-mobile-cart"
-                class="relative h-[34px] px-2.5 bg-gradient-to-r from-yellow-300 to-amber-300 text-gray-900 border border-white font-bold rounded-full flex items-center gap-1.5 shadow animate-cart-glow active:scale-95 transition-transform"
+                class="relative h-[34px] px-2 xs:px-2.5 bg-gradient-to-r from-yellow-300 to-amber-300 text-gray-900 border border-white font-bold rounded-full flex items-center gap-1 sm:gap-1.5 shadow animate-cart-glow active:scale-95 transition-transform"
                 aria-label="Giỏ hàng">
           <svg class="w-5 h-5 text-[#EF5121]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -495,16 +503,16 @@
         </button>
       </div>
       <div id="mobile-search-suggest-box"
-           class="hidden absolute left-0 right-0 top-[40px] bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-50 max-h-[300px] overflow-y-auto">
+           class="hidden absolute left-0 right-0 top-[40px] bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden z-50 max-h-[75vh] overflow-y-auto">
       </div>
     </div>
   </div>
 </header><!-- /header -->
 
 <!-- ═══════════════════════════════════════════════════════════
-     BODY LAYOUT: pt-[96px] md:pt-[124px] lg:pt-[120px] for fixed header, then flex row
+     BODY LAYOUT: pt-[96px] md:pt-[124px] lg:pt-[120px] pb-16 lg:pb-0 for fixed header & mobile nav
 ═══════════════════════════════════════════════════════════ -->
-<div class="mx-auto max-w-screen-xl pt-[96px] md:pt-[124px] lg:pt-[120px]">
+<div class="mx-auto max-w-screen-xl pt-[96px] md:pt-[124px] lg:pt-[120px] pb-16 lg:pb-0">
   <div class="flex items-stretch">
 
     <!-- ── SIDEBAR: full-height column, ẩn trên mobile/tablet (< lg), sticky trên desktop ── -->
@@ -904,12 +912,12 @@
      PRODUCT QUICK-VIEW MODAL
 ═══════════════════════════════════════════════════════════ -->
 <div id="product-detail-modal"
-     class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-4">
-  <div class="bg-white rounded-xl max-w-lg w-full p-5 shadow-2xl relative max-h-[90vh] overflow-y-auto bhx-scroll">
+     class="hidden fixed inset-0 bg-black/60 z-[60] flex items-center justify-center p-3 sm:p-4 backdrop-blur-xs">
+  <div class="bg-white rounded-2xl max-w-lg w-full p-4 sm:p-5 shadow-2xl relative max-h-[92vh] overflow-y-auto bhx-scroll">
     <button id="close-product-modal"
-            class="absolute right-4 top-4 text-gray-400 hover:text-gray-600 text-2xl font-bold leading-none">&times;</button>
-    <div class="flex flex-col sm:flex-row gap-4 items-start">
-      <div class="w-48 h-48 rounded-xl border p-2 flex items-center justify-center shrink-0 bg-gray-50">
+            class="absolute right-3 top-3 sm:right-4 sm:top-4 text-gray-400 hover:text-gray-600 text-2xl font-bold leading-none z-10 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shadow-xs">&times;</button>
+    <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+      <div class="w-full sm:w-48 h-44 sm:h-48 rounded-xl border p-2 flex items-center justify-center shrink-0 bg-gray-50 mx-auto">
         <img id="detail-modal-img" src="" alt=""
              class="max-w-full max-h-full object-contain"
              onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
@@ -1030,8 +1038,8 @@
 <!-- ═══════════════════════════════════════════════════════════
      FLOATING STICKY CART (Luôn nổi góc dưới phải màn hình, nhấp nháy, to, dễ thấy)
 ═══════════════════════════════════════════════════════════ -->
-<div id="floating-cart-widget" class="fixed right-4 bottom-20 md:bottom-8 z-40 cursor-pointer group transition-all duration-300 transform hover:scale-105 select-none">
-  <button class="relative flex items-center gap-2.5 bg-gradient-to-r from-[#EF5121] via-[#e84515] to-[#D84214] hover:from-[#f05e32] hover:to-[#EF5121] text-white border-2 border-yellow-300 font-black pl-3.5 pr-4 py-2.5 rounded-full shadow-2xl animate-cart-glow active:scale-95 cursor-pointer">
+<div id="floating-cart-widget" class="fixed right-3 sm:right-4 bottom-16 sm:bottom-20 lg:bottom-8 z-40 cursor-pointer group transition-all duration-300 transform hover:scale-105 select-none">
+  <button class="relative flex items-center gap-2 sm:gap-2.5 bg-gradient-to-r from-[#EF5121] via-[#e84515] to-[#D84214] hover:from-[#f05e32] hover:to-[#EF5121] text-white border-2 border-yellow-300 font-black pl-3 sm:pl-3.5 pr-3.5 sm:pr-4 py-2 sm:py-2.5 rounded-full shadow-2xl animate-cart-glow active:scale-95 cursor-pointer">
     <div class="relative flex items-center justify-center">
       <svg class="w-6 h-6 text-yellow-300 filter drop-shadow" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
