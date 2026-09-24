@@ -166,36 +166,317 @@
       }).join('');
     }
 
-    // Mobile category drawer list
-    const mobileContainer = document.getElementById('mobile-category-list');
-    if (mobileContainer) {
-      mobileContainer.innerHTML = menus.map((menu, idx) => {
-        const hasChildren = menu.childrens && menu.childrens.length > 0;
-        return `
-          <div class="mobile-cat-item">
-            <div class="flex items-center justify-between p-3 hover:bg-gray-50 transition-colors">
-              <a href="#cat-${idx}" class="flex items-center gap-3 flex-1 min-w-0" onclick="window.__bhx_closeMobileDrawer()">
-                ${menu.icon ? `<img src="${menu.icon}" alt="${menu.name}" class="w-6 h-6 object-contain shrink-0" onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">` : ''}
-                <span class="text-xs font-semibold text-gray-800 truncate">${menu.name}</span>
-              </a>
-              ${hasChildren ? `
-                <button onclick="window.__bhx_toggleMobileSub(${idx})" class="p-1.5 text-gray-400 hover:text-gray-700" aria-label="Mở rộng">
-                  <svg id="mob-arrow-${idx}" class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                </button>` : ''}
+    // ─── BHX MOBILE CATEGORY MENU (2-column layout + Green header) ───
+    const mobileSidebar = document.getElementById('mobile-cat-sidebar');
+    const mobileContent = document.getElementById('mobile-cat-content');
+    const searchInput = document.getElementById('mobile-category-search');
+    const searchClear = document.getElementById('mobile-category-search-clear');
+    const btnHome = document.getElementById('mobile-category-home');
+
+    let currentActiveCat = 'hot'; // 'hot' or integer index 0..N
+
+    const formatCategoryShortName = (name) => {
+      if (!name) return '';
+      const n = name.trim();
+      if (n.includes('THỰC PHẨM ĐÔNG MÁT')) return 'Thực phẩm đông mát';
+      if (n.includes('TRÀ - CÀ PHÊ')) return 'Trà, cà phê';
+      if (n.includes('SỮA & CHẾ PHẨM')) return 'Sữa các loại';
+      if (n.includes('BÁNH KẸO - ĐỒ ĂN VẶT')) return 'Bánh kẹo';
+      if (n.includes('DẦU ĂN - NƯỚC CHẤM')) return 'Dầu ăn, gia vị';
+      if (n.includes('GẠO - BỘT - ĐỒ KHÔ')) return 'Gạo, đồ khô';
+      if (n.includes('MÌ - MIẾN - CHÁO')) return 'Mì, miến, cháo';
+      if (n.includes('CHĂM SÓC CÁ NHÂN')) return 'Chăm sóc cá nhân';
+      if (n.includes('VỆ SINH NHÀ CỬA')) return 'Vệ sinh nhà cửa';
+      if (n.includes('ĐỒ GIA DỤNG')) return 'Đồ gia dụng';
+      if (n.includes('VĂN PHÒNG PHẨM')) return 'Văn phòng phẩm';
+      if (n.includes('ĐỒ ĐIỆN MÁY')) return 'Đồ điện máy';
+      if (n.includes('THỜI TRANG')) return 'Thời trang';
+      return n;
+    };
+
+    // Hot promotion categories
+    const hotPromoItems = [
+      {
+        name: 'Thịt heo - bò - gà tươi',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/8686/image-2453_202410151405041250.png',
+        targetIdx: 0,
+        badge: 'Giảm 25%'
+      },
+      {
+        name: 'Rau củ - Trái cây tươi',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/7/image/production/2026/7/image/Products/8788/5367299/nho-do-nhap-khau_202607231308359257.jpg',
+        targetIdx: 0,
+        badge: 'Tươi mỗi ngày'
+      },
+      {
+        name: 'Bia - Nước ngọt xả kho',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/6/image/2488/frame-127_202606091637580998.png',
+        targetIdx: 1,
+        badge: 'Giảm sâu'
+      },
+      {
+        name: 'Sữa tươi & Sữa chua',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7091/7091_202410101515241537.png',
+        targetIdx: 3,
+        badge: 'Mua 1 tặng 1'
+      },
+      {
+        name: 'Dầu ăn & Gia vị giá sốc',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7148/1990379_202410101528079106.png',
+        targetIdx: 5,
+        badge: 'Trợ giá 20%'
+      },
+      {
+        name: 'Gạo ngon & Đồ khô',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2513/gao_202511010303353277.png',
+        targetIdx: 6,
+        badge: 'Bình ổn'
+      },
+      {
+        name: 'Mì ăn liền thùng giá rẻ',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7147/image-523_202410101609435656.png',
+        targetIdx: 7,
+        badge: 'Ưu đãi sốc'
+      },
+      {
+        name: 'Nước giặt & Xả vải',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/9/image/production/2026/9/image/Products/2464/5368613/nuoc-giat-ariel-cua-tren-huong-downy-nang-som-tui-405kg_202609161016208803.jpg',
+        targetIdx: 9,
+        badge: 'Giảm 35%'
+      },
+      {
+        name: 'Nước rửa chén & Lau nhà',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/production/2026/8/image/production/2026/8/image/Products/2387/5368052/combo-nuoc-rua-chen-sunlight-3-1kg-va-lau-san-sunlight-2-7kg_202608051050022660.jpg',
+        targetIdx: 9,
+        badge: 'Combo rẻ'
+      },
+      {
+        name: 'Sữa tắm & Dầu gội',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/2515/2515_202410110851071914.png',
+        targetIdx: 8,
+        badge: 'Sale 40%'
+      },
+      {
+        name: 'Bánh kẹo & Ăn vặt',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/7143/7143_202410110835348807.png',
+        targetIdx: 4,
+        badge: 'Mua 2 tính 1'
+      },
+      {
+        name: 'Đồ gia dụng nhà bếp',
+        icon: 'https://cdnv2.tgdd.vn/bhx-static/bhx/Category/Images/3185/120x120-24_202410101454508088.png',
+        targetIdx: 10,
+        badge: 'Giảm 50%'
+      }
+    ];
+
+    function renderMobileSidebar() {
+      if (!mobileSidebar) return;
+      const isHotActive = currentActiveCat === 'hot';
+      
+      let html = `
+        <div onclick="window.__bhx_switchMobileCategory('hot')"
+             class="flex flex-col items-center justify-center p-2.5 text-center cursor-pointer transition-colors border-b border-gray-200/80 relative
+                    ${isHotActive ? 'bg-white text-red-600 font-bold border-l-4 border-red-500 shadow-xs' : 'bg-[#F4F6F8] text-gray-700 hover:bg-gray-100 border-l-4 border-transparent'}">
+          <div class="relative w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center font-black text-xs shadow-xs mb-1">
+            %
+          </div>
+          <div class="text-[11px] font-bold text-red-600 leading-tight">Khuyến mãi Hot</div>
+          <div class="text-[9px] text-gray-400 font-normal mt-0.5 leading-tight">(1.840 sp)</div>
+        </div>
+      `;
+
+      menus.forEach((menu, idx) => {
+        const isActive = currentActiveCat === idx;
+        const shortName = formatCategoryShortName(menu.name);
+        html += `
+          <div onclick="window.__bhx_switchMobileCategory(${idx})"
+               class="flex flex-col items-center justify-center p-2 text-center cursor-pointer transition-all border-b border-gray-200/60 relative
+                      ${isActive ? 'bg-white text-[#007E42] font-semibold border-l-4 border-[#007E42] shadow-xs' : 'bg-[#F4F6F8] text-gray-700 hover:bg-gray-100 border-l-4 border-transparent'}">
+            <div class="w-10 h-10 mb-1 flex items-center justify-center shrink-0">
+              <img src="${menu.icon}" alt="${menu.name}" class="w-full h-full object-contain ${isActive ? 'scale-105' : ''} transition-transform"
+                   onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
             </div>
-            ${hasChildren ? `
-              <div id="mob-sub-${idx}" class="hidden bg-gray-50 p-2.5 border-t border-gray-100 grid grid-cols-2 gap-2">
-                ${menu.childrens.map(c => `
-                  <a href="#cat-${idx}" class="flex items-center gap-2 p-1.5 rounded-lg bg-white border border-gray-100 hover:border-orange-300 text-gray-800 hover:text-[#EF5121] transition-all shadow-xs" onclick="window.__bhx_closeMobileDrawer()">
-                    <div class="w-7 h-7 rounded bg-gray-50 p-0.5 border border-gray-200 shrink-0 flex items-center justify-center overflow-hidden">
-                      <img src="${c.icon || menu.icon}" alt="${c.name}" class="w-full h-full object-contain" onerror="this.src='${menu.icon}'">
-                    </div>
-                    <span class="text-[11px] font-medium leading-tight truncate">${c.name}</span>
-                  </a>`).join('')}
-              </div>` : ''}
-          </div>`;
-      }).join('');
+            <span class="text-[11px] leading-[13px] line-clamp-2 max-w-[85px]">${shortName}</span>
+          </div>
+        `;
+      });
+
+      mobileSidebar.innerHTML = html;
     }
+
+    function renderMobileContent(searchQuery = '') {
+      if (!mobileContent) return;
+
+      const cleanStr = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+      const q = cleanStr(searchQuery);
+
+      if (q) {
+        // Collect all subcategories across all menus
+        const allSubs = [];
+        menus.forEach((m, mIdx) => {
+          (m.childrens || []).forEach(c => {
+            allSubs.push({
+              name: c.name,
+              icon: c.icon || m.icon,
+              parentIdx: mIdx,
+              parentName: m.name
+            });
+          });
+        });
+
+        const matches = allSubs.filter(s => cleanStr(s.name).includes(q) || cleanStr(s.parentName).includes(q));
+
+        if (matches.length === 0) {
+          mobileContent.innerHTML = `
+            <div class="py-12 flex flex-col items-center justify-center text-gray-400 text-center">
+              <svg class="w-12 h-12 mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <div class="text-xs font-medium text-gray-600 mb-1">Không tìm thấy nhóm hàng "${searchQuery}"</div>
+              <div class="text-[11px] text-gray-400">Vui lòng thử tìm kiếm bằng từ khóa khác</div>
+            </div>
+          `;
+          return;
+        }
+
+        mobileContent.innerHTML = `
+          <div class="text-[11px] text-gray-500 font-medium mb-3 flex items-center justify-between pb-1 border-b border-gray-100">
+            <span>Kết quả tìm kiếm (${matches.length})</span>
+          </div>
+          <div class="grid grid-cols-3 gap-x-2 gap-y-3.5">
+            ${matches.map(c => `
+              <div class="flex flex-col items-center text-center cursor-pointer group active:scale-95 transition-all"
+                   onclick="window.__bhx_selectMobileSubcategory(${c.parentIdx}, '${c.name.replace(/'/g, "\\'")}')">
+                <div class="w-[66px] h-[66px] xs:w-[72px] xs:h-[72px] rounded-2xl bg-[#F0FDF4] border border-[#DCFCE7] flex items-center justify-center p-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.03)] group-hover:border-[#86EFAC] group-hover:shadow transition-all">
+                  <img src="${c.icon}" alt="${c.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform"
+                       onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
+                </div>
+                <span class="text-[11px] text-gray-800 font-medium leading-[14px] mt-1.5 line-clamp-2 max-w-[85px] group-hover:text-[#007E42] transition-colors">
+                  ${c.name}
+                </span>
+                <span class="text-[9px] text-gray-400 truncate max-w-[80px] mt-0.5">${formatCategoryShortName(c.parentName)}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        return;
+      }
+
+      // If Hot Deals is active
+      if (currentActiveCat === 'hot') {
+        mobileContent.innerHTML = `
+          <div class="text-[12px] font-bold text-red-600 mb-2.5 flex items-center gap-1.5 pb-1 border-b border-gray-100">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+            <span>Khuyến Mãi Nổi Bật Hôm Nay</span>
+          </div>
+          <div class="grid grid-cols-3 gap-x-2 gap-y-3.5">
+            ${hotPromoItems.map(item => `
+              <div class="flex flex-col items-center text-center cursor-pointer group active:scale-95 transition-all relative"
+                   onclick="window.__bhx_selectMobileSubcategory(${item.targetIdx}, '${item.name.replace(/'/g, "\\'")}')">
+                <div class="w-[66px] h-[66px] xs:w-[72px] xs:h-[72px] rounded-2xl bg-[#FFF5F5] border border-red-100 flex items-center justify-center p-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.03)] group-hover:border-red-300 group-hover:shadow transition-all relative">
+                  <span class="absolute -top-1.5 -right-1 bg-red-600 text-white font-bold text-[8px] px-1 py-[1px] rounded-full shadow-xs">
+                    ${item.badge}
+                  </span>
+                  <img src="${item.icon}" alt="${item.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform"
+                       onerror="this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
+                </div>
+                <span class="text-[11px] text-gray-800 font-medium leading-[14px] mt-1.5 line-clamp-2 max-w-[85px] group-hover:text-red-600 transition-colors">
+                  ${item.name}
+                </span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        return;
+      }
+
+      // Normal category selected
+      const currentMenu = menus[currentActiveCat];
+      if (!currentMenu) return;
+      const subcategories = currentMenu.childrens || [];
+
+      mobileContent.innerHTML = `
+        <div class="text-[12px] font-bold text-gray-800 mb-2.5 flex items-center justify-between pb-1.5 border-b border-gray-100">
+          <span class="truncate max-w-[180px]">${currentMenu.name}</span>
+          <span class="text-[11px] text-gray-400 font-normal shrink-0">${subcategories.length} nhóm hàng</span>
+        </div>
+        <div class="grid grid-cols-3 gap-x-2 gap-y-3.5">
+          ${subcategories.map(c => `
+            <div class="flex flex-col items-center text-center cursor-pointer group active:scale-95 transition-all"
+                 onclick="window.__bhx_selectMobileSubcategory(${currentActiveCat}, '${c.name.replace(/'/g, "\\'")}')">
+              <div class="w-[66px] h-[66px] xs:w-[72px] xs:h-[72px] rounded-2xl bg-[#F0FDF4] border border-[#DCFCE7] flex items-center justify-center p-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.03)] group-hover:border-[#86EFAC] group-hover:shadow transition-all">
+                <img src="${c.icon || currentMenu.icon}" alt="${c.name}" class="w-full h-full object-contain group-hover:scale-105 transition-transform"
+                     onerror="this.src='${currentMenu.icon || 'https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'}'">
+              </div>
+              <span class="text-[11px] xs:text-[11.5px] text-gray-800 font-medium leading-[14px] mt-1.5 line-clamp-2 max-w-[85px] group-hover:text-[#007E42] transition-colors">
+                ${c.name}
+              </span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    window.__bhx_switchMobileCategory = (catKey) => {
+      currentActiveCat = catKey;
+      if (searchInput) searchInput.value = '';
+      if (searchClear) searchClear.classList.add('hidden');
+      renderMobileSidebar();
+      renderMobileContent();
+      if (mobileContent) mobileContent.scrollTop = 0;
+    };
+
+    window.__bhx_selectMobileSubcategory = (catIdx, subName) => {
+      window.__bhx_closeMobileDrawer();
+      if (catIdx === 'hot') {
+        const flashSale = document.getElementById('flash-sale');
+        if (flashSale) {
+          flashSale.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
+      }
+      const targetSec = document.getElementById(`cat-${catIdx}`);
+      if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (subName) {
+        window.__bhx_scrollCategoryByName(subName);
+      }
+    };
+
+    if (searchInput) {
+      searchInput.oninput = (e) => {
+        const val = e.target.value.trim();
+        if (val) {
+          if (searchClear) searchClear.classList.remove('hidden');
+        } else {
+          if (searchClear) searchClear.classList.add('hidden');
+        }
+        renderMobileContent(val);
+      };
+    }
+
+    if (searchClear) {
+      searchClear.onclick = () => {
+        if (searchInput) {
+          searchInput.value = '';
+          searchInput.focus();
+        }
+        searchClear.classList.add('hidden');
+        renderMobileContent();
+      };
+    }
+
+    if (btnHome) {
+      btnHome.onclick = () => {
+        window.__bhx_closeMobileDrawer();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+    }
+
+    // Initial render of mobile drawer
+    renderMobileSidebar();
+    renderMobileContent();
 
     // Setup mobile drawer events
     window.__bhx_closeMobileDrawer = () => {
@@ -203,20 +484,22 @@
       const o = document.getElementById('mobile-category-overlay');
       if (d) d.classList.add('-translate-x-full');
       if (o) { o.classList.add('opacity-0', 'pointer-events-none'); o.classList.remove('opacity-100'); }
+      document.body.style.overflow = '';
     };
+
     window.__bhx_openMobileDrawer = () => {
       const d = document.getElementById('mobile-category-drawer');
       const o = document.getElementById('mobile-category-overlay');
       if (d) d.classList.remove('-translate-x-full');
       if (o) { o.classList.remove('opacity-0', 'pointer-events-none'); o.classList.add('opacity-100'); }
+      document.body.style.overflow = 'hidden';
+      if (searchInput) searchInput.value = '';
+      if (searchClear) searchClear.classList.add('hidden');
+      renderMobileSidebar();
+      renderMobileContent();
     };
-    window.__bhx_toggleMobileSub = (idx) => {
-      const sub = document.getElementById(`mob-sub-${idx}`);
-      const arrow = document.getElementById(`mob-arrow-${idx}`);
-      if (!sub) return;
-      sub.classList.toggle('hidden');
-      if (arrow) arrow.classList.toggle('rotate-180');
-    };
+
+    window.__bhx_toggleMobileSub = () => {};
 
     const btnMobMenu = document.getElementById('btn-mobile-menu');
     const btnBotCategory = document.getElementById('btn-bottom-category');
