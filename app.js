@@ -882,33 +882,32 @@
         <div class="flex overflow-x-auto gap-0 bg-[#B71C1C] pb-3 px-2" style="scrollbar-width:none">
           ${products.map(p => `
             <div class="shrink-0 w-[150px] sm:w-[170px] mx-1 bg-white rounded-lg overflow-hidden flex flex-col cursor-pointer hover:shadow-md transition-shadow">
-              <!-- Ingredients list -->
-              ${p.ingredients && p.ingredients.length ? `
-                <div class="bg-gray-50 px-2 py-1.5 text-[10px] text-gray-600 leading-tight border-b border-gray-100">
-                  ${p.ingredients.slice(0,4).map(ing => `• ${ing}`).join('<br>')}
-                </div>` : ''}
               <!-- Product image -->
-              <div class="relative bg-white flex items-center justify-center" style="height:120px">
+              <div class="relative bg-white flex items-center justify-center" style="height:130px"
+                   onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">
                 ${p.badge ? `<div class="absolute top-2 left-2 z-[2] bg-red-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded">${p.badge}</div>` : ''}
                 ${p.discountPercent > 0 ? `<div class="absolute top-2 right-2 z-[2] bg-red-600 text-white text-[10px] font-black px-1.5 py-[2px] rounded tag-discount-blink shadow">-${p.discountPercent}%</div>` : ''}
                 <img src="${p.avatar}" alt="${p.name}"
-                     class="w-full h-full object-contain p-1"
+                     class="w-full h-full object-contain p-2 hover:scale-105 transition-transform duration-300"
                      onerror="this.onerror=null;this.style='background:#f3f4f7;padding:8px';this.src='https://cdnv2-tmdt.tgdd.vn/bhx/product-fe/cart/home/_next/public/static/images/default-image.svg'">
               </div>
               <!-- Bill promo banner -->
               ${p.bill ? `<div class="bg-[#B71C1C] text-white text-[9px] font-bold px-2 py-1 text-center leading-tight">${p.bill}</div>` : ''}
               <!-- Info -->
-              <div class="p-2 flex-1 flex flex-col">
-                <div class="text-[11px] text-gray-700 line-clamp-2 leading-snug mb-1">${p.name}</div>
-                <div class="text-[11px] text-gray-400 mb-1">${p.unit}</div>
-                <div class="flex items-baseline gap-1 mb-1">
-                  <span class="text-[16px] font-black text-[#EF5121]">${fmt(p.price)}</span>
-                  ${p.originalPrice > p.price ? `<span class="text-[10px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
+              <div class="p-2.5 flex-1 flex flex-col justify-between">
+                <div>
+                  <div class="text-[12px] font-medium text-gray-800 line-clamp-2 leading-snug mb-1 hover:text-[#EF5121]"
+                       onclick="window.__bhx_showProductDetail('${encodeURIComponent(JSON.stringify(p))}')">${p.name}</div>
+                  <div class="text-[11px] text-gray-400 mb-1">${p.unit}</div>
+                  <div class="flex items-baseline gap-1 mb-1">
+                    <span class="text-[16px] font-black text-[#EF5121]">${fmt(p.price)}</span>
+                    ${p.originalPrice > p.price ? `<span class="text-[10px] text-gray-400 line-through">${fmt(p.originalPrice)}</span>` : ''}
+                  </div>
+                  ${p.promo ? `<div class="text-[11px] font-bold text-[#F8A61A] mb-2">${p.promo}</div>` : ''}
                 </div>
-                ${p.promo ? `<div class="text-[11px] font-bold text-[#F8A61A] mb-2">${p.promo}</div>` : ''}
                 <button onclick="window.__bhx_addCart('${encodeURIComponent(JSON.stringify(p))}')"
-                        class="mt-auto w-full py-1.5 text-[12px] font-bold text-[#007E42] border border-[#007E42]
-                               rounded hover:bg-[#007E42] hover:text-white transition-colors">
+                        class="mt-2 w-full py-1.5 text-[12px] font-bold text-[#007E42] border border-[#007E42]
+                               rounded hover:bg-[#007E42] hover:text-white transition-all active:scale-95 shadow-xs">
                   MUA
                 </button>
               </div>
